@@ -34,7 +34,14 @@ li {
   display: inline-block;
 }
 .ativo {
-  background-color: mediumseagreen;
+  background-color: white;
+  color: #333;
+  border: 1px solid #333;
+  border-bottom: white;
+}
+.navegacao {
+  align-self: start;
+  margin-left: 10px;
 }
 button {
   padding: 0.5rem 1rem;
@@ -47,6 +54,7 @@ button {
 }
 button:hover{
   background-color: black;
+  color: white
 }
 </style>
 
