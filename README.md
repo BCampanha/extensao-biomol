@@ -1,15 +1,16 @@
 # extensao-biomol
+Atividade de extensão da disciplina BIB0452 - Biologia Molecular de Plantas (2024).
 
-## Project setup
+## Instale as dependências
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compila e recarrega para desenvolvimento
 ```
 npm run serve
 ```
-
+<!-- 
 ### Compiles and minifies for production
 ```
 npm run build
@@ -21,4 +22,4 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/). -->
