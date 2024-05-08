@@ -12,7 +12,7 @@
       </li>
     </ul>
     <h3>Sobre o projeto</h3>
-    <p>Inserir resumo aqui</p>
+    <p class="resumo">{{ resumo }}</p>
   </div>
 </template>
 
@@ -42,12 +42,17 @@ export default {
         "nome": "Fabricio",
         "nusp": null
         }
-      ]
+      ],
+      resumo: "Inserir resumo aqui. Texto de exemplo a seguir. Atividade: Os alunos (em grupos) produzirão material de divulgação (textos, animações, gráficos, figuras, vídeos, etc) sobre os temas abordados nas aulas. O material produzido será divulgado na página do laboratório de Genética Molecular de Plantas, sites/eventos de extensão do IB (Botânica no Inverno, Botânica no Cotidiano, Semana Temática, Bio na Rua) e em redes sociais."
     }
   }
 }
 </script>
 
 <style scoped>
-
+.resumo {
+  max-width: 21rem;
+  text-wrap: wrap;
+  text-align: justify;
+}
 </style>

@@ -41,10 +41,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: start;
   color: #333;
-  height: 97vh;
-  width: 99vw;
+  height: 100vh;
+  width: 100%;
 }
 a {
   font-weight: 600;
@@ -56,8 +55,5 @@ ul {
 }
 li {
   margin: 1rem 0;
-}
-img {
-  margin-bottom: 2rem;
 }
 </style>
