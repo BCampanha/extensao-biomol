@@ -1,11 +1,18 @@
 <template>
-  <ul class="navegacao">
-    <li><button @click="pagina=0" :class="{'ativo' : pagina===0 }">Sobre</button></li>
-    <li><button @click="pagina=1" :class="{'ativo' : pagina===1 }">Simulador</button></li>
-  </ul>
-  <img class="logo" alt="Fita dupla de DNA" src="./assets/dna.png">
-  <SobreTrabalho v-if="pagina===0"/>
-  <JanelaSimulador v-if="pagina===1"/>
+  <img
+    class="logo"
+    alt="Fita dupla de DNA"
+    src="./assets/dna.png"
+  >
+  <JanelaSimulador v-if="pagina===true"/>
+  <SobreTrabalho v-if="pagina===false"/>
+  <footer class="navegacao">
+    <button
+      @click="pagina = !pagina"
+    >
+      {{ navegacao }}
+    </button>
+  </footer>
 </template>
 
 <script>
@@ -16,12 +23,20 @@ export default {
   name: 'App',
   data() {
     return {
-      pagina: 0
+      pagina: true
     }
   },
   components: {
     SobreTrabalho,
     JanelaSimulador
+  },
+  computed: {
+    navegacao() {
+      if (this.pagina) {
+        return "Sobre"
+      }
+      return "Voltar ao simulador"
+    }
   }
 }
 </script>
@@ -30,31 +45,16 @@ export default {
 .logo {
   height: 4rem;
 }
-li {
-  display: inline-block;
-}
-.ativo {
-  background-color: white;
-  color: #333;
-  border: 1px solid #333;
-  border-bottom: white;
-}
 .navegacao {
-  align-self: start;
-  margin-left: 10px;
-}
-button {
-  padding: 0.5rem 1rem;
-  background-color: #333;
-  color: white;
-  border-style: none;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  border-bottom: none;
-}
-button:hover{
-  background-color: black;
-  color: white
+  position: absolute;
+  bottom: 5%;
+  button {
+    border: none;
+    text-decoration: underline;
+    color: mediumseagreen;
+    background-color: white;
+    cursor: pointer
+  }
 }
 </style>
 
@@ -68,6 +68,7 @@ button:hover{
   align-items: center;
   text-align: start;
   color: #333;
+  margin-top: 60px;
 }
 a {
   font-weight: 600;
@@ -78,6 +79,6 @@ ul {
   padding: 0;
 }
 li {
-  margin: 10px 0;
+  margin: 1rem 0;
 }
 </style>
