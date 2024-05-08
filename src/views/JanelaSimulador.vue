@@ -23,7 +23,7 @@ export default {
   display: flex;  
   flex-direction: row;
   width: 90vw;
-  height: 70vh;
+  height: 80vh;
   .bloco {
     padding: 1rem;
     margin: 0.2rem;
@@ -43,10 +43,10 @@ export default {
   .janela {
     flex-direction: column;
     .orientacoes {
-      min-height: 20%;
+      min-height: 10%;
     }
     .tela-principal {
-      min-height: 60%;
+      min-height: 50%;
     }
     .ferramentas {
       min-height: 20%;
