@@ -1,20 +1,46 @@
 <template>
   <div class="janela">
+
     <section class="bloco orientacoes">
-      Este é um bloco para orientações.
+      <em>Este é um bloco para orientações.</em>
+      <p>Exemplo de seletor:</p>
+
+      <div>
+        <input type="radio" id="opcao1" value="Opção 1" v-model="selecionado" />
+        <label for="opcao1">Via bombalística</label>
+      </div>
+
+      <div>
+        <input type="radio" id="opcao2" value="Opção 2" v-model="selecionado" />
+        <label for="opcao2">Agrobactéria</label>
+      </div>
+
+      <div class="botao-prox">
+        <button>
+          Próxima
+        </button>
+      </div>
     </section>
+
     <section class="bloco tela-principal">
-      Este bloco é a tela principal.
+      <em>Este bloco é a tela principal.</em>
     </section>
+
     <section class="bloco ferramentas">
-      Este é o bloco interativo para ferramentas e opções.
+      <em>Este é o bloco interativo para ferramentas e opções.</em>
     </section>
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: 'JanelaSimulador'
+  name: 'JanelaSimulador',
+  data() {
+    return {
+      selecionado: ''
+    }
+  }
 }
 </script>
 
@@ -27,9 +53,12 @@ export default {
   .bloco {
     padding: 1rem;
     margin: 0.2rem;
-    background-color: lightgray;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
   }
   .orientacoes {
+    position: relative;
     min-width: 20%;
   }
   .tela-principal {
@@ -39,17 +68,16 @@ export default {
     min-width: 20%;
   }
 }
+.botao-prox {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
 @media screen and (max-width: 770px) {
   .janela {
     flex-direction: column;
-    .orientacoes {
-      min-height: 10%;
-    }
     .tela-principal {
       min-height: 50%;
-    }
-    .ferramentas {
-      min-height: 20%;
     }
   }
 }

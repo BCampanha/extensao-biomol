@@ -43,7 +43,8 @@ export default {
   align-items: center;
   text-align: start;
   color: #333;
-  height: 100vh;
+  height: 97vh;
+  width: 99vw;
 }
 a {
   font-weight: 600;
