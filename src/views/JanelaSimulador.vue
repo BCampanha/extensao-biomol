@@ -1,6 +1,14 @@
 <template>
-  <div>
-    <p>Em construção</p>
+  <div class="janela">
+    <section class="bloco orientacoes">
+      Este é um bloco para orientações.
+    </section>
+    <section class="bloco tela-principal">
+      Este bloco é a tela principal.
+    </section>
+    <section class="bloco ferramentas">
+      Este é o bloco interativo para ferramentas e opções.
+    </section>
   </div>
 </template>
 
@@ -11,5 +19,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.janela {
+  display: flex;  
+  flex-direction: row;
+  width: 90vw;
+  height: 70vh;
+  .bloco {
+    padding: 1rem;
+    margin: 0.2rem;
+    background-color: lightgray;
+  }
+  .orientacoes {
+    min-width: 20%;
+  }
+  .tela-principal {
+    min-width: 40%;
+  }
+  .ferramentas {
+    min-width: 20%;
+  }
+}
+@media screen and (max-width: 770px) {
+  .janela {
+    flex-direction: column;
+    .orientacoes {
+      min-height: 20%;
+    }
+    .tela-principal {
+      min-height: 60%;
+    }
+    .ferramentas {
+      min-height: 20%;
+    }
+  }
+}
 </style>

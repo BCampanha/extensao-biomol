@@ -1,18 +1,12 @@
 <template>
   <img
+    @click="pagina = !pagina"
     class="logo"
     alt="Fita dupla de DNA"
     src="./assets/dna.png"
   >
   <JanelaSimulador v-if="pagina===true"/>
   <SobreTrabalho v-if="pagina===false"/>
-  <footer class="navegacao">
-    <button
-      @click="pagina = !pagina"
-    >
-      {{ navegacao }}
-    </button>
-  </footer>
 </template>
 
 <script>
@@ -29,14 +23,6 @@ export default {
   components: {
     SobreTrabalho,
     JanelaSimulador
-  },
-  computed: {
-    navegacao() {
-      if (this.pagina) {
-        return "Sobre"
-      }
-      return "Voltar ao simulador"
-    }
   }
 }
 </script>
@@ -44,17 +30,6 @@ export default {
 <style scoped>
 .logo {
   height: 4rem;
-}
-.navegacao {
-  position: absolute;
-  bottom: 5%;
-  button {
-    border: none;
-    text-decoration: underline;
-    color: mediumseagreen;
-    background-color: white;
-    cursor: pointer
-  }
 }
 </style>
 
@@ -68,7 +43,7 @@ export default {
   align-items: center;
   text-align: start;
   color: #333;
-  margin-top: 60px;
+  height: 100vh;
 }
 a {
   font-weight: 600;
@@ -80,5 +55,8 @@ ul {
 }
 li {
   margin: 1rem 0;
+}
+img {
+  margin-bottom: 2rem;
 }
 </style>
