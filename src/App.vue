@@ -5,13 +5,13 @@
     alt="Fita dupla de DNA"
     src="./assets/dna.png"
   >
-  <JanelaSimulador v-if="pagina===true"/>
+  <QuestoesSimulador v-if="pagina===true"/>
   <SobreTrabalho v-if="pagina===false"/>
 </template>
 
 <script>
 import SobreTrabalho from './views/SobreTrabalho.vue'
-import JanelaSimulador from './views/JanelaSimulador.vue'
+import QuestoesSimulador from './views/QuestoesSimulador.vue'
 
 export default {
   name: 'App',
@@ -22,7 +22,7 @@ export default {
   },
   components: {
     SobreTrabalho,
-    JanelaSimulador
+    QuestoesSimulador
   }
 }
 </script>
