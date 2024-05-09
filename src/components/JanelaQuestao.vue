@@ -1,5 +1,5 @@
 <template>
-  <div class="janela" v-if="questao===questaoAtual">
+  <div class="janela">
     <div class="bloco orientacoes">
         <slot name="orientacoes"></slot>
     </div>
@@ -16,33 +16,20 @@
 
 <script>
 export default {
-  name: 'JanelaQuestao',
-  props: {
-    questao: Number,
-    questaoAtual: Number
-  }
+  name: 'JanelaQuestao'
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .janela {
   display: grid;
   grid-template-columns: 20vw 50vw 20vw;
-  grid-template-rows: 80vh 80vh 80vh;
+  grid-template-rows: 80vh;
   .bloco {
     padding: 1rem;
     margin: 0.2rem;
     background-color: rgb(238, 238, 238);
   }
-  .ferramentas {
-    position: relative;
-    padding-bottom: 3rem;
-  }
-}
-.botao-prox {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
 }
 @media screen and (max-width: 770px) {
   .janela {

@@ -1,8 +1,7 @@
 <template>
   <div>
     <JanelaQuestao
-    :questao="1"
-    :questaoAtual="questaoAtual"
+      v-if="questao===1"
     >
       <template #ferramentas>
         <p>Exemplo de seletor: {{ selecionado }}</p>
@@ -19,8 +18,7 @@
     </JanelaQuestao>
 
     <JanelaQuestao
-    :questao="2"
-    :questaoAtual="questaoAtual"
+      v-if="questao===2"
     >
       <template #ferramentas>
         <p>Outro exemplo de seletor.</p>
@@ -28,10 +26,10 @@
     </JanelaQuestao>
 
     <div class="botao-prox">
-      <button :disabled="questaoAtual===1" @click="anterior()">
+      <button :disabled="questao===1" @click="anterior()">
         Anterior
       </button>
-      <button :disabled="questaoAtual>=2" @click="proxima()">
+      <button :disabled="questao>=2" @click="proxima()">
         Próxima
       </button>
     </div>
@@ -45,7 +43,7 @@ export default {
   name: 'QuestoesSimulador',
   data() {
     return {
-      questaoAtual: 1,
+      questao: 1,
       selecionado: ''
     }
   },
@@ -54,15 +52,18 @@ export default {
   },
   methods: {
     anterior() {
-      this.questaoAtual -= 1
+      this.questao -= 1
     },
     proxima() {
-      this.questaoAtual += 1
+      this.questao += 1
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+.botao-prox {
+  text-align: end;
+  padding-right: 0.2rem;
+}
 </style>
