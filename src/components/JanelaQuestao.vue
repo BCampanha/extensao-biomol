@@ -2,7 +2,7 @@
   <div class="janela">
     <div class="bloco orientacoes">
       <em>Este é um bloco para orientações sobre a questão.</em>
-        <slot name="orientacoes"></slot>
+      <slot name="orientacoes"></slot>
     </div>
 
     <div class="bloco tela-principal">
@@ -19,8 +19,8 @@
 
 <script>
 export default {
-  name: 'JanelaQuestao'
-}
+  name: "JanelaQuestao",
+};
 </script>
 
 <style lang="scss" scoped>

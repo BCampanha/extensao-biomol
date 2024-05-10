@@ -4,12 +4,24 @@
       <template #ferramentas>
         <p>Exemplo de seletor: {{ selecionado }}</p>
         <div>
-          <input type="radio" id="opcao1" value="Via bombalística" v-model="selecionado" @click="$emit('foiSelecionado', true)"/>
+          <input
+            type="radio"
+            id="opcao1"
+            value="Via bombalística"
+            v-model="selecionado"
+            @click="$emit('foiSelecionado', true)"
+          />
           <label for="opcao1">Via bombalística</label>
         </div>
-  
+
         <div>
-          <input type="radio" id="opcao2" value="Agrobactéria" v-model="selecionado" @click="$emit('foiSelecionado', true)"/>
+          <input
+            type="radio"
+            id="opcao2"
+            value="Agrobactéria"
+            v-model="selecionado"
+            @click="$emit('foiSelecionado', true)"
+          />
           <label for="opcao2">Agrobactéria</label>
         </div>
       </template>
@@ -18,21 +30,19 @@
 </template>
 
 <script>
-import JanelaQuestao from '../components/JanelaQuestao.vue'
+import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
-  name: 'QuestaoUm',
+  name: "QuestaoUm",
   components: {
-    JanelaQuestao
+    JanelaQuestao,
   },
   data() {
     return {
-      selecionado: ''
-    }
-  }
-}
+      selecionado: "",
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

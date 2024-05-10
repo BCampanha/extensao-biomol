@@ -4,54 +4,52 @@
     class="logo"
     alt="Fita dupla de DNA"
     src="./assets/dna.png"
-  >
-  <section v-if="pagina===true">
-    <QuestaoUm v-if="questao===1" @foiSelecionado="valida"/>
-    <QuestaoDois v-if="questao===2"/>
+  />
+  <section v-if="pagina === true">
+    <QuestaoUm v-if="questao === 1" @foiSelecionado="valida" />
+    <QuestaoDois v-if="questao === 2" />
     <div class="botao-prox">
-      <button :disabled="questao===1" @click="anterior()">
-        Anterior
-      </button>
-      <button :disabled="questao>=2 || !validado" @click="proxima()">
+      <button :disabled="questao === 1" @click="anterior()">Anterior</button>
+      <button :disabled="questao >= 2 || !validado" @click="proxima()">
         Próxima
       </button>
     </div>
   </section>
-  <SobreTrabalho v-if="pagina===false"/>
+  <SobreTrabalho v-if="pagina === false" />
 </template>
 
 <script>
-import SobreTrabalho from './views/SobreTrabalho.vue'
-import QuestaoUm from './views/QuestaoUm.vue'
-import QuestaoDois from './views/QuestaoDois.vue'
+import SobreTrabalho from "./views/SobreTrabalho.vue";
+import QuestaoUm from "./views/QuestaoUm.vue";
+import QuestaoDois from "./views/QuestaoDois.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
       pagina: true,
       questao: 1,
       validado: false,
-    }
+    };
   },
   components: {
     SobreTrabalho,
     QuestaoUm,
-    QuestaoDois
+    QuestaoDois,
   },
   methods: {
     anterior() {
-      this.questao -= 1
+      this.questao -= 1;
     },
     proxima() {
-      this.questao += 1
-      this.validado = false
+      this.questao += 1;
+      this.validado = false;
     },
     valida(booleano) {
-      this.validado = booleano
+      this.validado = booleano;
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
