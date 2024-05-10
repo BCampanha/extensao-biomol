@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .logo {
-  height: 4rem;
+  height: 8vh;
 }
 .botao-prox {
   text-align: end;

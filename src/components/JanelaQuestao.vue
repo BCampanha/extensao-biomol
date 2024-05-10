@@ -26,19 +26,21 @@ export default {
 <style lang="scss" scoped>
 .janela {
   display: grid;
-  grid-template-columns: 20vw 50vw 20vw;
-  grid-template-rows: 80vh;
+  grid-template-columns: 20vw 50vw 25vw;
+  grid-template-rows: 85vh;
+  margin-top: 2vh;
   .bloco {
     padding: 1rem;
     margin: 0.2rem;
     background-color: rgb(238, 238, 238);
+    border-radius: 10px;
   }
 }
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 992px) {
   .janela {
     display: grid;
-    grid-template-rows: 25vh 40vh 20vh;
-    grid-template-columns: 90vw;
+    grid-template-rows: 20vh 40vh 25vh;
+    grid-template-columns: 95vw;
   }
 }
 </style>
