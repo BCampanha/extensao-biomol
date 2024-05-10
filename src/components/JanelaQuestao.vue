@@ -1,14 +1,17 @@
 <template>
   <div class="janela">
     <div class="bloco orientacoes">
+      <em>Este é um bloco para orientações sobre a questão.</em>
         <slot name="orientacoes"></slot>
     </div>
 
     <div class="bloco tela-principal">
+      <em>Este bloco é a tela principal da simulação.</em>
       <slot name="principal"></slot>
     </div>
 
     <div class="bloco ferramentas">
+      <em>Este é um bloco de ferramentas/ações.</em>
       <slot name="ferramentas"></slot>
     </div>
   </div>
