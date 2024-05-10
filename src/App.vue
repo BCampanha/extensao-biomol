@@ -5,24 +5,46 @@
     alt="Fita dupla de DNA"
     src="./assets/dna.png"
   >
-  <QuestoesSimulador v-if="pagina===true"/>
+  <section v-if="pagina===true">
+    <QuestaoUm v-if="questao===1"/>
+    <QuestaoDois v-if="questao===2"/>
+    <div class="botao-prox">
+      <button :disabled="questao===1" @click="anterior()">
+        Anterior
+      </button>
+      <button :disabled="questao>=2" @click="proxima()">
+        Próxima
+      </button>
+    </div>
+  </section>
   <SobreTrabalho v-if="pagina===false"/>
 </template>
 
 <script>
 import SobreTrabalho from './views/SobreTrabalho.vue'
-import QuestoesSimulador from './views/QuestoesSimulador.vue'
+import QuestaoUm from './views/QuestaoUm.vue'
+import QuestaoDois from './views/QuestaoDois.vue'
 
 export default {
   name: 'App',
   data() {
     return {
-      pagina: true
+      pagina: true,
+      questao: 1,
     }
   },
   components: {
     SobreTrabalho,
-    QuestoesSimulador
+    QuestaoUm,
+    QuestaoDois
+  },
+  methods: {
+    anterior() {
+      this.questao -= 1
+    },
+    proxima() {
+      this.questao += 1
+    }
   }
 }
 </script>
@@ -30,6 +52,10 @@ export default {
 <style scoped>
 .logo {
   height: 4rem;
+}
+.botao-prox {
+  text-align: end;
+  padding-right: 0.2rem;
 }
 </style>
 
