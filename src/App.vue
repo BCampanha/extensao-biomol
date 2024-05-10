@@ -6,13 +6,13 @@
     src="./assets/dna.png"
   >
   <section v-if="pagina===true">
-    <QuestaoUm v-if="questao===1"/>
+    <QuestaoUm v-if="questao===1" @foiSelecionado="valida"/>
     <QuestaoDois v-if="questao===2"/>
     <div class="botao-prox">
       <button :disabled="questao===1" @click="anterior()">
         Anterior
       </button>
-      <button :disabled="questao>=2" @click="proxima()">
+      <button :disabled="questao>=2 || !validado" @click="proxima()">
         Próxima
       </button>
     </div>
@@ -31,6 +31,7 @@ export default {
     return {
       pagina: true,
       questao: 1,
+      validado: false,
     }
   },
   components: {
@@ -44,7 +45,11 @@ export default {
     },
     proxima() {
       this.questao += 1
-    }
+      this.validado = false
+    },
+    valida(booleano) {
+      this.validado = booleano
+    },
   }
 }
 </script>
