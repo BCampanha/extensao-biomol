@@ -1,15 +1,21 @@
 <template>
   <div>
     <JanelaQuestao>
+      <template #orientacoes>
+        Selecione a <strong>via de transformação gênica</strong> que você
+        gostaria de simular.
+      </template>
       <template #ferramentas>
-        <p>Exemplo de seletor: {{ selecionado }}</p>
+        <Transition name="slide-fade">
+          <p v-if="show">{{ selecionado }}</p>
+        </Transition>
         <div>
           <input
             type="radio"
             id="opcao1"
             value="Via bombalística"
             v-model="selecionado"
-            @click="$emit('foiSelecionado', true)"
+            @click="foiSelecionado"
           />
           <label for="opcao1">Via bombalística</label>
         </div>
@@ -20,11 +26,12 @@
             id="opcao2"
             value="Agrobactéria"
             v-model="selecionado"
-            @click="$emit('foiSelecionado', true)"
+            @click="foiSelecionado"
           />
           <label for="opcao2">Agrobactéria</label>
         </div>
       </template>
+      <template #principal> </template>
     </JanelaQuestao>
   </div>
 </template>
@@ -40,9 +47,32 @@ export default {
   data() {
     return {
       selecionado: "",
+      show: false,
     };
+  },
+  methods: {
+    async foiSelecionado() {
+      this.$emit("foiSelecionado", this.selecionado);
+      this.show = false;
+      await setTimeout(500);
+      this.show = true;
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px); /* ou translateY */
+  opacity: 0;
+}
+</style>

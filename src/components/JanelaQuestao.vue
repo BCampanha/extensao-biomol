@@ -2,7 +2,10 @@
   <div class="janela">
     <div class="bloco orientacoes">
       <em>Este é um bloco para orientações sobre a questão.</em>
-      <slot name="orientacoes"></slot>
+      <p>
+        <slot name="orientacoes"></slot>
+
+      </p>
     </div>
 
     <div class="bloco tela-principal">
@@ -12,7 +15,9 @@
 
     <div class="bloco ferramentas">
       <em>Este é um bloco de ferramentas/ações.</em>
-      <slot name="ferramentas"></slot>
+      <p>
+        <slot name="ferramentas"></slot>
+      </p>
     </div>
   </div>
 </template>

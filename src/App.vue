@@ -1,21 +1,23 @@
 <template>
-  <img
-    @click="pagina = !pagina"
-    class="logo"
-    alt="Fita dupla de DNA"
-    src="./assets/dna.png"
-  />
-  <section v-if="pagina === true">
-    <QuestaoUm v-if="questao === 1" @foiSelecionado="valida" />
-    <QuestaoDois v-if="questao === 2" />
-    <div class="botao-prox">
-      <button :disabled="questao === 1" @click="anterior()">Anterior</button>
-      <button :disabled="questao >= 2 || !validado" @click="proxima()">
-        Próxima
-      </button>
-    </div>
-  </section>
-  <SobreTrabalho v-if="pagina === false" />
+  <div class="app">
+    <img
+      @click="pagina = !pagina"
+      class="logo"
+      alt="Fita dupla de DNA"
+      src="./assets/dna.png"
+    />
+    <section v-if="pagina === true">
+      <QuestaoUm v-if="questao === 1" @foiSelecionado="valida" />
+      <QuestaoDois v-if="questao === 2" />
+      <div class="botao-prox">
+        <button :disabled="questao === 1" @click="anterior()">Anterior</button>
+        <button :disabled="questao >= 2 || !validado" @click="proxima()">
+          Próxima
+        </button>
+      </div>
+    </section>
+    <SobreTrabalho v-if="pagina === false" />
+  </div>
 </template>
 
 <script>
@@ -63,7 +65,7 @@ export default {
 </style>
 
 <style>
-#app {
+#app .app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -84,5 +86,8 @@ ul {
 }
 li {
   margin: 1rem 0;
+}
+strong {
+  font-weight: 600;
 }
 </style>
