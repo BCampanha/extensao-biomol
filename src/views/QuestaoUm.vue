@@ -5,33 +5,33 @@
         Selecione a <strong>via de transformação gênica</strong> que você
         gostaria de simular.
       </template>
-      <template #ferramentas>
+      <template #principal>
+        <img
+          src="../assets/metodos-2.jpg"
+          alt="Esquema de transformação gênica por Agrobacterium e por biobalística"
+        />
         <Transition name="slide-fade">
-          <p v-if="show">{{ selecionado }}</p>
+          <p v-if="show">
+            {{
+              opcoes.filter(function (e) {
+                return e.id === selecionado;
+              })[0]?.nome || ''
+            }}
+          </p>
         </Transition>
-        <div>
+      </template>
+      <template #ferramentas>
+        <div v-for="opcao in opcoes" :key="opcao.id">
           <input
             type="radio"
-            id="opcao1"
-            value="Via bombalística"
+            :id="opcao.id"
+            :value="opcao.id"
             v-model="selecionado"
             @click="foiSelecionado"
           />
-          <label for="opcao1">Via bombalística</label>
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            id="opcao2"
-            value="Agrobactéria"
-            v-model="selecionado"
-            @click="foiSelecionado"
-          />
-          <label for="opcao2">Agrobactéria</label>
+          <label :for="opcao.id">{{ opcao.nome }}</label>
         </div>
       </template>
-      <template #principal> </template>
     </JanelaQuestao>
   </div>
 </template>
@@ -41,13 +41,24 @@ import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
   name: "QuestaoUm",
+  emits: ["foiSelecionado"],
   components: {
     JanelaQuestao,
   },
   data() {
     return {
-      selecionado: "",
-      show: false,
+      selecionado: '',
+      show: true,
+      opcoes: [
+        {
+          id: 1,
+          nome: "Via biobalística",
+        },
+        {
+          id: 2,
+          nome: "Agrobacterium",
+        },
+      ],
     };
   },
   methods: {
@@ -74,5 +85,9 @@ export default {
 .slide-fade-leave-to {
   transform: translateX(20px); /* ou translateY */
   opacity: 0;
+}
+
+img {
+  max-width: 100%;
 }
 </style>

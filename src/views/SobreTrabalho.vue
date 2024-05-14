@@ -18,6 +18,10 @@
     </ul>
     <h3>Sobre o projeto</h3>
     <p class="resumo">{{ resumo }}</p>
+    <img
+      alt="Esquema de transformações gênicas"
+      src="../assets/metodos.png"
+    />
   </div>
 </template>
 
@@ -57,8 +61,18 @@ export default {
 
 <style scoped>
 .resumo {
-  max-width: 21rem;
+  width: 22rem;
+  max-width: 95vw;
   text-wrap: wrap;
   text-align: justify;
+}
+img {
+  width: 22rem;
+  max-width: 95vw;
+}
+
+.hello {
+  max-width: 95vw;
+  margin: 0.5vw;
 }
 </style>

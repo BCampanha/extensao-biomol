@@ -2,7 +2,6 @@
   <div>
     <JanelaQuestao>
       <template #ferramentas>
-        <p>Outro exemplo de seletor.</p>
       </template>
     </JanelaQuestao>
   </div>

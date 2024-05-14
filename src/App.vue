@@ -32,6 +32,7 @@ export default {
       pagina: true,
       questao: 1,
       validado: false,
+      selecao: "",
     };
   },
   components: {
@@ -47,8 +48,9 @@ export default {
       this.questao += 1;
       this.validado = false;
     },
-    valida(booleano) {
-      this.validado = booleano;
+    valida(selecao) {
+      this.validado = true;
+      this.selecao = selecao;
     },
   },
 };
@@ -62,11 +64,16 @@ export default {
   text-align: end;
   padding-right: 0.2rem;
 }
+@media screen and (max-width: 992px) {
+  .logo {
+    height: 5vh;
+  }
+}
 </style>
 
 <style>
 #app .app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Rubik", sans-serif; /* "Montserrat", sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
