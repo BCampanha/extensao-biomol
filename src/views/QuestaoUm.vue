@@ -15,7 +15,7 @@
             {{
               opcoes.filter(function (e) {
                 return e.id === selecionado;
-              })[0]?.nome || ''
+              })[0]?.nome || ""
             }}
           </p>
         </Transition>
@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      selecionado: '',
+      selecionado: "",
       show: true,
       opcoes: [
         {

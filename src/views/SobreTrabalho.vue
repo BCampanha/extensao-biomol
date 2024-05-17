@@ -18,10 +18,7 @@
     </ul>
     <h3>Sobre o projeto</h3>
     <p class="resumo">{{ resumo }}</p>
-    <img
-      alt="Esquema de transformações gênicas"
-      src="../assets/metodos.png"
-    />
+    <img alt="Esquema de transformações gênicas" src="../assets/metodos.png" />
   </div>
 </template>
 
