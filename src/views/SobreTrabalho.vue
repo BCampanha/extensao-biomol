@@ -33,8 +33,8 @@ export default {
           nusp: 12676657,
         },
         {
-          nome: "Rayssa",
-          nusp: null,
+          nome: "Rayssa Oliveira Santos",
+          nusp: 12558450,
         },
         {
           nome: "Kawan",
