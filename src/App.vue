@@ -9,8 +9,10 @@
     <section v-if="pagina === true">
       <QuestaoUm v-if="questao === 1" @foiSelecionado="valida" />
       <QuestaoDois v-if="questao === 2" />
-      <div class="botao-prox">
-        <button :disabled="questao === 1" @click="anterior()">Anterior</button>
+      <div class="botao-direita">
+        <button :disabled="questao === 1" @click="anterior()">
+          Anterior
+        </button>
         <button :disabled="questao >= 2 || !validado" @click="proxima()">
           Próxima
         </button>
@@ -59,8 +61,9 @@ export default {
 <style scoped>
 .logo {
   height: 8vh;
+  cursor: pointer;
 }
-.botao-prox {
+.botao-direita {
   text-align: end;
   padding-right: 0.2rem;
 }
@@ -96,5 +99,8 @@ li {
 }
 strong {
   font-weight: 600;
+}
+input, label {
+  cursor: pointer;
 }
 </style>

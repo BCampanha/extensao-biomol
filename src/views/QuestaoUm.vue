@@ -10,22 +10,14 @@
           src="../assets/metodos-2.jpg"
           alt="Esquema de transformação gênica por Agrobacterium e por biobalística"
         />
-        <Transition name="slide-fade">
-          <p v-if="show">
-            {{
-              opcoes.filter(function (e) {
-                return e.id === selecionado;
-              })[0]?.nome || ""
-            }}
-          </p>
-        </Transition>
+        <p>{{ selecionado }}</p>
       </template>
       <template #ferramentas>
         <div v-for="opcao in opcoes" :key="opcao.id">
           <input
             type="radio"
             :id="opcao.id"
-            :value="opcao.id"
+            :value="opcao"
             v-model="selecionado"
             @click="foiSelecionado"
           />
@@ -51,42 +43,25 @@ export default {
       show: true,
       opcoes: [
         {
-          id: 1,
+          id: "BIOB",
           nome: "Via biobalística",
         },
         {
-          id: 2,
+          id: "AGRO",
           nome: "Agrobacterium",
         },
       ],
     };
   },
   methods: {
-    async foiSelecionado() {
+    foiSelecionado() {
       this.$emit("foiSelecionado", this.selecionado);
-      this.show = false;
-      await setTimeout(500);
-      this.show = true;
     },
   },
 };
 </script>
 
 <style scoped>
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px); /* ou translateY */
-  opacity: 0;
-}
-
 img {
   max-width: 100%;
 }
