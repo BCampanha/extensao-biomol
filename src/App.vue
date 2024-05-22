@@ -10,10 +10,8 @@
       <QuestaoUm v-if="questao === 1" @foiSelecionado="valida" />
       <QuestaoDois v-if="questao === 2" />
       <div class="botao-direita">
-        <button :disabled="questao === 1" @click="anterior()">
-          Anterior
-        </button>
-        <button :disabled="questao >= 2 || !validado" @click="proxima()">
+        <button :disabled="questao === 1" @click="anterior()">Anterior</button>
+        <button :disabled="!validado" @click="proxima()">
           Próxima
         </button>
       </div>
@@ -100,7 +98,12 @@ li {
 strong {
   font-weight: 600;
 }
-input, label {
+input,
+label {
   cursor: pointer;
+}
+button {
+  font-family: inherit;
+  font-size: inherit
 }
 </style>

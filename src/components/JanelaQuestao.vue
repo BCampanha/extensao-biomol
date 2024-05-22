@@ -1,9 +1,11 @@
 <template>
   <div class="janela">
     <div class="bloco orientacoes">
-      <slot name="orientacoes"
-        ><em>Este é um bloco para orientações sobre a questão.</em></slot
-      >
+      <p class="texto">
+        <slot name="orientacoes"
+          ><em>Este é um bloco para orientações sobre a questão.</em></slot
+        >
+      </p>
     </div>
 
     <div class="bloco tela-principal">
@@ -54,5 +56,10 @@ export default {
 
 em {
   margin-bottom: 0.5rem;
+}
+
+.texto {
+  text-align: justify;
+  white-space: pre-wrap;
 }
 </style>

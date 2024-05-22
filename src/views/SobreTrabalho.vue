@@ -18,7 +18,10 @@
     </ul>
     <h3>Sobre o projeto</h3>
     <p class="resumo">{{ resumo }}</p>
-    <img alt="Esquema de transformações gênicas" src="../assets/metodos.png" />
+    <h4>Referências</h4>
+    <p v-for="referencia in referencias" :key="referencia.url">
+      {{ referencia }}
+    </p>
   </div>
 </template>
 
@@ -47,6 +50,16 @@ export default {
         {
           nome: "Fabricio",
           nusp: null,
+        },
+      ],
+      referencias: [
+        {
+          author: "Solange Rocha Monteiro de Andrade",
+          title: "Transformação de plantas",
+          publisher: "Embrapa Cerrados",
+          address: "Planaltina, DF",
+          year: 2003,
+          url: "http://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/562707",
         },
       ],
       resumo:
