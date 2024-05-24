@@ -51,7 +51,7 @@ export default {
         {
           nome: "Rodrigo Mitsui Maluhy",
           nusp: 12527730,
-        }
+        },
       ],
       referencias: [
         {
@@ -91,6 +91,6 @@ img {
 }
 
 ul {
-  margin: 0
+  margin: 0;
 }
 </style>
