@@ -80,7 +80,7 @@ export default {
   align-items: center;
   color: #333;
   height: 98vh;
-  width: 100%;
+  width: 97vw;
 }
 a {
   font-weight: 600;
