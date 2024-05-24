@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="sobre">
     <h1>Trabalho de Extensão</h1>
     <p>
       Projeto disponível no repositório
@@ -19,9 +19,6 @@
     <h3>Sobre o projeto</h3>
     <p class="resumo">{{ resumo }}</p>
     <h4>Referências</h4>
-    <p v-for="referencia in referencias" :key="referencia.url">
-      {{ referencia }}
-    </p>
   </div>
 </template>
 
@@ -40,17 +37,21 @@ export default {
           nusp: 12558450,
         },
         {
-          nome: "Kawan",
-          nusp: null,
+          nome: "Kawan Santana",
+          nusp: 11848538,
         },
         {
-          nome: "Eduardo",
-          nusp: null,
+          nome: "Eduardo Araujo Silva",
+          nusp: 11818058,
         },
         {
-          nome: "Fabricio",
-          nusp: null,
+          nome: "Fabrício Ferreira de Oliveira",
+          nusp: 12527768,
         },
+        {
+          nome: "Rodrigo Mitsui Maluhy",
+          nusp: 12527730,
+        }
       ],
       referencias: [
         {
@@ -81,8 +82,15 @@ img {
   max-width: 95vw;
 }
 
-.hello {
+.sobre {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   max-width: 95vw;
   margin: 0.5vw;
+}
+
+ul {
+  margin: 0
 }
 </style>

@@ -36,9 +36,9 @@ export default {
   margin-top: 2vh;
   .bloco {
     padding: 1rem;
-    margin: 0.5vw;
     background-color: rgb(238, 238, 238);
-    border-radius: 10px;
+    border: 2px solid white;
+    border-radius: 8px;
     overflow-y: auto;
     overflow-x: hidden;
   }

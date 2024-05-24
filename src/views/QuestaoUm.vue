@@ -17,7 +17,6 @@
           src="../assets/metodos-2.jpg"
           alt="Esquema de transformação gênica por Agrobacterium e por biobalística"
         />
-        <p>{{ selecionado }}</p>
       </template>
       <template #ferramentas>
         <p>

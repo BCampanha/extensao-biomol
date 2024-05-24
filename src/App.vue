@@ -11,9 +11,7 @@
       <QuestaoDois v-if="questao === 2" />
       <div class="botao-direita">
         <button :disabled="questao === 1" @click="anterior()">Anterior</button>
-        <button :disabled="!validado" @click="proxima()">
-          Próxima
-        </button>
+        <button :disabled="!validado" @click="proxima()">Próxima</button>
       </div>
     </section>
     <SobreTrabalho v-if="pagina === false" />
@@ -81,7 +79,7 @@ export default {
   flex-direction: column;
   align-items: center;
   color: #333;
-  height: 100vh;
+  height: 98vh;
   width: 100%;
 }
 a {
@@ -104,6 +102,6 @@ label {
 }
 button {
   font-family: inherit;
-  font-size: inherit
+  font-size: inherit;
 }
 </style>
