@@ -19,6 +19,18 @@
     <h3>Sobre o projeto</h3>
     <p class="resumo">{{ resumo }}</p>
     <h4>Referências</h4>
+    <p
+      v-for="referencia in referencias"
+      class="referencias"
+      :key="referencia.url"
+    >
+      {{ referencia.author.split(" ").pop().toLocaleUpperCase() }},
+      {{ referencia.author.split(" ").slice(0, -1).join(" ") }} ({{
+        referencia.year
+      }}). "{{ referencia.title }}". Em: <em>{{ referencia.publisher }}</em
+      >. URL: <a href="referencia.url">{{ referencia.url }}</a
+      >.
+    </p>
   </div>
 </template>
 
@@ -64,7 +76,7 @@ export default {
         },
       ],
       resumo:
-        "Inserir resumo aqui. Texto de exemplo a seguir. Atividade: Os alunos (em grupos) produzirão material de divulgação (textos, animações, gráficos, figuras, vídeos, etc) sobre os temas abordados nas aulas. O material produzido será divulgado na página do laboratório de Genética Molecular de Plantas, sites/eventos de extensão do IB (Botânica no Inverno, Botânica no Cotidiano, Semana Temática, Bio na Rua) e em redes sociais.",
+        "Esse projeto de extensão visa estudar os passos que envolvem a transformação genética de plantas via Agrobacterium. Os objetivos desse processo incluem determinar a localização de atuação de uma proteína, entender sua função específica, ou induzir um fenótipo desejado na planta.",
     };
   },
 };
@@ -77,6 +89,15 @@ export default {
   text-wrap: wrap;
   text-align: justify;
 }
+
+.referencias {
+  width: 22rem;
+  max-width: 95vw;
+  text-wrap: wrap;
+  text-align: justify;
+  word-break: break-all;
+}
+
 img {
   width: 22rem;
   max-width: 95vw;
