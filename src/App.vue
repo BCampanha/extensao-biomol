@@ -6,20 +6,20 @@
       alt="Fita dupla de DNA"
       src="./assets/dna.png"
     />
-    <section v-if="pagina === true">
+    <form @submit.prevent="" @keydown.enter="proxima()" v-if="pagina === true">
       <EscolhaVia v-if="questao === 1" @foiSelecionado="validaVia" />
       <EscolhaObjetivo v-if="questao === 2" @foiSelecionado="validaObjetivo" />
       <ConstrucaoVetor v-if="questao === 3" @foiConcluido="validaConstrucao" />
-      <TransformAgrobac v-if="questao === 4" />
-      <CultivoAgrobac v-if="questao === 5" />
-      <TransformNuclear v-if="questao === 6" />
-      <RegeneracaoPlanta v-if="questao === 7" />
-      <TriagemPlanta v-if="questao === 8" />
-      <div class="botao-direita">
+      <TransformAgrobac v-if="questao === 4" @foiConcluido="valida" />
+      <CultivoAgrobac v-if="questao === 5" @foiConcluido="valida" />
+      <TransformNuclear v-if="questao === 6" @foiConcluido="valida" />
+      <RegeneracaoPlanta v-if="questao === 7" @foiConcluido="valida" />
+      <TriagemPlanta v-if="questao === 8" @foiConcluido="valida" />
+      <div class="botao-direita" v-on:keyup.enter="proxima">
         <button :disabled="questao === 1" @click="anterior()">Anterior</button>
         <button :disabled="!validado" @click="proxima()">Próxima</button>
       </div>
-    </section>
+    </form>
     <SobreTrabalho v-if="pagina === false" />
   </div>
 </template>
@@ -56,27 +56,32 @@ export default {
     CultivoAgrobac,
     TransformNuclear,
     RegeneracaoPlanta,
-    TriagemPlanta
+    TriagemPlanta,
   },
   methods: {
     anterior() {
       this.questao -= 1;
     },
     proxima() {
-      this.questao += 1;
+      if (this.validado) {
+        this.questao += 1;
+      }
       this.validado = false;
     },
     validaVia(selecao) {
-      this.validado = true;
+      this.valida();
       this.selecaoVia = selecao;
     },
     validaObjetivo(selecao) {
-      this.validado = true;
+      this.valida();
       this.selecaoObjetivo = selecao;
     },
     validaConstrucao(blocos) {
-      this.validado = true;
+      this.valida();
       this.blocos = blocos;
+    },
+    valida() {
+      this.validado = true;
     },
   },
 };

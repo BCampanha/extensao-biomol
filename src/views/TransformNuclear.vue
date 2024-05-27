@@ -7,6 +7,9 @@
         hospedeira integra o TDNA ao seu genoma utilizando sua própria
         maquinaria.
       </template>
+      <template #ferramentas>
+        <button @click="foiConcluido()">Ação</button>
+      </template>
     </JanelaQuestao>
   </div>
 </template>
@@ -18,6 +21,11 @@ export default {
   components: {
     JanelaQuestao,
   },
+  methods: {
+    foiConcluido() {
+      this.$emit("foiConcluido");
+    },
+  }
 };
 </script>
 

@@ -38,9 +38,9 @@
           </button>
         </div>
         <div>
-          <button>Undo</button>
-          <button>Reset</button>
-          <button @click="foiConcluido()">Complete</button>
+          <button @click="undo()">Desfazer</button>
+          <button @click="reset()">Reset</button>
+          <button @click="foiConcluido()">Concluído</button>
         </div>
       </template>
     </JanelaQuestao>
@@ -97,6 +97,12 @@ export default {
   methods: {
     selecionado(opcao) {
       this.blocos.push(opcao);
+    },
+    undo() {
+      this.blocos.pop()
+    },
+    reset() {
+      this.blocos = []
     },
     foiConcluido() {
       this.$emit("foiConcluido", this.blocos);

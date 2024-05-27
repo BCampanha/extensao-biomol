@@ -4,6 +4,9 @@
       <template #orientacoes>
         Escolha do tecido vegetal Extração do explante (células feridas)
       </template>
+      <template #ferramentas>
+        <button @click="foiConcluido()">Ação</button>
+      </template>
     </JanelaQuestao>
   </div>
 </template>
@@ -15,6 +18,11 @@ export default {
   components: {
     JanelaQuestao,
   },
+  methods: {
+    foiConcluido() {
+      this.$emit("foiConcluido");
+    },
+  }
 };
 </script>
 

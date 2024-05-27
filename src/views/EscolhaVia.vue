@@ -52,12 +52,12 @@ export default {
       selecionado: {},
       opcoes: [
         {
-          id: "BIOB",
-          nome: "Via biobalística",
-        },
-        {
           id: "AGRO",
           nome: "Agrobacterium",
+        },
+        {
+          id: "BIOB",
+          nome: "Via biobalística",
         },
       ],
     };
