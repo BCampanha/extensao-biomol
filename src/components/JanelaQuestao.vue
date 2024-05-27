@@ -1,23 +1,26 @@
 <template>
-  <div class="janela">
-    <div class="bloco orientacoes">
-      <p class="texto">
-        <slot name="orientacoes"
-          ><em>Este é um bloco para orientações sobre a questão.</em></slot
+  <div>
+    <strong>{{ titulo }}</strong>
+    <div class="janela">
+      <div class="bloco orientacoes">
+        <p class="texto">
+          <slot name="orientacoes"
+            ><em>Este é um bloco para orientações sobre a questão.</em></slot
+          >
+        </p>
+      </div>
+
+      <div class="bloco tela-principal">
+        <slot name="principal"
+          ><em>Este bloco é a tela principal da simulação.</em></slot
         >
-      </p>
-    </div>
+      </div>
 
-    <div class="bloco tela-principal">
-      <slot name="principal"
-        ><em>Este bloco é a tela principal da simulação.</em></slot
-      >
-    </div>
-
-    <div class="bloco ferramentas">
-      <slot name="ferramentas"
-        ><em>Este é um bloco de ferramentas/ações.</em></slot
-      >
+      <div class="bloco ferramentas">
+        <slot name="ferramentas"
+          ><em>Este é um bloco de ferramentas/ações.</em></slot
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +28,12 @@
 <script>
 export default {
   name: "JanelaQuestao",
+  props: {
+    titulo: {
+      type: String,
+      default: "Insira um título",
+    },
+  },
 };
 </script>
 
@@ -33,7 +42,6 @@ export default {
   display: grid;
   grid-template-columns: 20vw 50vw 25vw;
   grid-template-rows: 85vh;
-  margin-top: 2vh;
   .bloco {
     padding: 1rem;
     background-color: rgb(238, 238, 238);
@@ -59,6 +67,7 @@ em {
 }
 
 .texto {
+  margin-top: 0;
   text-align: justify;
   white-space: pre-wrap;
 }

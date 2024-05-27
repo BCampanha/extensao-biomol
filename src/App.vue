@@ -7,8 +7,14 @@
       src="./assets/dna.png"
     />
     <section v-if="pagina === true">
-      <QuestaoUm v-if="questao === 1" @foiSelecionado="valida" />
-      <QuestaoDois v-if="questao === 2" />
+      <EscolhaVia v-if="questao === 1" @foiSelecionado="validaVia" />
+      <EscolhaObjetivo v-if="questao === 2" @foiSelecionado="validaObjetivo" />
+      <ConstrucaoVetor v-if="questao === 3" @foiConcluido="validaConstrucao" />
+      <TransformAgrobac v-if="questao === 4" />
+      <CultivoAgrobac v-if="questao === 5" />
+      <TransformNuclear v-if="questao === 6" />
+      <RegeneracaoPlanta v-if="questao === 7" />
+      <TriagemPlanta v-if="questao === 8" />
       <div class="botao-direita">
         <button :disabled="questao === 1" @click="anterior()">Anterior</button>
         <button :disabled="!validado" @click="proxima()">Próxima</button>
@@ -20,8 +26,14 @@
 
 <script>
 import SobreTrabalho from "./views/SobreTrabalho.vue";
-import QuestaoUm from "./views/QuestaoUm.vue";
-import QuestaoDois from "./views/QuestaoDois.vue";
+import EscolhaVia from "./views/EscolhaVia.vue";
+import EscolhaObjetivo from "./views/EscolhaObjetivo.vue";
+import ConstrucaoVetor from "./views/ConstrucaoVetor.vue";
+import TransformAgrobac from "./views/TransformAgrobac.vue";
+import CultivoAgrobac from "./views/CultivoAgrobac.vue";
+import TransformNuclear from "./views/TransformNuclear.vue";
+import RegeneracaoPlanta from "./views/RegeneracaoPlanta.vue";
+import TriagemPlanta from "./views/TriagemPlanta.vue";
 
 export default {
   name: "App",
@@ -30,13 +42,21 @@ export default {
       pagina: true,
       questao: 1,
       validado: false,
-      selecao: "",
+      selecaoVia: {},
+      selecaoObjetivo: {},
+      blocos: {},
     };
   },
   components: {
     SobreTrabalho,
-    QuestaoUm,
-    QuestaoDois,
+    EscolhaVia,
+    EscolhaObjetivo,
+    ConstrucaoVetor,
+    TransformAgrobac,
+    CultivoAgrobac,
+    TransformNuclear,
+    RegeneracaoPlanta,
+    TriagemPlanta
   },
   methods: {
     anterior() {
@@ -46,9 +66,17 @@ export default {
       this.questao += 1;
       this.validado = false;
     },
-    valida(selecao) {
+    validaVia(selecao) {
       this.validado = true;
-      this.selecao = selecao;
+      this.selecaoVia = selecao;
+    },
+    validaObjetivo(selecao) {
+      this.validado = true;
+      this.selecaoObjetivo = selecao;
+    },
+    validaConstrucao(blocos) {
+      this.validado = true;
+      this.blocos = blocos;
     },
   },
 };

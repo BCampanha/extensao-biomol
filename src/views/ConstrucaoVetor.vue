@@ -1,6 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao>
+    <JanelaQuestao titulo="Construindo o vetor">
       <template #orientacoes>
         Plasmídios bacterianos são seqüências de DNA de fita dupla, com formato
         circular, que apresentam duplicação autônoma e carregam alguns genes.
@@ -28,7 +28,7 @@
       </template>
       <template #ferramentas>
         <p>Complete o vetor de transformação do plasmídeo Ti</p>
-        <div class="botoes">
+        <div class="elementos">
           <button
             v-for="opcao in opcoes"
             :key="opcao.nome"
@@ -36,6 +36,11 @@
           >
             {{ opcao.nome }}
           </button>
+        </div>
+        <div>
+          <button>Undo</button>
+          <button>Reset</button>
+          <button @click="foiConcluido()">Complete</button>
         </div>
       </template>
     </JanelaQuestao>
@@ -46,7 +51,7 @@
 import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
-  name: "QuestaoDois",
+  name: "ConstrucaoVetor",
   components: {
     JanelaQuestao,
   },
@@ -93,6 +98,9 @@ export default {
     selecionado(opcao) {
       this.blocos.push(opcao);
     },
+    foiConcluido() {
+      this.$emit("foiConcluido", this.blocos);
+    },
   },
 };
 </script>
@@ -107,7 +115,7 @@ export default {
     margin-right: 1vw;
   }
 }
-.botoes {
+.elementos {
   display: flex;
   flex-direction: column;
   button {

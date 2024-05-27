@@ -1,6 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao>
+    <JanelaQuestao titulo="Escolha da via">
       <template #orientacoes>
         A transformação genética consiste na introdução controlada de um gene no
         genoma de uma célula receptora e em sua posterior expressão <br />
@@ -29,7 +29,7 @@
             :id="opcao.id"
             :value="opcao"
             v-model="selecionado"
-            @click="foiSelecionado"
+            @change="foiSelecionado"
           />
           <label :for="opcao.id">{{ opcao.nome }}</label>
         </div>
@@ -42,15 +42,14 @@
 import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
-  name: "QuestaoUm",
+  name: "EscolhaVia",
   emits: ["foiSelecionado"],
   components: {
     JanelaQuestao,
   },
   data() {
     return {
-      selecionado: "",
-      show: true,
+      selecionado: {},
       opcoes: [
         {
           id: "BIOB",
