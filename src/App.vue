@@ -93,6 +93,10 @@ export default {
   cursor: pointer;
 }
 .botao-direita {
+  position: fixed;
+  bottom: 1vh;
+  right: 1vh;
+  z-index: 10;
   text-align: end;
   padding-right: 0.2rem;
 }

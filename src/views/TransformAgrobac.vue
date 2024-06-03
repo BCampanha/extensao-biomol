@@ -23,7 +23,7 @@ export default {
     foiConcluido() {
       this.$emit("foiConcluido");
     },
-  }
+  },
 };
 </script>
 

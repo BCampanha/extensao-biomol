@@ -99,10 +99,10 @@ export default {
       this.blocos.push(opcao);
     },
     undo() {
-      this.blocos.pop()
+      this.blocos.pop();
     },
     reset() {
-      this.blocos = []
+      this.blocos = [];
     },
     foiConcluido() {
       this.$emit("foiConcluido", this.blocos);

@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <strong>{{ titulo }}</strong>
+  <div class="tela">
     <div class="janela">
       <div class="bloco orientacoes">
         <p class="texto">
+          <strong>{{ titulo }}</strong>
           <slot name="orientacoes"
             ><em>Este é um bloco para orientações sobre a questão.</em></slot
           >
@@ -38,24 +38,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tela {
+  position: absolute;
+  left: 2.5vw;
+}
 .janela {
-  display: grid;
-  grid-template-columns: 20vw 50vw 25vw;
-  grid-template-rows: 85vh;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  .orientacoes {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    position: absolute;
+    top: 0;
+    right: 10vw;
+    max-height: 30vh;
+  }
+  .tela-principal {
+    align-items: end;
+    display: flex;
+    justify-content: end;
+    min-height: 70vh;
+  }
+  .ferramentas {
+    position: fixed;
+    bottom: 0;
+    border-top: 2px solid rgb(238, 238, 238);
+  }
   .bloco {
     padding: 1rem;
-    background-color: rgb(238, 238, 238);
-    border: 2px solid white;
+    background-color: white;
     border-radius: 8px;
     overflow-y: auto;
     overflow-x: hidden;
   }
 }
 @media screen and (max-width: 992px) {
+  .tela {
+    left: 1vw;
+  }
   .janela {
-    display: grid;
-    grid-template-rows: 18vh 45vh 25vh;
-    grid-template-columns: 98vw;
     .bloco {
       padding: 0.5rem;
     }
@@ -70,5 +91,7 @@ em {
   margin-top: 0;
   text-align: justify;
   white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
 }
 </style>
