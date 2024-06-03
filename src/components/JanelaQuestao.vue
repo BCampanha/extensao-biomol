@@ -39,8 +39,10 @@ export default {
 
 <style lang="scss" scoped>
 .tela {
-  position: absolute;
+  position: static;
   left: 2.5vw;
+  min-width: 100vw;
+  max-width: 100vw;
 }
 .janela {
   position: relative;
@@ -54,13 +56,15 @@ export default {
     max-height: 30vh;
   }
   .tela-principal {
-    align-items: end;
     display: flex;
+    flex-direction: column;
     justify-content: end;
+    max-width: 100vw;
     min-height: 70vh;
   }
   .ferramentas {
     position: fixed;
+    max-height: 30vh;
     bottom: 0;
     border-top: 2px solid rgb(238, 238, 238);
   }
