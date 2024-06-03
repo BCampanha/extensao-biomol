@@ -38,12 +38,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tela {
-  position: static;
-  left: 2.5vw;
-  min-width: 100vw;
-  max-width: 100vw;
-}
 .janela {
   position: relative;
   right: 0;
