@@ -118,7 +118,6 @@ export default {
     max-width: fit-content;
     border: 1px solid mediumorchid;
     padding: 0.5rem;
-    margin-right: 1vw;
   }
 }
 .elementos {

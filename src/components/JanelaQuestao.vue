@@ -51,8 +51,9 @@ export default {
   }
   .tela-principal {
     display: flex;
+    width: 92vw;
     flex-direction: column;
-    justify-content: end;
+    justify-content: center;
     max-width: 100vw;
     min-height: 70vh;
   }
