@@ -1,40 +1,31 @@
 <template>
   <div class="app">
-    <img
-      @click="pagina = !pagina"
-      class="logo"
-      alt="Fita dupla de DNA"
-      src="./assets/dna.png"
-    />
-    <form @submit.prevent="" @keydown.enter="proxima()" v-if="pagina === true">
-      <EscolhaVia v-if="questao === 1" @foiSelecionado="validaVia" />
-      <EscolhaObjetivo v-if="questao === 2" @foiSelecionado="validaObjetivo" />
-      <ConstrucaoVetor v-if="questao === 3" @foiConcluido="validaConstrucao" />
-      <TransformAgrobac v-if="questao === 4" @foiConcluido="valida" />
-      <CultivoAgrobac v-if="questao === 5" @foiConcluido="valida" />
-      <TransformNuclear v-if="questao === 6" @foiConcluido="valida" />
-      <RegeneracaoPlanta v-if="questao === 7" @foiConcluido="valida" />
-      <TriagemPlanta v-if="questao === 8" @foiConcluido="valida" />
-      <div class="botao-direita" v-on:keyup.enter="proxima">
-        <button :disabled="questao === 1" @click="anterior()">Anterior</button>
-        <button :disabled="!validado" @click="proxima()">Próxima</button>
+    <header>
+      <img
+        class="logo"
+        alt="Fita dupla de DNA"
+        src="./assets/dna.png"
+        @click="pagina = !pagina"
+      >
+    </header>
+    <RouterView />
+    <footer>
+      <div
+        class="botao-direita"
+        @keyup.enter="proxima"
+      >
+        <button @click="anterior()">
+          Anterior
+        </button>
+        <button @click="proxima()">
+          Próxima
+        </button>
       </div>
-    </form>
-    <SobreTrabalho v-if="pagina === false" />
+    </footer>
   </div>
 </template>
 
 <script>
-import SobreTrabalho from "./views/SobreTrabalho.vue";
-import EscolhaVia from "./views/EscolhaVia.vue";
-import EscolhaObjetivo from "./views/EscolhaObjetivo.vue";
-import ConstrucaoVetor from "./views/ConstrucaoVetor.vue";
-import TransformAgrobac from "./views/TransformAgrobac.vue";
-import CultivoAgrobac from "./views/CultivoAgrobac.vue";
-import TransformNuclear from "./views/TransformNuclear.vue";
-import RegeneracaoPlanta from "./views/RegeneracaoPlanta.vue";
-import TriagemPlanta from "./views/TriagemPlanta.vue";
-
 export default {
   name: "App",
   data() {
@@ -46,17 +37,6 @@ export default {
       selecaoObjetivo: {},
       blocos: {},
     };
-  },
-  components: {
-    SobreTrabalho,
-    EscolhaVia,
-    EscolhaObjetivo,
-    ConstrucaoVetor,
-    TransformAgrobac,
-    CultivoAgrobac,
-    TransformNuclear,
-    RegeneracaoPlanta,
-    TriagemPlanta,
   },
   methods: {
     anterior() {
