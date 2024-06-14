@@ -4,7 +4,7 @@
     <div class="janela">
       <div class="bloco orientacoes" @click="proximaParte">
         <p class="texto">
-          {{ orientacoesParte }}
+          {{ orientacoesTextoExibido }}
           <em v-if="parte < partesMax"> Continue... </em>
         </p>
       </div>
@@ -62,7 +62,7 @@ export default {
       }
       return "/1"
     },
-    orientacoesParte() {
+    orientacoesTextoExibido() {
         return this.orientacoes.split(". ")[this.parte]
     },
     partesMax() {
