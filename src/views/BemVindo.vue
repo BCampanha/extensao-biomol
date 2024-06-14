@@ -12,8 +12,3 @@ export default {
   name: 'BemVindo',
 }
 </script>
-
-<style lang="scss" scoped>
-.botao-comecar {
-}
-</style>

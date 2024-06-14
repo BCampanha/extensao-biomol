@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 
+import "./main.css"
+
 import { RouterLink, createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";

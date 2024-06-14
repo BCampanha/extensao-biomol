@@ -79,7 +79,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped>/*
 .janela {
   position: relative;
   right: 0;
@@ -134,5 +134,5 @@ em {
   white-space: pre-wrap;
   display: flex;
   flex-direction: column;
-}
+}*/
 </style>
