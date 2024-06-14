@@ -39,14 +39,10 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
   name: "EscolhaVia",
   emits: ["foiSelecionado"],
-  components: {
-    JanelaQuestao,
-  },
   data() {
     return {
       selecionado: {},

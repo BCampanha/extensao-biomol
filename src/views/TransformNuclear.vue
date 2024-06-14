@@ -15,12 +15,8 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 export default {
   name: "TransformNuclear",
-  components: {
-    JanelaQuestao,
-  },
   methods: {
     foiConcluido() {
       this.$emit("foiConcluido");

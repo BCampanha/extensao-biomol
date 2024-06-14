@@ -19,13 +19,9 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
   name: "EscolhaObjetivo",
-  components: {
-    JanelaQuestao,
-  },
   data() {
     return {
       selecionado: "",

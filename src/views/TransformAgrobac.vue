@@ -13,12 +13,8 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 export default {
   name: "TransformAgrobac",
-  components: {
-    JanelaQuestao,
-  },
   methods: {
     foiConcluido() {
       this.$emit("foiConcluido");

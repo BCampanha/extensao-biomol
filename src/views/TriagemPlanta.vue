@@ -7,12 +7,8 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 export default {
   name: "TriagemPlanta",
-  components: {
-    JanelaQuestao,
-  },
 };
 </script>
 

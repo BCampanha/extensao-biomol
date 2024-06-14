@@ -48,13 +48,9 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 
 export default {
   name: "ConstrucaoVetor",
-  components: {
-    JanelaQuestao,
-  },
   data() {
     return {
       blocos: [],

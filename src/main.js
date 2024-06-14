@@ -13,6 +13,7 @@ import CultivoAgrobac from "./views/CultivoAgrobac.vue";
 import TransformNuclear from "./views/TransformNuclear.vue";
 import RegeneracaoPlanta from "./views/RegeneracaoPlanta.vue";
 import TriagemPlanta from "./views/TriagemPlanta.vue";
+import JanelaQuestao from "./components/JanelaQuestao.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -47,5 +48,8 @@ const router = createRouter({
   ]
 })
 
-createApp(App).use(router).mount("#app");
+createApp(App)
+.component('JanelaQuestao', JanelaQuestao)
+.use(router)
+.mount("#app");
 

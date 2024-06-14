@@ -10,12 +10,8 @@
 </template>
 
 <script>
-import JanelaQuestao from "../components/JanelaQuestao.vue";
 export default {
   name: "RegeneracaoPlanta",
-  components: {
-    JanelaQuestao,
-  },
 };
 </script>
 
