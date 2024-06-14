@@ -1,9 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Construindo o vetor">
-      <template #orientacoes>
-        Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método.
-      </template>
+    <JanelaQuestao titulo="Construindo o vetor" orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método.">
       <template #principal>
         <hr />
         <div class="blocos">

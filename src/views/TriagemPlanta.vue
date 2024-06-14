@@ -1,7 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Triagem">
-      <template #orientacoes> Análise molecular: Testes de PCR </template>
+    <JanelaQuestao titulo="Triagem" orientacoes="Análise molecular: Testes de PCR">
     </JanelaQuestao>
   </div>
 </template>

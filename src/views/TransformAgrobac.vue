@@ -1,10 +1,7 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Transformação em Agrobacterium">
-      <template #orientacoes>
-        Cultivo de Agrobacterium Indução dos genes de transferência vir com
-        acetoceringona
-      </template>
+    <JanelaQuestao titulo="Transformação em Agrobacterium" orientacoes="Cultivo de Agrobacterium Indução dos genes de transferência vir com
+        acetoceringona">
       <template #ferramentas>
         <button @click="foiConcluido()">Ação</button>
       </template>

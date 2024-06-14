@@ -2,11 +2,10 @@
   <div class="tela">
     <strong>{{ titulo }}</strong>
     <div class="janela">
-      <div class="bloco orientacoes">
+      <div class="bloco orientacoes" @click="proximaParte">
         <p class="texto">
-          <slot name="orientacoes"
-            ><em>Este é um bloco para orientações sobre a questão.</em></slot
-          >
+          {{ orientacoesParte }}
+          <em v-if="parte < partesMax"> Continue... </em>
         </p>
       </div>
 
@@ -32,14 +31,22 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
 
 export default {
   name: "JanelaQuestao",
+  data() {
+      return {
+        parte: 0
+      }
+    },
   props: {
     titulo: {
       type: String,
       default: "Insira um título",
+    },
+    orientacoes: {
+      type: String,
+      default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
   },
   computed: {
@@ -54,8 +61,21 @@ export default {
         return `${parseInt(this.$route.name) + 1}`
       }
       return "/1"
+    },
+    orientacoesParte() {
+        return this.orientacoes.split(". ")[this.parte]
+    },
+    partesMax() {
+      return this.orientacoes.split(". ").length - 1
     }
-  }
+  },
+  methods: {
+      proximaParte() {
+        if(this.parte < this.partesMax) {
+          this.parte += 1
+        }
+      }
+    }
 };
 </script>
 

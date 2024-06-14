@@ -1,9 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Co-cultivo de Agrobacterium e explante">
-      <template #orientacoes>
-        Escolha do tecido vegetal Extração do explante (células feridas)
-      </template>
+    <JanelaQuestao titulo="Co-cultivo de Agrobacterium e explante" orientacoes="Escolha do tecido vegetal Extração do explante (células feridas)">
       <template #ferramentas>
         <button @click="foiConcluido()">Ação</button>
       </template>

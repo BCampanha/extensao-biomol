@@ -1,9 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Escolha da via">
-      <template #orientacoes>
-        Primeiro, é preciso decidir qual será a técnica utilizada para transferir o gene de interesse para o feijão. A transformação pode ser realizada via: biobalística, em que partículas de ouro ou tungstênio cobertas com DNA são bombardeadas para o tecido da planta através da aceleração por hélio; ou Agrobacterium tumefaciens, que consiste no co-cultivo do tecido da planta com uma bactéria capaz de transferir parte do DNA para a célula vegetal.
-      </template>
+    <JanelaQuestao titulo="Escolha da via" orientacoes="Primeiro, é preciso decidir qual será a técnica utilizada para transferir o gene de interesse para o feijão. A transformação pode ser realizada via: biobalística, em que partículas de ouro ou tungstênio cobertas com DNA são bombardeadas para o tecido da planta através da aceleração por hélio; ou Agrobacterium tumefaciens, que consiste no co-cultivo do tecido da planta com uma bactéria capaz de transferir parte do DNA para a célula vegetal.">
       <template #principal>
         <img
           src="../assets/metodos-2.jpg"
