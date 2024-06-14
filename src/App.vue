@@ -1,12 +1,15 @@
 <template>
   <div class="app">
     <header>
-      <img
-        class="logo"
-        alt="Fita dupla de DNA"
-        src="./assets/dna.png"
-        @click="pagina = !pagina"
-      >
+      <RouterLink to="/">
+        <img
+          class="logo"
+          alt="Fita dupla de DNA"
+          src="./assets/dna.png"
+        >
+      </RouterLink>
+      <RouterLink to="/">Jogo</RouterLink>
+      <RouterLink to="/sobre">Sobre</RouterLink>
     </header>
     <RouterView />
     <footer>
@@ -26,12 +29,12 @@
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
   name: "App",
   data() {
     return {
-      pagina: true,
-      questao: 1,
       validado: false,
       selecaoVia: {},
       selecaoObjetivo: {},

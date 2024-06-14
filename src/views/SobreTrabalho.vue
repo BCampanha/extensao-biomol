@@ -45,20 +45,20 @@ export default {
           nusp: 12676657,
         },
         {
-          nome: "Rayssa Oliveira Santos",
-          nusp: 12558450,
-        },
-        {
-          nome: "Kawan Santana",
-          nusp: 11848538,
-        },
-        {
           nome: "Eduardo Araujo Silva",
           nusp: 11818058,
         },
         {
           nome: "Fabrício Ferreira de Oliveira",
           nusp: 12527768,
+        },
+        {
+          nome: "Kawan Santana",
+          nusp: 11848538,
+        },
+        {
+          nome: "Rayssa Oliveira Santos",
+          nusp: 12558450,
         },
         {
           nome: "Rodrigo Mitsui Maluhy",
