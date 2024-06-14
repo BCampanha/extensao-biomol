@@ -47,10 +47,13 @@ export default {
       if (parseInt(this.$route.name) > 1) {
         return `${parseInt(this.$route.name) - 1}`
       }
-      return this.$route.name
+      return "/"
     },
     proxima() {
-      return `${parseInt(this.$route.name) + 1}`
+      if (parseInt(this.$route.name) >= 1) {
+        return `${parseInt(this.$route.name) + 1}`
+      }
+      return "/1"
     }
   }
 };

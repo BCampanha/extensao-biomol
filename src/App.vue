@@ -11,7 +11,7 @@
       <RouterLink to="/">Jogo</RouterLink>
       <RouterLink to="/sobre">Sobre</RouterLink>
     </header>
-    <RouterView />
+    <RouterView @viaSelecionada="registraVia" :selecaoVia="selecaoVia"/>
   </div>
 </template>
 
@@ -20,28 +20,13 @@ export default {
   name: "App",
   data() {
     return {
-      validado: false,
       selecaoVia: {},
-      selecaoObjetivo: {},
-      blocos: {},
     };
   },
   methods: {
-    validaVia(selecao) {
-      this.valida();
+    registraVia(selecao) {
       this.selecaoVia = selecao;
-    },
-    validaObjetivo(selecao) {
-      this.valida();
-      this.selecaoObjetivo = selecao;
-    },
-    validaConstrucao(blocos) {
-      this.valida();
-      this.blocos = blocos;
-    },
-    valida() {
-      this.validado = true;
-    },
+    }
   },
 };
 </script>

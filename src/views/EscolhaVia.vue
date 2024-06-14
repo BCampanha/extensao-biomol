@@ -34,7 +34,7 @@
 
 export default {
   name: "EscolhaVia",
-  emits: ["foiSelecionado"],
+  emits: ["viaSelecionada"],
   data() {
     return {
       selecionado: {},
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     foiSelecionado() {
-      this.$emit("foiSelecionado", this.selecionado);
+      this.$emit("viaSelecionada", this.selecionado);
     },
   },
 };
