@@ -20,12 +20,20 @@
         <slot name="ferramentas"
           ><em>Este é um bloco de ferramentas/ações.</em></slot
         >
+        <div
+          class="botoes"
+        >
+          <RouterLink :to="anterior">Voltar</RouterLink>
+          <RouterLink :to="proxima">Proximo</RouterLink>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
   name: "JanelaQuestao",
   props: {
@@ -34,6 +42,17 @@ export default {
       default: "Insira um título",
     },
   },
+  computed: {
+    anterior() {
+      if (parseInt(this.$route.name) > 1) {
+        return `${parseInt(this.$route.name) - 1}`
+      }
+      return this.$route.name
+    },
+    proxima() {
+      return `${parseInt(this.$route.name) + 1}`
+    }
+  }
 };
 </script>
 

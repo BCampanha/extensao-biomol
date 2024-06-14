@@ -12,19 +12,6 @@
       <RouterLink to="/sobre">Sobre</RouterLink>
     </header>
     <RouterView />
-    <footer>
-      <div
-        class="botao-direita"
-        @keyup.enter="proxima"
-      >
-        <button @click="anterior()">
-          Anterior
-        </button>
-        <button @click="proxima()">
-          Próxima
-        </button>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -42,15 +29,6 @@ export default {
     };
   },
   methods: {
-    anterior() {
-      this.questao -= 1;
-    },
-    proxima() {
-      if (this.validado) {
-        this.questao += 1;
-      }
-      this.validado = false;
-    },
     validaVia(selecao) {
       this.valida();
       this.selecaoVia = selecao;
