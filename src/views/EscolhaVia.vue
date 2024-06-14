@@ -2,15 +2,7 @@
   <div>
     <JanelaQuestao titulo="Escolha da via">
       <template #orientacoes>
-        A transformação genética consiste na introdução controlada de um gene no
-        genoma de uma célula receptora e em sua posterior expressão <br />
-        Abre novas perspectivas ao melhoramento genético de espécies de plantas,
-        disponibilizando novos genes com características desejáveis para serem
-        incorporados em menor espaço de tempo. <br />
-        Através do uso de estratégias com Agrobacterium e biobalística, já foram
-        obtidas plantas transgênicas com maior produção de biomassa, melhor
-        qualidade de madeira, maior resistência a determinados insetos e com
-        tolerância a herbicidas, entre outras características de interesse.
+        Primeiro, é preciso decidir qual será a técnica utilizada para transferir o gene de interesse para o feijão. A transformação pode ser realizada via: biobalística, em que partículas de ouro ou tungstênio cobertas com DNA são bombardeadas para o tecido da planta através da aceleração por hélio; ou Agrobacterium tumefaciens, que consiste no co-cultivo do tecido da planta com uma bactéria capaz de transferir parte do DNA para a célula vegetal.
       </template>
       <template #principal>
         <img
@@ -20,7 +12,7 @@
       </template>
       <template #ferramentas>
         <p>
-          Selecione a <strong>via de transformação gênica</strong> que você
+          Selecione a <strong>técnica de transformação gênica</strong> que você
           gostaria de simular.
         </p>
         <div v-for="opcao in opcoes" :key="opcao.id">
@@ -31,7 +23,7 @@
             v-model="selecionado"
             @change="foiSelecionado"
           />
-          <label :for="opcao.id">{{ opcao.nome }}</label>
+          <label :for="opcao.id" :class="{'italico' : opcao.id==='AGRO'}">{{ opcao.nome }}</label>
         </div>
       </template>
     </JanelaQuestao>
@@ -48,12 +40,12 @@ export default {
       selecionado: {},
       opcoes: [
         {
-          id: "AGRO",
-          nome: "Agrobacterium",
+          id: "BIOB",
+          nome: "Biobalística",
         },
         {
-          id: "BIOB",
-          nome: "Via biobalística",
+          id: "AGRO",
+          nome: "Agrobacterium tumefaciens",
         },
       ],
     };
@@ -69,5 +61,9 @@ export default {
 <style scoped>
 img {
   max-width: 100%;
+}
+
+.italico {
+  font-style: italic;
 }
 </style>

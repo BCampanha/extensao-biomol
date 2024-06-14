@@ -2,21 +2,7 @@
   <div>
     <JanelaQuestao titulo="Construindo o vetor">
       <template #orientacoes>
-        Plasmídios bacterianos são seqüências de DNA de fita dupla, com formato
-        circular, que apresentam duplicação autônoma e carregam alguns genes.
-        <br />
-        O T-DNA faz parte do DNA plasmidial da agrobactéria e, por meio da
-        engenharia genética, foi possível sua manipulação para a integração de
-        genes de interesse. <br />
-        Essa manipulação consiste, basicamente, na deleção dos genes oncogênicos
-        (que causam o tumor) do T-DNA e a manutenção dos genes relacionados à
-        transferência e à replicação do plasmídio, isto é, a região vir e as
-        extremidades do T-DNA. <br />
-        Com isso, produzem-se linhagens desarmadas, ou seja, ainda virulentas,
-        mas não mais patogênicas. <br />
-        Assim, genes de interesse podem ser introduzidos dentro da planta
-        através de ligação com a região desarmada do T-DNA em substituição à
-        região T-DNA original <br />
+        Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método.
       </template>
       <template #principal>
         <hr />
@@ -101,7 +87,7 @@ export default {
       this.blocos = [];
     },
     foiConcluido() {
-      this.$emit("foiConcluido", this.blocos);
+      
     },
   },
 };

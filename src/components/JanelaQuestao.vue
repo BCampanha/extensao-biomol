@@ -1,9 +1,9 @@
 <template>
   <div class="tela">
+    <strong>{{ titulo }}</strong>
     <div class="janela">
       <div class="bloco orientacoes">
         <p class="texto">
-          <strong>{{ titulo }}</strong>
           <slot name="orientacoes"
             ><em>Este é um bloco para orientações sobre a questão.</em></slot
           >

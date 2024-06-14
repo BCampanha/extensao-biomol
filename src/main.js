@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 
-import { createRouter, createWebHistory } from "vue-router";
+import { RouterLink, createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";
 
@@ -49,6 +49,7 @@ const router = createRouter({
 })
 
 createApp(App)
+.component('RouterLink', RouterLink)
 .component('JanelaQuestao', JanelaQuestao)
 .use(router)
 .mount("#app");
