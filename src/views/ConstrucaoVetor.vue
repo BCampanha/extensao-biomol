@@ -1,6 +1,10 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Construindo o vetor" orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método.">
+    <JanelaQuestao
+      titulo="Construindo o vetor"
+      orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método."
+      :exibirAjuda="true"
+    >
       <template #principal>
         <hr />
         <div class="blocos">
@@ -37,41 +41,81 @@ export default {
   data() {
     return {
       blocos: [],
-      opcoes: [
+      opcoesAgro: [
         {
           nome: "Origem de replicação Agrobacterium",
           nomebloco: "Ori Agro",
+          ordem: 1,
         },
         {
           nome: "Origem de replicação E. coli",
           nomebloco: "Ori E. coli",
+          ordem: 2,
         },
         {
           nome: "Left Border",
           nomebloco: "LB",
+          ordem: 3,
         },
         {
           nome: "Promotor de transcrição",
           nomebloco: "P",
+          ordem: 4,
         },
         {
           nome: "Gene de interesse",
           nomebloco: "Gene",
+          ordem: 5,
         },
         {
           nome: "Terminador de transcrição",
           nomebloco: "T",
+          ordem: 6,
         },
         {
           nome: "Marcador de seleção",
           nomebloco: "SEL",
+          ordem: 7,
         },
         {
           nome: "Right Border",
           nomebloco: "RB",
+          ordem: 8,
+        },
+      ],
+      opcoesBiob: [
+        {
+          nome: "Origem de replicação",
+          nomebloco: "Ori",
+          ordem: 1,
+        },
+        {
+          nome: "Promotor de transcrição",
+          nomebloco: "P",
+          ordem: 2,
+        },
+        {
+          nome: "Gene de interesse",
+          nomebloco: "Gene",
+          ordem: 3,
+        },
+        {
+          nome: "Terminador de transcrição",
+          nomebloco: "T",
+          ordem: 4,
+        },
+        {
+          nome: "Marcador de seleção",
+          nomebloco: "SEL",
+          ordem: 5,
         },
       ],
     };
+  },
+  computed: {
+    opcoes() {
+      return this.opcoesAgro
+    }
   },
   methods: {
     selecionado(opcao) {
@@ -84,7 +128,8 @@ export default {
       this.blocos = [];
     },
     foiConcluido() {
-      
+      // TODO: verificar presença
+      // TODO: verificar ordem
     },
   },
 };

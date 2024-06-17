@@ -1,7 +1,17 @@
 <template>
   <div class="tela">
     <strong>{{ titulo }}</strong>
+
+    <div
+      class="ajuda"
+      v-if="exibirAjuda"
+    >
+      <button @focus="exibirModal=true" @focusout="exibirModal=false">Ajuda</button>
+      <slot v-if="exibirModal" name="modal"><em>Este é um bloco modal de ajuda.</em></slot>
+    </div>
+
     <div class="janela">
+
       <div class="bloco orientacoes" @click="proximaParte">
         <p class="texto">
           {{ orientacoesTextoExibido }}
@@ -15,7 +25,7 @@
         >
       </div>
 
-      <div class="bloco ferramentas">
+      <div class="bloco ferramentas" v-if="exibirFerramentas">
         <slot name="ferramentas"
           ><em>Este é um bloco de ferramentas/ações.</em></slot
         >
@@ -36,7 +46,8 @@ export default {
   name: "JanelaQuestao",
   data() {
       return {
-        parte: 0
+        parte: 0,
+        exibirModal: false
       }
     },
   props: {
@@ -48,6 +59,14 @@ export default {
       type: String,
       default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
+    exibirFerramentas: {
+      type: Boolean,
+      default: true
+    },
+    exibirAjuda: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     anterior() {
