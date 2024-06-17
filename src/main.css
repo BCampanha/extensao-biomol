@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+      --verde-principal: #38c958;
+      --verde-escuro: #149c68;
+      --verde-claro: #aee637;
+      --creme: #fffedb;
+      --escuro: #383939;
+    }
+  }
