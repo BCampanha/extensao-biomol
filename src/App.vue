@@ -1,17 +1,14 @@
 <template>
-  <div class="app">
-    <header>
-      <RouterLink to="/">
-        <img
-          class="logo"
-          alt="Fita dupla de DNA"
-          src="./assets/dna.png"
-        >
-      </RouterLink>
-      <RouterLink to="/">Jogo</RouterLink>
-      <RouterLink to="/sobre">Sobre</RouterLink>
-    </header>
-    <RouterView @viaSelecionada="registraVia" :selecaoVia="selecaoVia"/>
+
+  <div class="app bg-verde-escuro h-screen flex flex-col items-center">
+  <header class="flex items-center justify-center py-3 bg-verde-escuro">
+    <RouterLink to="/" class="text-white mx-5 text-xl font-bold">Jogo</RouterLink>
+    <RouterLink to="/"><img class="size-16" alt="Fita dupla de DNA" src="./assets/dna.png"></RouterLink>
+    <RouterLink to="/sobre" class="text-white mx-5 text-xl font-bold">Sobre</RouterLink>
+  </header>
+    <div class="bg-creme w-11/12 p-5 rounded mt-5">
+      <RouterView @viaSelecionada="registraVia" :selecaoVia="selecaoVia"/>
+    </div>
   </div>
 </template>
 
@@ -30,59 +27,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.logo {
-  height: 8vh;
-  cursor: pointer;
-}
-.botao-direita {
-  position: fixed;
-  bottom: 1vh;
-  right: 1vh;
-  z-index: 10;
-  text-align: end;
-  padding-right: 0.2rem;
-}
-@media screen and (max-width: 992px) {
-  .logo {
-    height: 5vh;
-  }
-}
-</style>
-
-<style>
-#app .app {
-  font-family: "Rubik", sans-serif; /* "Montserrat", sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #333;
-  height: 98vh;
-  width: 97vw;
-}
-a {
-  font-weight: 600;
-  color: mediumseagreen;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  margin: 1rem 0;
-}
-strong {
-  font-weight: 600;
-}
-input,
-label {
-  cursor: pointer;
-}
-button {
-  font-family: inherit;
-  font-size: inherit;
-}
-</style>
