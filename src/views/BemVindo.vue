@@ -11,7 +11,7 @@
       :exibirFerramentas="false" class="mb-10">
     </JanelaQuestao>
 
-    <RouterLink to="/1" class="text-l bg-verde-principal text-white p-2 rounded">Começar</RouterLink>
+    <RouterLink to="/1" class="text-l bg-laranja text-white p-2 rounded">Começar</RouterLink>
 </template>
 
 <script>

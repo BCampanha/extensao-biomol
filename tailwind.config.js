@@ -13,7 +13,8 @@ module.exports = {
           claro: '#aee637'
         },
         creme: '#fffedb',
-        escuro: '#383939'
+        escuro: '#383939',
+        laranja: '#e36f40'
       }
     },
   },
