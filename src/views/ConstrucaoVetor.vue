@@ -128,8 +128,15 @@ export default {
       this.blocos = [];
     },
     foiConcluido() {
-      // TODO: verificar presença
-      // TODO: verificar ordem
+      const ordens = this.blocos.map(el => el.ordem);
+
+      for (let i = 1; i <= 8; i++) {
+          if (ordens.indexOf(i) === -1) {
+              console.log("false");
+          }
+      }
+
+      console.log("true");
     },
   },
 };
