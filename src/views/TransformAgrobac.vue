@@ -3,7 +3,7 @@
     <JanelaQuestao titulo="Transformação em Agrobacterium" orientacoes="Cultivo de Agrobacterium Indução dos genes de transferência vir com
         acetoceringona">
       <template #ferramentas>
-        <button @click="foiConcluido()" class="mb-4">Ação</button>
+        <button @click="foiConcluido()">Ação</button>
       </template>
     </JanelaQuestao>
   </div>

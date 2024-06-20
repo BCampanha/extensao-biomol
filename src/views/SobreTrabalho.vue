@@ -1,35 +1,26 @@
 <template>
-  <div class="sobre">
-    <h1>Trabalho de Extensão</h1>
+  <div class="flex flex-col justify-center w-4/12 mx-auto">
+    <h1 class="text-2xl font-extrabold mb-5 text-verde-escuro">Trabalho de Extensão</h1>
     <p>
       Projeto disponível no repositório
-      <a
-        href="https://github.com/BCampanha/extensao-biomol"
-        target="_blank"
-        rel="noopener"
-        >GitHub</a
-      >.
+      <a href="https://github.com/BCampanha/extensao-biomol" target="_blank" rel="noopener" class="text-laranja hover:text-verde-principal">GitHub</a>.
     </p>
-    <h3>Integrantes do grupo</h3>
-    <ul>
-      <li v-for="integrante in integrantes" :key="integrante.nusp">
+    <h3 class="mt-5 text-lg font-bold text-escuro">Integrantes do grupo</h3>
+    <ul class="list-disc list-inside marker:text-verde-escuro">
+      <li v-for="integrante in integrantes" :key="integrante.nusp" class="mt-2">
         {{ integrante.nome }} - {{ integrante.nusp }}
       </li>
     </ul>
-    <h3>Sobre o projeto</h3>
+    <h3 class="mt-5 text-lg font-bold text-escuro">Sobre o projeto</h3>
     <p class="resumo">{{ resumo }}</p>
-    <h4>Referências</h4>
-    <p
-      v-for="referencia in referencias"
-      class="referencias"
-      :key="referencia.url"
-    >
+    <br>
+    <br>
+    <h4 class="mt-5 text-lg font-bold text-escuro">Referências</h4>
+    <p v-for="referencia in referencias" class="mb-4" :key="referencia.url">
       {{ referencia.author.split(" ").pop().toLocaleUpperCase() }},
       {{ referencia.author.split(" ").slice(0, -1).join(" ") }} ({{
         referencia.year
-      }}). "{{ referencia.title }}". Em: <em>{{ referencia.publisher }}</em
-      >. URL: <a href="referencia.url">{{ referencia.url }}</a
-      >.
+      }}). "{{ referencia.title }}". Em: <em>{{ referencia.publisher }}</em>. URL: <a href="referencia.url">{{ referencia.url }}</a>.
     </p>
   </div>
 </template>
@@ -81,37 +72,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.resumo {
-  width: 22rem;
-  max-width: 95vw;
-  text-wrap: wrap;
-  text-align: justify;
-}
-
-.referencias {
-  width: 22rem;
-  max-width: 95vw;
-  text-wrap: wrap;
-  text-align: justify;
-  word-break: break-all;
-}
-
-img {
-  width: 22rem;
-  max-width: 95vw;
-}
-
-.sobre {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  max-width: 95vw;
-  margin: 0.5vw;
-}
-
-ul {
-  margin: 0;
-}
-</style>

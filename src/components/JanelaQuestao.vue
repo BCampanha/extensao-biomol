@@ -27,8 +27,9 @@
           <em>Este é um bloco de ferramentas/ações.</em>
         </slot>
         <br>
+        <br>
         <RouterLink :to="anterior" class="text-white bg-laranja p-2 rounded">Voltar</RouterLink>
-        <RouterLink :to="proxima" class="text-white bg-laranja p-2 rounded ml-2">Proximo</RouterLink>
+        <RouterLink :to="proxima" class="text-white bg-laranja p-2 rounded ml-2">Próximo</RouterLink>
       </div>
     </div>
   </div>
