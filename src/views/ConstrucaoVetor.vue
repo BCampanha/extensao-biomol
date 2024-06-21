@@ -12,11 +12,15 @@
 
       <template #principal>
         <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
-        <hr />
+
         <div class="blocos">
           <div class="bloco-vetor" v-for="bloco in blocos" :key="bloco.nome">
             {{ bloco.nomebloco }}
           </div>
+        </div>
+
+        <div v-if="erro">
+          {{ erro }}
         </div>
       </template>
 
@@ -34,10 +38,10 @@
         <div>
           <button @click="undo()">Desfazer</button>
           <button @click="reset()">Reset</button>
-          <button @click="foiConcluido()">Concluído</button>
+          <button @click="foiConcluido()">Verificar</button>
         </div>
       </template>
-      
+
     </JanelaQuestao>
   </div>
 </template>
@@ -54,7 +58,10 @@ export default {
   },
   data() {
     return {
+      erro: '',
+      gabarito: [],
       blocos: [],
+      opcoes: [],
       opcoesAgro: [
         {
           nome: "Origem de replicação Agrobacterium",
@@ -126,21 +133,29 @@ export default {
       ],
     };
   },
-  computed: {
-    opcoes() {
-      switch (this.selecaoVia.id) {
-        case 'BIOB':
-          return this.opcoesBiob
-        case 'AGRO':
-          return this.opcoesAgro
-        default:
-          this.$router.push('/1')
-      }
+  mounted() {
+    switch (this.selecaoVia.id) {
+      case 'BIOB':
+        this.opcoes = this.opcoesBiob
+        this.gabarito = [1,2,3,4,5]
+        break;
+      case 'AGRO':
+        this.opcoes = this.opcoesAgro
+        this.gabarito = [1,2,3,4,5,6,7,8]
+        break;
+      default:
+        this.$router.push('/1')
+        break;
     }
   },
   methods: {
     selecionado(opcao) {
-      this.blocos.push(opcao);
+      if (this.blocos.length < this.gabarito.length) {
+        this.blocos.push(opcao);
+      }
+      else {
+        this.erro = 'qtde max de componentes'
+      }
     },
     undo() {
       this.blocos.pop();
@@ -152,12 +167,13 @@ export default {
       const ordens = this.blocos.map(el => el.ordem);
 
       for (let i = 1; i <= 8; i++) {
-          if (ordens.indexOf(i) === -1) {
-              console.log("false");
+          if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
+              this.erro = "erro na posição " + i
+              return
           }
       }
 
-      console.log("true");
+      this.erro = "certo!"
     },
   },
 };
