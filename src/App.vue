@@ -15,6 +15,7 @@
 <script>
 export default {
   name: "App",
+  emits: ["viaSelecionada"],
   data() {
     return {
       selecaoVia: {},

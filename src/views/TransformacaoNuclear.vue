@@ -1,7 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Transformação em Agrobacterium" orientacoes="Cultivo de Agrobacterium Indução dos genes de transferência vir com
-        acetoceringona">
+    <JanelaQuestao titulo="Transformação Nuclear" orientacoes="A célula hospedeira integra o TDNA ao seu genoma utilizando sua própria maquinaria.">
       <template #ferramentas>
         <button @click="foiConcluido()">Ação</button>
       </template>
@@ -11,7 +10,7 @@
 
 <script>
 export default {
-  name: "TransformAgrobac",
+  name: "TransformacaoNuclear",
   methods: {
     foiConcluido() {
       this.$emit("foiConcluido");

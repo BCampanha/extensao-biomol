@@ -10,9 +10,8 @@ import BemVindo from "./views/BemVindo.vue";
 import EscolhaVia from "./views/EscolhaVia.vue";
 import SobreTrabalho from "./views/SobreTrabalho.vue";
 import ConstrucaoVetor from "./views/ConstrucaoVetor.vue";
-import TransformAgrobac from "./views/TransformAgrobac.vue";
-import CultivoAgrobac from "./views/CultivoAgrobac.vue";
-import TransformNuclear from "./views/TransformNuclear.vue";
+import TransformacaoProcesso from "./views/TransformacaoProcesso.vue";
+import TransformacaoNuclear from "./views/TransformacaoNuclear.vue";
 import RegeneracaoPlanta from "./views/RegeneracaoPlanta.vue";
 import TriagemPlanta from "./views/TriagemPlanta.vue";
 import JanelaQuestao from "./components/JanelaQuestao.vue";
@@ -31,18 +30,15 @@ const router = createRouter({
     component: ConstrucaoVetor},
     {path: '/3',
     name: '3',
-    component: TransformAgrobac},
+    component: TransformacaoProcesso},
     {path: '/4',
     name: '4',
-    component: CultivoAgrobac},
+    component: TransformacaoNuclear},
     {path: '/5',
     name: '5',
-    component: TransformNuclear},
+    component: RegeneracaoPlanta},
     {path: '/6',
     name: '6',
-    component: RegeneracaoPlanta},
-    {path: '/7',
-    name: '7',
     component: TriagemPlanta},
     {path: '/sobre',
     name: 'Sobre',

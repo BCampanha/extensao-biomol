@@ -23,7 +23,11 @@
 
 export default {
   name: "EscolhaVia",
-  emits: ["viaSelecionada"],
+  emits: {
+    viaSelecionada(selecionado) {
+      return selecionado !== null
+    }
+  },
   data() {
     return {
       selecionado: {},
