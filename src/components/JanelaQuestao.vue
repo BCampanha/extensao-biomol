@@ -2,9 +2,9 @@
   <div class="tela">
     <strong class="text-escuro text-lg">{{ titulo }}</strong>
 
-    <div class="ajuda" v-if="exibirAjuda">
-      <button @focus="exibirModal=true" @focusout="exibirModal=false">Ajuda</button>
-      <slot v-if="exibirModal" name="modal"><em>Este é um bloco modal de ajuda.</em></slot>
+    <div class="modal" v-if="exibirAjuda">
+      <button @click="exibirModal=!exibirModal">Ajuda</button>
+      <slot v-if="exibirModal" name="ajuda"><em>Este é um bloco modal de ajuda.</em></slot>
     </div>
 
     <div class="mt-3">

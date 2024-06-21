@@ -1,11 +1,17 @@
 <template>
   <div>
     <JanelaQuestao
-      titulo="Construindo o vetor"
+      :titulo="`Construção do vetor de expressão gênica - ${selecaoVia.nome}`"
       orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método."
       :exibirAjuda="true"
     >
+      <template #ajuda>
+        <img src="../assets/vetor-biob.png" alt="Resposta de biob" v-if="selecaoVia.id==='BIOB'"/>
+        <img src="../assets/vetor-agro.png" alt="Resposta de agro" v-if="selecaoVia.id==='AGRO'"/>
+      </template>
+
       <template #principal>
+        <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
         <hr />
         <div class="blocos">
           <div class="bloco-vetor" v-for="bloco in blocos" :key="bloco.nome">
@@ -13,6 +19,7 @@
           </div>
         </div>
       </template>
+
       <template #ferramentas>
         <p>Complete o vetor de transformação do plasmídeo Ti</p>
         <div class="elementos">
@@ -30,6 +37,7 @@
           <button @click="foiConcluido()">Concluído</button>
         </div>
       </template>
+      
     </JanelaQuestao>
   </div>
 </template>
@@ -38,6 +46,12 @@
 
 export default {
   name: "ConstrucaoVetor",
+  props: {
+    selecaoVia: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       blocos: [],
@@ -114,7 +128,14 @@ export default {
   },
   computed: {
     opcoes() {
-      return this.opcoesAgro
+      switch (this.selecaoVia.id) {
+        case 'BIOB':
+          return this.opcoesBiob
+        case 'AGRO':
+          return this.opcoesAgro
+        default:
+          this.$router.push('/1')
+      }
     }
   },
   methods: {
