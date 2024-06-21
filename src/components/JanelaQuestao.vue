@@ -77,10 +77,16 @@ export default {
       return "/1"
     },
     orientacoesTextoExibido() {
-        return this.orientacoes.split(". ")[this.parte]
+      if (window.innerWidth < 1000) {
+        return this.orientacoes.split('. ')[this.parte]
+      }
+      return this.orientacoes
     },
     partesMax() {
-      return this.orientacoes.split(". ").length - 1
+      if (window.innerWidth < 1000) {
+        return this.orientacoes.split('. ').length - 1
+      }
+      return 0
     }
   },
   methods: {
