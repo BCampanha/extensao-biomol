@@ -11,35 +11,44 @@
       </template>
 
       <template #principal>
-        <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
+        <p>Complete o vetor de transformação do plasmídeo Ti</p>
 
-        <div class="blocos">
-          <div class="bloco-vetor" v-for="bloco in blocos" :key="bloco.nome">
-            {{ bloco.nomebloco }}
+        <div class="grid grid-cols-8">
+          <div class="flex flex-col items-center justify-center col-span-2">
+            <button
+              v-for="opcao in opcoes"
+              :key="opcao.nome" 
+              :style="{backgroundColor: opcao.cor}"
+              @click="selecionado(opcao)" class="p-2 rounded mr-2 text-white mb-2">
+              {{ opcao.nome }}
+            </button>
           </div>
-        </div>
 
-        <div v-if="erro">
-          {{ erro }}
+          <div class="col-span-6">
+          <img src="../assets/vetor-vazio.png" alt="Vetor vazio" class="mx-auto">
+
+
+
+          </div>
         </div>
       </template>
 
       <template #ferramentas>
-        <p>Complete o vetor de transformação do plasmídeo Ti</p>
-        <div class="elementos">
-          <button
-            v-for="opcao in opcoes"
-            :key="opcao.nome"
-            @click="selecionado(opcao)"
-          >
-            {{ opcao.nome }}
-          </button>
-        </div>
-        <div>
-          <button @click="undo()">Desfazer</button>
-          <button @click="reset()">Reset</button>
-          <button @click="foiConcluido()">Verificar</button>
-        </div>
+          <div>
+            <div class="flex">
+              <div :style="{backgroundColor: bloco.cor}" class="text-white p-2 mr-2 rounded" v-for="bloco in blocos" :key="bloco.nome">
+                {{ bloco.nomebloco }}
+              </div>
+            </div>
+            <div v-if="erro">
+              {{ erro }}
+            </div>
+          </div>
+          <div>
+            <button @click="undo()" class="p-2 text-yellow-600"><i class="fas fa-undo"></i> Desfazer</button>
+            <button @click="reset()" class="p-2 text-red-500"><i class="fa fa-refresh"></i> Reset</button>
+            <button @click="foiConcluido()" class="p-2 text-verde-principal"><i class="fa fa-check"></i> Verificar</button>
+          </div>
       </template>
 
     </JanelaQuestao>
@@ -66,41 +75,49 @@ export default {
         {
           nome: "Origem de replicação Agrobacterium",
           nomebloco: "Ori Agro",
+          cor: "#6e2a6c",
           ordem: 1,
         },
         {
           nome: "Origem de replicação E. coli",
           nomebloco: "Ori E. coli",
+          cor: "#3d3d3d",
           ordem: 2,
         },
         {
           nome: "Left Border",
           nomebloco: "LB",
+          cor:"#d6783e",
           ordem: 3,
         },
         {
           nome: "Promotor de transcrição",
           nomebloco: "P",
+          cor: "#9bd778",
           ordem: 4,
         },
         {
           nome: "Gene de interesse",
           nomebloco: "Gene",
+          cor: "#da9fda",
           ordem: 5,
         },
         {
           nome: "Terminador de transcrição",
           nomebloco: "T",
+          cor: "#75747f",
           ordem: 6,
         },
         {
           nome: "Marcador de seleção",
           nomebloco: "SEL",
+          cor: "#1a235e",
           ordem: 7,
         },
         {
           nome: "Right Border",
           nomebloco: "RB",
+          cor: "#d6783e",
           ordem: 8,
         },
       ],
@@ -108,26 +125,31 @@ export default {
         {
           nome: "Origem de replicação",
           nomebloco: "Ori",
+          cor: "#3d3d3d",
           ordem: 1,
         },
         {
           nome: "Promotor de transcrição",
           nomebloco: "P",
+          cor: "#693269",
           ordem: 2,
         },
         {
           nome: "Gene de interesse",
           nomebloco: "Gene",
+          cor: "#da9fda",
           ordem: 3,
         },
         {
           nome: "Terminador de transcrição",
           nomebloco: "T",
+          cor: "#f0cf38",
           ordem: 4,
         },
         {
           nome: "Marcador de seleção",
           nomebloco: "SEL",
+          cor: "#d6783e",
           ordem: 5,
         },
       ],
@@ -178,22 +200,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.blocos {
-  display: flex;
-  .bloco-vetor {
-    max-width: fit-content;
-    border: 1px solid mediumorchid;
-    padding: 0.5rem;
-  }
-}
-.elementos {
-  display: flex;
-  flex-direction: column;
-  button {
-    margin-bottom: 1vh;
-    padding: 0.5rem;
-  }
-}
-</style>
