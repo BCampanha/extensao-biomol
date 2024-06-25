@@ -5,7 +5,7 @@
         <button @click="foiConcluido()">Ação</button>
       </template>
       <template #ajuda>
-        <ImagemRef :src="'gene-gun-legenda.jpeg'" :referencia="''"/>
+        <ImagemRef :src="'gene-gun-legenda.jpeg'" :referencia="''" v-if="biob"/>
       </template>
       <template #principal>
         <img src="../assets/gene-gun.jpeg" v-if="biob" class="mx-auto rounded-lg border-2 w-[50rem]"/>
@@ -39,7 +39,7 @@ export default {
     switch (this.selecaoVia.id) {
       case 'AGRO':
         this.agro = true;
-        this.orientacoes = "Prepare a Agrobacterium tumefaciens com o vetor contendo o gene de interesse e co-cultive com os explantes vegetais para transferir o DNA.Espera-se que a bactéria infecte as células através do corte nas folhas e transfira o DNA com o gene de interesse para o núcleo."
+        this.orientacoes = "Espera-se que a bactéria infecte as células através do corte nas folhas e transfira o DNA com o gene de interesse para o núcleo. Para isso, prepare a Agrobacterium tumefaciens com o vetor contendo o gene de interesse e co-cultive com os explantes vegetais para transferir o DNA."
         break;
       case 'BIOB':
         this.biob = true;
