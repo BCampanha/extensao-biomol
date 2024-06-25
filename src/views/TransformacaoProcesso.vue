@@ -1,17 +1,13 @@
 <template>
   <div>
     <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes" :exibirAjuda="true">
-      <template #ferramentas>
-        <button @click="adicionaPetri()">Petri</button>
-        <button @click="ligaMaquina()">Ligar</button>
-      </template>
       <template #ajuda>
         <ImagemRef :src="'gene-gun-legenda.jpeg'" :referencia="''" v-if="biob"/>
       </template>
       <template #principal>
         <div v-if="biob" class="imagens">
           <Transition>
-            <img src="../assets/gene-gun-1.png" v-show="imagemInicial"/>
+            <img src="../assets/gene-gun-1.png"/>
           </Transition>
           <Transition>
             <img src="../assets/gene-gun-2.png" v-show="petriAdicionado"/>
@@ -20,7 +16,12 @@
             <img src="../assets/gene-gun-3.png" v-show="maquinaLigada"/>
           </Transition>
         </div>
-      </template>
+        </template>
+        <template #ferramentas>
+          <button @click="adicionaPetri()">Petri</button>
+          <button @click="ligaMaquina()">Ligar</button>
+          <p v-if="erro">{{ erro }}</p>
+        </template>
     </JanelaQuestao>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
   data() {
     return {
       orientacoes: '',
+      erro: '',
       biob: false,
       agro: false,
       imagemInicial: true,
@@ -47,12 +49,18 @@ export default {
   },
   methods: {
     adicionaPetri() {
-      this.imagemInicial = false
+      this.erro = ''
       this.petriAdicionado = true
     },
     ligaMaquina() {
-      this.petriAdicionado = false
-      this.maquinaLigada = true
+      this.erro = ''
+      if (this.petriAdicionado) {
+        this.imagemInicial = false
+        this.maquinaLigada = true
+      }
+      else {
+        this.erro = 'Primeiro, coloque a placa de petri no disco da máquina'
+      }
     }
   },
   mounted() {
@@ -85,10 +93,13 @@ export default {
   opacity: 0;
 }
 .imagens {
-  height: 50vh;
+  position: relative;
   img {
     max-width: 80vw;
-    position: fixed;
+  }
+  img:not(:first-child) {
+    position: absolute;
+    top: 0
   }
 }
 </style>
