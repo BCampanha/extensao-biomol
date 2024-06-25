@@ -74,7 +74,7 @@ export default {
         },
       ],
       resumo:
-        "Esse projeto de extensão visa estudar os passos que envolvem a transformação genética de plantas via Agrobacterium. Os objetivos desse processo incluem determinar a localização de atuação de uma proteína, entender sua função específica, ou induzir um fenótipo desejado na planta.",
+        "Esse projeto de extensão visa estudar os passos que envolvem a transformação genética de plantas via Agrobacterium e Biobalística. Esses processos têm como aplicação determinar a localização de atuação de uma proteína, entender sua função específica, ou induzir um fenótipo desejado na planta.",
     };
   },
 };
