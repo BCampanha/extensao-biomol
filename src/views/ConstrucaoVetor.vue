@@ -6,8 +6,8 @@
       :exibirAjuda="true"
     >
       <template #ajuda>
-        <img src="../assets/vetor-biob.png" alt="Resposta de biob" v-if="selecaoVia.id==='BIOB'"/>
-        <img src="../assets/vetor-agro.png" alt="Resposta de agro" v-if="selecaoVia.id==='AGRO'"/>
+        <ImagemRef :src="'vetor-biob.png'"  v-if="selecaoVia.id==='BIOB'"/>
+        <ImagemRef :src="'vetor-agro.png'"  v-if="selecaoVia.id==='AGRO'"/>
       </template>
 
       <template #principal>
@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <div v-if="erro">
+        <div v-for="erro in erros">
           {{ erro }}
         </div>
       </template>
@@ -32,7 +32,7 @@
             :key="opcao.nome"
             @click="selecionado(opcao)"
           >
-            {{ opcao.nome }} ({{ opcao.nomebloco }})
+            {{ opcao.nome }}
           </button>
         </div>
         <div>
@@ -58,7 +58,7 @@ export default {
   },
   data() {
     return {
-      erro: '',
+      erros: [],
       gabarito: [],
       blocos: [],
       opcoes: [],
@@ -122,11 +122,11 @@ export default {
     switch (this.selecaoVia.id) {
       case 'BIOB':
         this.opcoes = this.opcoesBiob
-        this.gabarito = [1,2,3,4,5]
+        this.gabarito = [1,2,3,4]
         break;
       case 'AGRO':
         this.opcoes = this.opcoesAgro
-        this.gabarito = [1,2,3,4,5,6,7,8]
+        this.gabarito = [1,2,3,4,5,6]
         break;
       default:
         this.$router.push('/1')
@@ -139,7 +139,7 @@ export default {
         this.blocos.push(opcao);
       }
       else {
-        this.erro = 'qtde max de componentes'
+        this.erros = ['Limite de elementos excedido.']
       }
     },
     undo() {
@@ -150,15 +150,17 @@ export default {
     },
     foiConcluido() {
       const ordens = this.blocos.map(el => el.ordem);
-
+      let correto = true
+      this.erros = []
       for (let i = 1; i <= 8; i++) {
           if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
-              this.erro = "erro na posição " + i
-              return
+              this.erros.push("Posicionamento incorreto na posição " + i)
+              correto = false
           }
       }
-
-      this.erro = "certo!"
+      if (correto) {
+        this.erros.push("Certo!")
+      }
     },
   },
 };
