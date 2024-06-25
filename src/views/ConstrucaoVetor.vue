@@ -2,7 +2,7 @@
   <div>
     <JanelaQuestao
       :titulo="`Construção do vetor de expressão gênica - ${selecaoVia.nome}`"
-      orientacoes="O plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo. Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método. Não se esqueça de adicionar marcadores de seleção, como genes de resistência a antibióticos, para ajudar na identificação das células transformadas."
+      orientacoes="O plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo. Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método."
       :exibirAjuda="true"
     >
       <template #ajuda>
@@ -32,7 +32,7 @@
             :key="opcao.nome"
             @click="selecionado(opcao)"
           >
-            {{ opcao.nome }}
+            {{ opcao.nome }} ({{ opcao.nomebloco }})
           </button>
         </div>
         <div>
@@ -79,29 +79,19 @@ export default {
           ordem: 3,
         },
         {
-          nome: "Promotor de transcrição",
-          nomebloco: "P",
-          ordem: 4,
-        },
-        {
           nome: "Gene de interesse",
-          nomebloco: "Gene",
-          ordem: 5,
-        },
-        {
-          nome: "Terminador de transcrição",
-          nomebloco: "T",
-          ordem: 6,
+          nomebloco: "BTTX",
+          ordem: 4,
         },
         {
           nome: "Marcador de seleção",
           nomebloco: "SEL",
-          ordem: 7,
+          ordem: 5,
         },
         {
           nome: "Right Border",
           nomebloco: "RB",
-          ordem: 8,
+          ordem: 6,
         },
       ],
       opcoesBiob: [
@@ -111,24 +101,19 @@ export default {
           ordem: 1,
         },
         {
-          nome: "Promotor de transcrição",
-          nomebloco: "P",
-          ordem: 2,
-        },
-        {
           nome: "Gene de interesse",
           nomebloco: "Gene",
-          ordem: 3,
-        },
-        {
-          nome: "Terminador de transcrição",
-          nomebloco: "T",
-          ordem: 4,
+          ordem: 2,
         },
         {
           nome: "Marcador de seleção",
           nomebloco: "SEL",
-          ordem: 5,
+          ordem: 3,
+        },
+        {
+          nome: "Região de virulência",
+          nomebloco: "VIR",
+          ordem: 4,
         },
       ],
     };

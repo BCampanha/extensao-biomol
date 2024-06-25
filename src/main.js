@@ -14,7 +14,9 @@ import TransformacaoProcesso from "./views/TransformacaoProcesso.vue";
 import TransformacaoNuclear from "./views/TransformacaoNuclear.vue";
 import RegeneracaoPlanta from "./views/RegeneracaoPlanta.vue";
 import TriagemPlanta from "./views/TriagemPlanta.vue";
+import FimObrigado from "./views/FimObrigado.vue";
 import JanelaQuestao from "./components/JanelaQuestao.vue";
+import ImagemRef from "./components/ImagemRef.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -40,6 +42,9 @@ const router = createRouter({
     {path: '/6',
     name: '6',
     component: TriagemPlanta},
+    {path: '/7',
+    name: '7',
+    component: FimObrigado},
     {path: '/sobre',
     name: 'Sobre',
     component: SobreTrabalho}
@@ -49,6 +54,7 @@ const router = createRouter({
 createApp(App)
 .component('RouterLink', RouterLink)
 .component('JanelaQuestao', JanelaQuestao)
+.component('ImagemRef', ImagemRef)
 .use(router)
 .mount("#app");
 

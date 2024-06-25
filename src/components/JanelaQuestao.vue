@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import ImagemRef from './ImagemRef.vue';
+
 
 export default {
   name: "JanelaQuestao",
@@ -71,7 +73,7 @@ export default {
       return "/"
     },
     proxima() {
-      if (parseInt(this.$route.name) >= 1) {
+      if (parseInt(this.$route.name) >= 1  && parseInt(this.$route.name) < 7) {
         return `${parseInt(this.$route.name) + 1}`
       }
       return "/1"
