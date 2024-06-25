@@ -30,11 +30,11 @@ export default {
   mounted() {
     switch (this.selecaoVia.id) {
       case 'AGRO':
-        this.orientacoes = "Cultivo de Agrobacterium Indução dos genes de transferência vir com acetoceringona. Espera-se que Agrobacterium infecte as células através da ferida e transfira o DNA com o gene de interesse para o núcleo."
+        this.orientacoes = "Prepare a Agrobacterium tumefaciens com o vetor contendo o gene de interesse e co-cultive com os explantes vegetais para transferir o DNA. Espera-se que a bactéria infecte as células através do corte nas folhas e transfira o DNA com o gene de interesse para o núcleo."
         break;
       case 'BIOB':
-        this.orientacoes = "Bombardeamento via gene gun"
-        break;
+        this.orientacoes = "Esta máquina, também conhecida como gene gun, permite que você introduza DNA em células utilizando micropartículas metálicas. Coloque as partículas revestidas na câmara de disparo da máquina. As partículas carregadas com DNA irão penetrar nas células, permitindo que o DNA seja incorporado no genoma celular."
+        break; 
       default:
         this.$router.push('/1')
         break;

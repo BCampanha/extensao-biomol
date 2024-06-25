@@ -1,7 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Regeneração in vitro" orientacoes="Meio de Indução de brotos em um meio com antibiótico/herbicida
-        (higromicina ou kanamicina) Meio de enraizamento">
+    <JanelaQuestao titulo="Regeneração in vitro" orientacoes="Para a regeneração in vitro, prepare um meio de cultura com antibiótico (como higromicina ou kanamicina), e adicione auxina e citocinina para promover o crescimento e diferenciação das células transformadas.">
         <template #principal>
           <span v-if="!antibiotico"> Imagem das folhas cortadas </span>
           <span v-if="antibiotico"> Algumas folhas morrem </span>

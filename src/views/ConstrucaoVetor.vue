@@ -2,7 +2,7 @@
   <div>
     <JanelaQuestao
       :titulo="`Construção do vetor de expressão gênica - ${selecaoVia.nome}`"
-      orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método."
+      orientacoes="O plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo. Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método. Não se esqueça de adicionar marcadores de seleção, como genes de resistência a antibióticos, para ajudar na identificação das células transformadas."
       :exibirAjuda="true"
     >
       <template #ajuda>
