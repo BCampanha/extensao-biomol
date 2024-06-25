@@ -2,26 +2,30 @@
   <div>
     <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes" :exibirAjuda="true">
       <template #ferramentas>
-        <button @click="foiConcluido()">Ação</button>
+        <button @click="adicionaPetri()">Petri</button>
       </template>
       <template #ajuda>
         <ImagemRef :src="'gene-gun-legenda.jpeg'" :referencia="''" v-if="biob"/>
       </template>
       <template #principal>
-        <img src="../assets/gene-gun.jpeg" v-if="biob" class="mx-auto rounded-lg border-2 w-[50rem]"/>
+        <div v-if="biob">
+          <ImagemRef :src="src" :key="src"/>
+        </div>
       </template>
     </JanelaQuestao>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "TransformacaoProcesso",
   data() {
     return {
       orientacoes: '',
       biob: false,
-      agro: false
+      agro: false,
+      src: ''
     }
   },
   props: {
@@ -31,8 +35,8 @@ export default {
     }
   },
   methods: {
-    foiConcluido() {
-      this.$emit("foiConcluido");
+    adicionaPetri() {
+      this.src = 'gene-gun-2.jpeg'
     },
   },
   mounted() {
@@ -43,6 +47,7 @@ export default {
         break;
       case 'BIOB':
         this.biob = true;
+        this.src = 'gene-gun-1.png'
         this.orientacoes = "Esta máquina, conhecida como gene gun, permite que você introduza DNA em células utilizando micropartículas metálicas. As partículas carregadas com DNA irão penetrar nas células, permitindo que o DNA seja incorporado no genoma celular. Coloque as partículas revestidas na câmara e dispare a máquina."
         break; 
       default:
