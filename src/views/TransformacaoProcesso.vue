@@ -3,13 +3,22 @@
     <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes" :exibirAjuda="true">
       <template #ferramentas>
         <button @click="adicionaPetri()">Petri</button>
+        <button @click="ligaMaquina()">Ligar</button>
       </template>
       <template #ajuda>
         <ImagemRef :src="'gene-gun-legenda.jpeg'" :referencia="''" v-if="biob"/>
       </template>
       <template #principal>
-        <div v-if="biob">
-          <ImagemRef :src="src" :key="src"/>
+        <div v-if="biob" class="imagens">
+          <Transition>
+            <img src="../assets/gene-gun-1.png" v-show="imagemInicial"/>
+          </Transition>
+          <Transition>
+            <img src="../assets/gene-gun-2.png" v-show="petriAdicionado"/>
+          </Transition>
+          <Transition>
+            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada"/>
+          </Transition>
         </div>
       </template>
     </JanelaQuestao>
@@ -25,7 +34,9 @@ export default {
       orientacoes: '',
       biob: false,
       agro: false,
-      src: ''
+      imagemInicial: true,
+      petriAdicionado: false,
+      maquinaLigada: false
     }
   },
   props: {
@@ -36,8 +47,13 @@ export default {
   },
   methods: {
     adicionaPetri() {
-      this.src = 'gene-gun-2.jpeg'
+      this.imagemInicial = false
+      this.petriAdicionado = true
     },
+    ligaMaquina() {
+      this.petriAdicionado = false
+      this.maquinaLigada = true
+    }
   },
   mounted() {
     switch (this.selecaoVia.id) {
@@ -58,4 +74,20 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.imagens {
+  height: 50vh;
+  img {
+    position: fixed;
+  }
+}
+</style>
