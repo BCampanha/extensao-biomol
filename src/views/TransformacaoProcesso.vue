@@ -87,6 +87,7 @@ export default {
 .imagens {
   height: 50vh;
   img {
+    max-width: 80vw;
     position: fixed;
   }
 }
