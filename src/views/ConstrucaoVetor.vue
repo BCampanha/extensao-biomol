@@ -11,6 +11,7 @@
       </template>
 
       <template #principal>
+        <ImagemRef :src="'../assets/plasmideo.jpg'" :legenda="'Adobe Stock'"/>
         <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
 
         <div class="blocos">

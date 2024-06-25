@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import ImagemRef from './ImagemRef.vue';
-
 
 export default {
   name: "JanelaQuestao",

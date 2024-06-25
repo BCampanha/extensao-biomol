@@ -17,8 +17,7 @@
     <br>
     <h4 class="mt-5 text-lg font-bold text-escuro">Referências</h4>
     <p v-for="referencia in referencias" class="mb-4" :key="referencia.url">
-      {{ referencia.author.split(" ").pop().toLocaleUpperCase() }},
-      {{ referencia.author.split(" ").slice(0, -1).join(" ") }} ({{
+      {{ referencia.author }} ({{
         referencia.year
       }}). "{{ referencia.title }}". Em: <em>{{ referencia.publisher }}</em>. URL: <a href="referencia.url">{{ referencia.url }}</a>.
     </p>
@@ -58,7 +57,15 @@ export default {
       ],
       referencias: [
         {
-          author: "Solange Rocha Monteiro de Andrade",
+          author: "BRASILEIRO, A. C. M.; CARNEIRO, V. T. de C. (ed.)",
+          title: "Manual de transformação genética de plantas",
+          publisher: "Embrapa",
+          address: "Brasília, DF",
+          year: 2015,
+          url: "https://ainfo.cnptia.embrapa.br/digital/bitstream/doc/1024323/1/MANUAL-TRANSF-GENETICA-PLANTAS-ed02-2015.pdf",
+        },
+        {
+          author: "ANDRADE, Solange Rocha Monteiro de",
           title: "Transformação de plantas",
           publisher: "Embrapa Cerrados",
           address: "Planaltina, DF",

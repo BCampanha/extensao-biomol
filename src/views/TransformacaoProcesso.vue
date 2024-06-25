@@ -7,10 +7,13 @@
       <template #principal>
         <div v-if="biob" class="imagens">
           <Transition>
-            <img src="../assets/gene-gun-1.png"/>
+            <img src="../assets/gene-gun-0.png"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-2.png" v-show="petriAdicionado"/>
+            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado"/>
+          </Transition>
+          <Transition>
+            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado"/>
           </Transition>
           <Transition>
             <img src="../assets/gene-gun-3.png" v-show="maquinaLigada"/>
@@ -18,7 +21,8 @@
         </div>
         </template>
         <template #ferramentas>
-          <button @click="adicionaPetri()">Petri</button>
+          <button @click="adicionaPetri()">Petri com folhas</button>
+          <button @click="adicionaDisco()">Disco com partículas</button>
           <button @click="ligaMaquina()">Ligar</button>
           <p v-if="erro">{{ erro }}</p>
         </template>
@@ -38,6 +42,7 @@ export default {
       agro: false,
       imagemInicial: true,
       petriAdicionado: false,
+      discoAdicionado: false,
       maquinaLigada: false
     }
   },
@@ -52,14 +57,19 @@ export default {
       this.erro = ''
       this.petriAdicionado = true
     },
+    adicionaDisco() {
+      if(this.petriAdicionado) {
+        this.discoAdicionado = true
+      }
+    },
     ligaMaquina() {
       this.erro = ''
-      if (this.petriAdicionado) {
+      if (this.petriAdicionado && this.discoAdicionado) {
         this.imagemInicial = false
         this.maquinaLigada = true
       }
       else {
-        this.erro = 'Primeiro, coloque a placa de petri no disco da máquina'
+        this.erro = 'Primeiro, coloque a placa de petri e o disco de partículas na máquina'
       }
     }
   },
@@ -67,12 +77,12 @@ export default {
     switch (this.selecaoVia.id) {
       case 'AGRO':
         this.agro = true;
-        this.orientacoes = "Espera-se que a bactéria infecte as células através do corte nas folhas e transfira o DNA com o gene de interesse para o núcleo. Para isso, prepare a Agrobacterium tumefaciens com o vetor contendo o gene de interesse e co-cultive com os explantes vegetais para transferir o DNA."
+        this.orientacoes = "A bactéria fitopatogênica, Agrobacterium tumefaciens, é um eficiente vetor natural para engenharia genética de plantas, tanto de dicotiledôneas como de monocotiledôneas. Durante o seu processo de infecção, essa bactéria do solo transfere, às células vegetais, parte de seu genoma, o T-DNA. Para isso, prepare a Agrobacterium tumefaciens com o vetor contendo o gene de interesse e co-cultive com os explantes vegetais para transferir o DNA."
         break;
       case 'BIOB':
         this.biob = true;
         this.src = 'gene-gun-1.png'
-        this.orientacoes = "Esta máquina, conhecida como gene gun, permite que você introduza DNA em células utilizando micropartículas metálicas. As partículas carregadas com DNA irão penetrar nas células, permitindo que o DNA seja incorporado no genoma celular. Coloque as partículas revestidas na câmara e dispare a máquina."
+        this.orientacoes = "Esta máquina, conhecida como gene gun, utiliza micropartículas impulsionadas em alta velocidade para carrear DNA exógeno para dentro das células. As partículas revestidas com DNA do plasmídeo irão penetrar na parede e na membrana celular, permitindo que o DNA seja incorporado no genoma celular das folhas de feijão. Coloque as partículas revestidas na câmara e dispare a máquina."
         break; 
       default:
         this.$router.push('/1')
