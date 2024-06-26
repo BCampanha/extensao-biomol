@@ -6,15 +6,18 @@
       :exibirAjuda="true"
     >
       <template #ajuda>
-        <img src="../assets/vetor-biob.png" alt="Resposta de biob" v-if="selecaoVia.id==='BIOB'"/>
-        <img src="../assets/vetor-agro.png" alt="Resposta de agro" v-if="selecaoVia.id==='AGRO'"/>
+		<div class="fixed rounded left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+			<img src="../assets/vetor-biob.png" alt="Resposta de biob" v-if="selecaoVia.id==='BIOB'" class="border-2 rounded"/>
+			<img src="../assets/vetor-agro.png" alt="Resposta de agro" v-if="selecaoVia.id==='AGRO'" class="border-2 rounded"/>
+		</div>
       </template>
 
       <template #principal>
         <p>Complete o vetor de transformação do plasmídeo Ti</p>
+	{{this.$parent.exibirModal}}
 
         <div class="grid grid-cols-8">
-          <div class="flex flex-col items-center justify-center col-span-2">
+          <div class="flex flex-col items-center justify-center col-span-3">
             <button
               v-for="opcao in opcoes"
               :key="opcao.nome" 
@@ -24,7 +27,7 @@
             </button>
           </div>
 
-          <div class="col-span-6 flex justify-center">
+          <div class="col-span-5 flex justify-center">
 	  	<div class="bg-[url('/src/assets/vetor-vazio.png')] h-[60vh] w-[35vw] bg-cover bg-center border-2 rounded relative">
 			      <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
 			{{ bloco.nomebloco }}
@@ -35,8 +38,9 @@
       </template>
 
       <template #ferramentas>
-          <div>
-            <div v-if="erro">
+          <div class="grid grid-cols-8 mt-3">
+            <div class="col-span-3"></div>
+            <div v-if="erro" class="col-span-5 flex justify-center text-red-600">
               {{ erro }}
             </div>
           </div>
@@ -206,14 +210,16 @@ export default {
         this.blocos.push(opcao);
       }
       else {
-        this.erro = 'qtde max de componentes'
+        this.erro = 'Número máximo de componentes alcançado!'
       }
     },
     undo() {
       this.blocos.pop();
+      this.erro = '';
     },
     reset() {
       this.blocos = [];
+      this.erro = '';
     },
     foiConcluido() {
       const ordens = this.blocos.map(el => el.ordem);

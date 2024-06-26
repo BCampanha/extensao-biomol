@@ -2,9 +2,12 @@
   <div class="tela">
     <strong class="text-escuro text-lg">{{ titulo }}</strong>
 
-    <div class="modal" v-if="exibirAjuda">
-      <button @click="exibirModal=!exibirModal">Ajuda</button>
-      <slot v-if="exibirModal" name="ajuda"><em>Este é um bloco modal de ajuda.</em></slot>
+	<slot v-if="exibirModal" name="ajuda">
+		<em>Este é um bloco modal de ajuda.</em>
+	</slot>
+
+    <div class="modal flex justify-end mr-2" v-if="exibirAjuda">
+      <button @click="exibirModal=!exibirModal" class="text-blue-600"><i class="fa fa-question-circle"></i> Ajuda</button>
     </div>
 
     <div class="mt-3">
