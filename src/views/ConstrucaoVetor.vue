@@ -9,7 +9,7 @@
     >
       <template #ajuda>
         <div id="modal-ajuda" class="fixed left-0 top-0 bg-black bg-opacity-50 h-screen w-screen z-10 flex justify-center items-center" @click="toggleModal">
-          <div class="absolute z-20 rounded shadow-md bg-creme border-2 border-verde-escuro w-[40rem] flex flex-col justify-center" @click.stop="">
+          <div class="absolute z-20 rounded shadow-md bg-creme border-2 border-verde-escuro md:w-[40rem] flex flex-col justify-center" @click.stop="">
             <div class="flex justify-between p-2 items-center z-40 bg-verde-escuro">
 		          <p class="text-white font-bold">Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
               <button @click.stop="toggleModal"><i class="fa-regular fa-circle-xmark text-lg text-red-500 hover:text-red-600 mr-1"></i></button>
@@ -34,13 +34,13 @@
               v-for="opcao in opcoes"
               :key="opcao.nome" 
               :style="{backgroundColor: opcao.cor}"
-              @click="selecionado(opcao)" class="p-2 rounded text-white text-xl my-4 w-96">
+              @click="selecionado(opcao)" class="p-2 rounded text-white text-sm md:text-xl md:my-4 my-1 md:w-96">
               {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> <br> {{  opcao.descricao }}</em>
             </button>
           </div>
 
           <div class="col-span-5 flex justify-center items-center">
-            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[60vh] w-[35vw] bg-cover bg-center border-2 rounded relative">
+            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[20vh] w-[30vw] md:h-[60vh] md:w-[35vw] bg-cover bg-center border-2 rounded relative">
               <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
                 {{ bloco.nomebloco }}
               </div>
@@ -51,13 +51,13 @@
 
       <template #ferramentas>
           <div class="grid grid-cols-8 mt-4">
-            <div class="col-span-3 flex justify-center items-start">
+            <div class="md:col-span-3 col-span-12 flex justify-center items-start">
               <button @click="reset()" class="p-2 text-red-500 mx-4"><i class="fa fa-refresh"></i> Reset</button>
               <button @click="undo()" class="p-2 text-yellow-600 mx-4"><i class="fas fa-undo"></i> Desfazer</button>
               <button @click="foiConcluido()" class="p-2 text-verde-principal mx-4"><i class="fa fa-check"></i> Verificar</button>
             </div>
-            <div class="col-span-5">
-              <div v-for="erro in erros" class="flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 py-2  w-[35vw] m-auto" role="alert" :class="[this.erros[0]=='Certo!' ? ['bg-green-100', 'border-green-500', 'text-green-700']: '']">
+            <div class="md:col-span-5 col-span-12">
+              <div v-for="erro in erros" class="flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 py-2  md:w-[35vw] m-auto" role="alert" :class="[this.erros[0]=='Certo!' ? ['bg-green-100', 'border-green-500', 'text-green-700']: '']">
                 {{ erro }}
               </div>
             </div>
