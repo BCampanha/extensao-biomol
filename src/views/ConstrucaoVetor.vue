@@ -22,7 +22,6 @@
 
       <template #principal>
         <p>Complete o vetor de transformação do plasmídeo Ti</p>
-	{{this.$parent.exibirModal}}
 
           <div class="grid grid-cols-8 mb-3">
             <div class="col-span-3"></div>
