@@ -27,20 +27,22 @@
             <Transition>
               <img src="../assets/reg-8.png" v-if="raizesNum==8" class="raiz"/>
             </Transition>
+            <small><p>Belide, S., Vanhercke, T., Petrie, J.R. et al. Robust genetic transformation of sorghum (Sorghum bicolor L.) using differentiating embryogenic callus induced from immature embryos. Plant Methods 13, 109 (2017). https://doi.org/10.1186/s13007-017-0260-9</p></small>
           </div>
         </template>
         <template #ferramentas>
           <div class="col">
-            <button @click="antibiotico = true">
+            <button @click="addAntibiotico">
               antibiótico
-            </button>
-            <button @click="maisRaizes">
-              auxina
             </button>
             <button @click="maisFolhas">
               citocinina
             </button>
+            <button @click="maisRaizes">
+              auxina
+            </button>
           </div>
+          <p if="aviso">{{ aviso }}</p>
         </template>
     </JanelaQuestao>
   </div>
@@ -53,19 +55,40 @@ export default {
     return {
       raizesNum: 5,
       folhasNum: 2,
+      aviso: '',
       antibiotico: false
     }
   },
   methods: {
+    addAntibiotico() {
+      this.aviso = ''
+      this.antibiotico = true
+    },
     maisFolhas() {
-      if (this.antibiotico && this.folhasNum < 5) {
+      this.aviso = ''
+      if (this.antibiotico) {
+        if(this.folhasNum < 5) {
         this.folhasNum += 1
+        }
+        else {
+          this.aviso = 'Quantidade suficiente de folhas!'
+        }
+      } else {
+        this.aviso = 'Coloque o antibiótico primeiro'
       }
     },
     maisRaizes() {
-      if (this.antibiotico && this.raizesNum < 8) {
-        this.raizesNum += 1
-      }
+      this.aviso = ''
+      if (this.antibiotico) {
+          if (this.raizesNum < 8) {
+          this.raizesNum += 1
+        }
+        else {
+          this.aviso = 'Quantidade suficiente de raízes!'
+        }
+      } else {
+          this.aviso = 'Coloque o antibiótico primeiro'
+        }
     }
   }
 };
