@@ -20,7 +20,7 @@
         <template #ferramentas>
             <div class="mt-4 flex flex-col items-center justify-center" v-if="biob">
             <div class="flex sm:flex-row flex-col">
-              <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaPetri()"><i class="fa-solid fa-microscope"></i> Petri com folhas</button>
+              <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaPetri()"><i class="fa-solid fa-microscope"></i> Placa de Petri com as folhas da planta</button>
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaDisco()"><i class="fa-solid fa-dna"></i> Disco com partículas</button>
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="ligaMaquina()"><i class="fa-solid fa-power-off"></i> Ligar</button>
             </div>
