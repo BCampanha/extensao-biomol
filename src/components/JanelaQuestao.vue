@@ -7,7 +7,7 @@
 	</slot>
 
     <div class="modal flex justify-end mr-2" v-if="exibirAjuda">
-      <button @click="exibirModal=!exibirModal" class="text-blue-600"><i class="fa fa-question-circle"></i> Ajuda</button>
+      <button @click="toggleModal" class="text-blue-600"><i class="fa fa-question-circle"></i> Ajuda</button>
     </div>
 
     <div class="mt-3">
@@ -44,7 +44,6 @@ export default {
   data() {
       return {
         parte: 0,
-        exibirModal: false
       }
     },
   props: {
@@ -61,6 +60,10 @@ export default {
       default: true
     },
     exibirAjuda: {
+      type: Boolean,
+      default: false
+    },
+    exibirModal: {
       type: Boolean,
       default: false
     }
@@ -96,6 +99,9 @@ export default {
         if(this.parte < this.partesMax) {
           this.parte += 1
         }
+      },
+      toggleModal(){
+        this.$emit('toggle-modal');
       }
     }
 };
