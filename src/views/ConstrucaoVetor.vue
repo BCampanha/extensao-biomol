@@ -9,58 +9,58 @@
     >
       <template #ajuda>
         <div id="modal-ajuda" class="fixed left-0 top-0 bg-black bg-opacity-50 h-screen w-screen z-10 flex justify-center items-center" @click="toggleModal">
-          <div class="absolute z-20 rounded shadow-md bg-gray-200 border-4 w-[35rem] flex flex-col justify-center" @click.stop="">
-            <div class="flex justify-between m-2 items-center z-40">
-              <p class="text-escuro font-bold">Construção de Vetor para Biolística</p>
-              <button @click.stop="toggleModal"><i class="fa-regular fa-circle-xmark text-lg text-gray-400 hover:text-red-500 mr-1"></i></button>
+          <div class="absolute z-20 rounded shadow-md bg-creme border-2 border-verde-escuro w-[40rem] flex flex-col justify-center" @click.stop="">
+            <div class="flex justify-between p-2 items-center z-40 bg-verde-escuro">
+		          <p class="text-white font-bold">Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
+              <button @click.stop="toggleModal"><i class="fa-regular fa-circle-xmark text-lg text-red-500 hover:text-red-600 mr-1"></i></button>
             </div>
-            <img src="../assets/vetor-biob.png" alt="Vetor para biobalística" v-if="selecaoVia.id==='BIOB'"/>
-            <img src="../assets/vetor-agro.png" alt="Vetor para agrobactéria" v-if="selecaoVia.id==='AGRO'"/>
-            <p>Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
-            <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
-          </div>
+            <img src="../assets/vetor-biob.png" alt="Vetor para biobalística" class="rounded m-2 border" v-if="selecaoVia.id==='BIOB'"/>
+            <img src="../assets/vetor-agro.png" alt="Vetor para agrobactéria" class="rounded m-2 border" v-if="selecaoVia.id==='AGRO'"/>
+            <div class="p-2 text-lg text-escuro">
+              <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
+            </div>
+            </div>
         </div>
       </template>
 
       <template #principal>
-        <img src="../assets/plasmideo.jpg" class="mx-auto rounded-lg border-2 w-[50rem]" alt='Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'/>
-        <p>Complete o vetor de transformação do plasmídeo Ti</p>
+        <img src="../assets/plasmideo.jpg" class="mx-auto rounded-lg border-2 w-[35rem] mb-10 mt-5" alt='Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'/>
+        <p class="text-lg">Complete o vetor de transformação do plasmídeo Ti</p>
 
-          <div class="grid grid-cols-8 mb-3">
-            <div class="col-span-3"></div>
-            <div v-for="erro in erros" class="col-span-5 flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2  w-[35vw] m-auto" role="alert">
-              {{ erro }}
-            </div>
-          </div>
+
         <div class="grid grid-cols-8">
-          <div class="flex flex-col items-center justify-center col-span-3 py-5">
+          <div class="flex flex-col items-center justify-center col-span-3 h-[60vh]">
             <button
               v-for="opcao in opcoes"
               :key="opcao.nome" 
               :style="{backgroundColor: opcao.cor}"
-              @click="selecionado(opcao)" class="p-2 rounded mr-2 text-white text-xl my-4 w-96">
-              {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> - {{  opcao.descricao }}</em>
+              @click="selecionado(opcao)" class="p-2 rounded text-white text-xl my-4 w-96">
+              {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> <br> {{  opcao.descricao }}</em>
             </button>
           </div>
 
           <div class="col-span-5 flex justify-center items-center">
-	  	<div class="bg-[url('/src/assets/vetor-vazio.png')] h-[60vh] w-[35vw] bg-cover bg-center border-2 rounded relative">
-			      <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
-			{{ bloco.nomebloco }}
-		    </div>
-		</div>
+            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[60vh] w-[35vw] bg-cover bg-center border-2 rounded relative">
+              <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
+                {{ bloco.nomebloco }}
+              </div>
+            </div>
           </div>
         </div>
       </template>
 
       <template #ferramentas>
-          <div class="grid grid-cols-8">
-            <div class="col-span-3 flex justify-center">
+          <div class="grid grid-cols-8 mt-4">
+            <div class="col-span-3 flex justify-center items-start">
               <button @click="reset()" class="p-2 text-red-500 mx-4"><i class="fa fa-refresh"></i> Reset</button>
               <button @click="undo()" class="p-2 text-yellow-600 mx-4"><i class="fas fa-undo"></i> Desfazer</button>
               <button @click="foiConcluido()" class="p-2 text-verde-principal mx-4"><i class="fa fa-check"></i> Verificar</button>
             </div>
-            <div class="col-span-5"></div>
+            <div class="col-span-5">
+              <div v-for="erro in erros" class="flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 py-2  w-[35vw] m-auto" role="alert" :class="[this.erros[0]=='Certo!' ? ['bg-green-100', 'border-green-500', 'text-green-700']: '']">
+                {{ erro }}
+              </div>
+            </div>
           </div>
       </template>
 
@@ -221,12 +221,11 @@ export default {
     },
     undo() {
       this.blocos.pop();
-      this.erro = '';
+      this.erros = [];
     },
     reset() {
-      this.erros = '';
+      this.erros = [];
       this.blocos = [];
-      this.erro = '';
     },
     foiConcluido() {
       const ordens = this.blocos.map(el => el.ordem);
