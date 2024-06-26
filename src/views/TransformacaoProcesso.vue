@@ -2,7 +2,7 @@
   <div>
     <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes">
       <template #principal>
-        <div v-if="biob" class="h-[52.7rem] relative">
+        <div v-if="biob" class="h-[85vw] md:h-[52.7rem] relative">
           <Transition>
             <img src="../assets/gene-gun-0.png" v-show="imagemInicial" alt="Máquina com compartimento vazio" class="absolute left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 w-[50rem]"/>
           </Transition>
@@ -20,10 +20,10 @@
         </template>
         <template #ferramentas>
             <div class="mt-4 flex flex-col items-center justify-center" v-if="biob">
-            <div>
-              <button class="p-2 rounded bg-verde-escuro text-white mx-3" @click="adicionaPetri()"><i class="fa-solid fa-microscope"></i> Petri com folhas</button>
-              <button class="p-2 rounded bg-verde-escuro text-white mx-3" @click="adicionaDisco()"><i class="fa-solid fa-dna"></i> Disco com partículas</button>
-              <button class="p-2 rounded bg-verde-escuro text-white mx-3" @click="ligaMaquina()"><i class="fa-solid fa-power-off"></i> Ligar</button>
+            <div class="flex md:flex-row flex-col">
+              <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaPetri()"><i class="fa-solid fa-microscope"></i> Petri com folhas</button>
+              <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaDisco()"><i class="fa-solid fa-dna"></i> Disco com partículas</button>
+              <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="ligaMaquina()"><i class="fa-solid fa-power-off"></i> Ligar</button>
             </div>
             <div>
               <p class="text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2 mt-2" v-if="erro">{{ erro }}</p>
