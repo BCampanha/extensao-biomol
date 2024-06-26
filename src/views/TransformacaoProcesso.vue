@@ -7,17 +7,18 @@
       <template #principal>
         <div v-if="biob" class="imagens">
           <Transition>
-            <img src="../assets/gene-gun-0.png" alt="Máquina com compartimento vazio" class="mx-auto rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-0.png" alt="Máquina com compartimento vazio"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado" alt="Máquina com placa de petri dos explantes" class="mx-auto rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado" alt="Máquina com placa de petri dos explantes"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado" alt="Máquina com placa de petri e disco de partículas" class="mx-auto rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado" alt="Máquina com placa de petri e disco de partículas"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la" class="mx-auto rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la"/>
           </Transition>
+          <small><p>Biolistics TM PDS 2000</p></small>
         </div>
         </template>
         <template #ferramentas>

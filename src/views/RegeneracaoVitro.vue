@@ -2,27 +2,47 @@
   <div>
     <JanelaQuestao titulo="Regeneração in vitro" orientacoes="Para a regeneração in vitro, prepare um meio de cultura com antibiótico (como higromicina ou kanamicina), que revelará as células transgênicas por causa do gene de seleção. E adicione auxina e citocinina, que são hormônios produzidos pelas plantas, para promover o crescimento e diferenciação das células transformadas.">
         <template #principal>
-          <span v-if="!antibiotico"> Imagem das folhas cortadas </span>
-          <span v-if="antibiotico"> Algumas folhas morrem </span>
-          <span v-for="i in folhas">
-            folha
-          </span>
-          <span v-for="j in raizes">
-            raiz
-          </span>
+          <div class="imagens">
+            <Transition>
+              <img src="../assets/reg-1.png" />
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-2.png" v-if="antibiotico"/>  
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-3.png" v-if="folhasNum==3"/> 
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-4.png" v-if="folhasNum==4"/> 
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-5.png" v-if="folhasNum==5"/> 
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-6.png" v-if="raizesNum==6" class="raiz"/>
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-7.png" v-if="raizesNum==7" class="raiz"/>
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-8.png" v-if="raizesNum==8" class="raiz"/>
+            </Transition>
+            <small><p>Belide, S., Vanhercke, T., Petrie, J.R. et al. Robust genetic transformation of sorghum (Sorghum bicolor L.) using differentiating embryogenic callus induced from immature embryos. Plant Methods 13, 109 (2017). https://doi.org/10.1186/s13007-017-0260-9</p></small>
+          </div>
         </template>
         <template #ferramentas>
           <div class="col">
-            <button @click="antibiotico = true">
+            <button @click="addAntibiotico">
               antibiótico
             </button>
-            <button @click="raizes += 1">
-              auxina
-            </button>
-            <button @click="folhas += 1">
+            <button @click="maisFolhas">
               citocinina
             </button>
+            <button @click="maisRaizes">
+              auxina
+            </button>
           </div>
+          <p if="aviso">{{ aviso }}</p>
         </template>
     </JanelaQuestao>
   </div>
@@ -33,11 +53,44 @@ export default {
   name: "RegeneracaoVitro",
   data() {
     return {
-      raizes: 0,
-      folhas: 0,
+      raizesNum: 5,
+      folhasNum: 2,
+      aviso: '',
       antibiotico: false
     }
   },
+  methods: {
+    addAntibiotico() {
+      this.aviso = ''
+      this.antibiotico = true
+    },
+    maisFolhas() {
+      this.aviso = ''
+      if (this.antibiotico) {
+        if(this.folhasNum < 5) {
+        this.folhasNum += 1
+        }
+        else {
+          this.aviso = 'Quantidade suficiente de folhas!'
+        }
+      } else {
+        this.aviso = 'Coloque o antibiótico primeiro'
+      }
+    },
+    maisRaizes() {
+      this.aviso = ''
+      if (this.antibiotico) {
+          if (this.raizesNum < 8) {
+          this.raizesNum += 1
+        }
+        else {
+          this.aviso = 'Quantidade suficiente de raízes!'
+        }
+      } else {
+          this.aviso = 'Coloque o antibiótico primeiro'
+        }
+    }
+  }
 };
 </script>
 
@@ -45,5 +98,30 @@ export default {
 .col {
   display: flex;
   flex-direction: column;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.imagens {
+  position: relative;
+  img {
+    max-width: 80vw;
+    height: 300px;
+  }
+  img:not(:first-child) {
+    position: absolute;
+    top: 0
+  }
+  .raiz {
+    z-index: 5000
+  }
 }
 </style>
