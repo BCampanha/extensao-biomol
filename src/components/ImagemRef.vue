@@ -1,6 +1,6 @@
 <<template>
   <div>
-    <img v-bind:src="`../assets/${src}`" class="mx-auto rounded-lg border-2 w-[50rem]" :legenda="legenda"/>
+    <img v-bind:src="`../assets/${src}`" class="mx-auto rounded-lg border-2 w-[50rem]" :alt="legenda"/>
     <p>{{ referencia }}</p>
   </div>
 </template>
@@ -17,7 +17,8 @@
         type: String
       },
       legenda: {
-        type: String
+        type: String,
+        required: true
       }
     }
   }

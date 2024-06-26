@@ -7,16 +7,16 @@
       <template #principal>
         <div v-if="biob" class="imagens">
           <Transition>
-            <img src="../assets/gene-gun-0.png"/>
+            <img src="../assets/gene-gun-0.png" alt="Máquina com compartimento vazio"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado"/>
+            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado" alt="Máquina com placa de petri dos explantes"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado"/>
+            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado" alt="Máquina com placa de petri e disco de partículas"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada"/>
+            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la"/>
           </Transition>
         </div>
         </template>
