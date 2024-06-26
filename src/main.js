@@ -15,6 +15,7 @@ import TransformacaoNuclear from "./views/TransformacaoNuclear.vue";
 import RegeneracaoVitro from "./views/RegeneracaoVitro.vue";
 import TriagemPlanta from "./views/TriagemPlanta.vue";
 import FimObrigado from "./views/FimObrigado.vue";
+import ImagemRef from "./components/ImagemRef.vue";
 import JanelaQuestao from "./components/JanelaQuestao.vue";
 
 const router = createRouter({
@@ -52,6 +53,7 @@ const router = createRouter({
 
 createApp(App)
 .component('RouterLink', RouterLink)
+.component('ImagemRef', ImagemRef)
 .component('JanelaQuestao', JanelaQuestao)
 .use(router)
 .mount("#app");
