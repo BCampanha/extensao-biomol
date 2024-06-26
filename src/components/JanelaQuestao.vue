@@ -12,7 +12,7 @@
       <div @click="proximaParte">
         <p class="text-lg">
           {{ orientacoesTextoExibido }}
-          <small><em v-if="parte < partesMax"> Continue > </em></small>
+          <small><em v-if="parte < partesMax"> Continue> </em></small>
         </p>
       </div>
 

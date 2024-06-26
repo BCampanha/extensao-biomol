@@ -7,13 +7,13 @@
     >
       <template #ajuda>
         <p>Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
-        <ImagemRef :src="'vetor-biob.png'"  v-if="selecaoVia.id==='BIOB'"/>
-        <ImagemRef :src="'vetor-agro.png'"  v-if="selecaoVia.id==='AGRO'"/>
+        <img src="../assets/vetor-biob.png" class="mx-auto rounded-lg border-2 w-[50rem]" v-if="selecaoVia.id==='BIOB'" alt="Vetor para biobalística"/>
+        <img src="../assets/vetor-agro.png" class="mx-auto rounded-lg border-2 w-[50rem]" v-if="selecaoVia.id==='AGRO'" alt="Vetor para agrobactéria"/>
         <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
       </template>
 
       <template #principal>
-        <ImagemRef :src="'../assets/plasmideo.jpg'" :legenda="'Adobe Stock'"/>
+        <img src="../assets/plasmideo.jpg" class="mx-auto rounded-lg border-2 w-[50rem]" alt='Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'/>
         <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
 
         <div class="blocos">
