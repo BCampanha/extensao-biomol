@@ -2,7 +2,8 @@
   <div>
     <JanelaQuestao titulo="Escolha do método de transformação" orientacoes="Primeiro, é preciso decidir qual será a técnica utilizada para transferir o gene de interesse para o feijão. A transformação pode ser realizada via: biobalística, em que partículas microscópicas de ouro ou tungstênio são cobertas com DNA e bombardeadas para o tecido da planta através de um acelerador de partículas; ou Agrobacterium tumefaciens, que consiste no co-cultivo do tecido da planta com uma bactéria capaz de transferir parte do DNA para a célula vegetal.">
       <template #principal>
-        <ImagemRef :src="'../assets/metodos-2.jpg'" :legenda="'Esquema de transformação gênica por Agrobacterium e por biobalística'" :referencia="'Plantas Transgênicas, UFPEL, 2021.'"/>
+        <img  class="mx-auto rounded-lg border-2 w-[50rem]" src="../assets/metodos-2.jpg" alt="Esquema de transformação gênica por Agrobacterium e por biobalística" />
+        <small><p class="text-center">Plantas Transgênicas, UFPEL, 2021.</p></small>
       </template>
       <template #ferramentas>
         <br>
