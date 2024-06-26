@@ -29,7 +29,7 @@
 
 
         <div class="grid grid-cols-8">
-          <div class="flex flex-col items-center justify-center col-span-3 h-[60vh]">
+          <div class="flex flex-col items-center justify-center col-span-4 md:col-span-3 h-[60vh]">
             <button
               v-for="opcao in opcoes"
               :key="opcao.nome" 
@@ -39,9 +39,9 @@
             </button>
           </div>
 
-          <div class="col-span-5 flex justify-center items-center">
-            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[20vh] w-[30vw] md:h-[60vh] md:w-[35vw] bg-cover bg-center border-2 rounded relative">
-              <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
+          <div class="col-span-4 md:col-span-5 flex justify-center items-center">
+            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[20vh] w-[40vw] md:h-[60vh] md:w-[35vw] bg-cover bg-center border-2 rounded relative">
+              <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white text-sm p-1 md:text-base md:p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
                 {{ bloco.nomebloco }}
               </div>
             </div>
@@ -233,7 +233,7 @@ export default {
       this.erros = []
       for (let i = 1; i <= 8; i++) {
           if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
-              this.erros.push("Posicionamento incorreto na posição " + i)
+              this.erros.push("Posicionamento incorreto na " + i + "ª posição")
               correto = false
           }
       }
