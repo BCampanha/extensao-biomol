@@ -2,15 +2,18 @@
   <div>
     <JanelaQuestao
       :titulo="`Construção do vetor de expressão gênica - ${selecaoVia.nome}`"
-      orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método."
+      :orientacoes="orientacoes"
       :exibirAjuda="true"
     >
       <template #ajuda>
-        <img src="../assets/vetor-biob.png" alt="Resposta de biob" v-if="selecaoVia.id==='BIOB'"/>
-        <img src="../assets/vetor-agro.png" alt="Resposta de agro" v-if="selecaoVia.id==='AGRO'"/>
+        <p>Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
+        <img src="../assets/vetor-biob.png" class="mx-auto rounded-lg border-2 w-[50rem]" v-if="selecaoVia.id==='BIOB'" alt="Vetor para biobalística"/>
+        <img src="../assets/vetor-agro.png" class="mx-auto rounded-lg border-2 w-[50rem]" v-if="selecaoVia.id==='AGRO'" alt="Vetor para agrobactéria"/>
+        <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
       </template>
 
       <template #principal>
+        <img src="../assets/plasmideo.jpg" class="mx-auto rounded-lg border-2 w-[50rem]" alt='Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'/>
         <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
 
         <div class="blocos">
@@ -19,7 +22,7 @@
           </div>
         </div>
 
-        <div v-if="erro">
+        <div v-for="erro in erros">
           {{ erro }}
         </div>
       </template>
@@ -32,7 +35,7 @@
             :key="opcao.nome"
             @click="selecionado(opcao)"
           >
-            {{ opcao.nome }}
+            {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> - {{  opcao.descricao }}</em>
           </button>
         </div>
         <div>
@@ -58,19 +61,20 @@ export default {
   },
   data() {
     return {
-      erro: '',
+      erros: [],
       gabarito: [],
       blocos: [],
       opcoes: [],
+      orientacoes: '',
       opcoesAgro: [
         {
-          nome: "Origem de replicação Agrobacterium",
+          nome: "Origem de replicação",
           nomebloco: "Ori Agro",
           ordem: 1,
         },
         {
-          nome: "Origem de replicação E. coli",
-          nomebloco: "Ori E. coli",
+          nome: "Região de virulência",
+          nomebloco: "VIR",
           ordem: 2,
         },
         {
@@ -79,29 +83,21 @@ export default {
           ordem: 3,
         },
         {
-          nome: "Promotor de transcrição",
-          nomebloco: "P",
+          nome: "BTTX (gene de interesse)",
+          descricao: "Gene que dá resistência à praga",
+          nomebloco: "BTTX",
           ordem: 4,
         },
         {
-          nome: "Gene de interesse",
-          nomebloco: "Gene",
-          ordem: 5,
-        },
-        {
-          nome: "Terminador de transcrição",
-          nomebloco: "T",
-          ordem: 6,
-        },
-        {
           nome: "Marcador de seleção",
+          descricao: "Usado para diferenciar as plantas transformadas das plantas não transformadas",
           nomebloco: "SEL",
-          ordem: 7,
+          ordem: 5,
         },
         {
           nome: "Right Border",
           nomebloco: "RB",
-          ordem: 8,
+          ordem: 6,
         },
       ],
       opcoesBiob: [
@@ -111,24 +107,21 @@ export default {
           ordem: 1,
         },
         {
-          nome: "Promotor de transcrição",
-          nomebloco: "P",
+          nome: "BTTX (gene de interesse)",
+          descricao: "Gene que dá resistência à praga",
+          nomebloco: "BTTX",
           ordem: 2,
         },
         {
-          nome: "Gene de interesse",
-          nomebloco: "Gene",
+          nome: "Marcador de seleção",
+          descricao: "Usado para diferenciar as plantas transformadas das plantas não transformadas",
+          nomebloco: "SEL",
           ordem: 3,
         },
         {
-          nome: "Terminador de transcrição",
-          nomebloco: "T",
+          nome: "Região de virulência",
+          nomebloco: "VIR",
           ordem: 4,
-        },
-        {
-          nome: "Marcador de seleção",
-          nomebloco: "SEL",
-          ordem: 5,
         },
       ],
     };
@@ -137,11 +130,13 @@ export default {
     switch (this.selecaoVia.id) {
       case 'BIOB':
         this.opcoes = this.opcoesBiob
-        this.gabarito = [1,2,3,4,5]
+        this.gabarito = [1,2,3,4]
+        this.orientacoes = 'O plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo.'
         break;
       case 'AGRO':
         this.opcoes = this.opcoesAgro
-        this.gabarito = [1,2,3,4,5,6,7,8]
+        this.gabarito = [1,2,3,4,5,6]
+        this.orientacoes = 'Agrobacterium tumefasciens é um patógeno de plantas causador da doença galha-da-coroa. Durante a infecção ela introduz uma parte de seu DNA dentro do núcleo da célula, o T-DNA, forçando a célula a produzir um ambiente adequado para a bactéria. Através de técnicas de engenharia genética, podemos desarmar esse T-DNA e manipulá-lo para utilizar no processo de transformação. Já o plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo. O plasmidio da Agrobacteria exige então o T-DNA, cercado por bordas (Left Border e Right Border) e genes contido na região de virulência que irão ativar a sua proliferação, entrada nas células e transferência do T-DNA.'
         break;
       default:
         this.$router.push('/1')
@@ -154,26 +149,29 @@ export default {
         this.blocos.push(opcao);
       }
       else {
-        this.erro = 'qtde max de componentes'
+        this.erros = ['Limite de elementos excedido.']
       }
     },
     undo() {
       this.blocos.pop();
     },
     reset() {
+      this.erros = '';
       this.blocos = [];
     },
     foiConcluido() {
       const ordens = this.blocos.map(el => el.ordem);
-
+      let correto = true
+      this.erros = []
       for (let i = 1; i <= 8; i++) {
           if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
-              this.erro = "erro na posição " + i
-              return
+              this.erros.push("Posicionamento incorreto na posição " + i)
+              correto = false
           }
       }
-
-      this.erro = "certo!"
+      if (correto) {
+        this.erros.push("Certo!")
+      }
     },
   },
 };

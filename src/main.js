@@ -12,8 +12,9 @@ import SobreTrabalho from "./views/SobreTrabalho.vue";
 import ConstrucaoVetor from "./views/ConstrucaoVetor.vue";
 import TransformacaoProcesso from "./views/TransformacaoProcesso.vue";
 import TransformacaoNuclear from "./views/TransformacaoNuclear.vue";
-import RegeneracaoPlanta from "./views/RegeneracaoPlanta.vue";
+import RegeneracaoVitro from "./views/RegeneracaoVitro.vue";
 import TriagemPlanta from "./views/TriagemPlanta.vue";
+import FimObrigado from "./views/FimObrigado.vue";
 import JanelaQuestao from "./components/JanelaQuestao.vue";
 
 const router = createRouter({
@@ -36,10 +37,13 @@ const router = createRouter({
     component: TransformacaoNuclear},
     {path: '/5',
     name: '5',
-    component: RegeneracaoPlanta},
+    component: RegeneracaoVitro},
     {path: '/6',
     name: '6',
     component: TriagemPlanta},
+    {path: '/7',
+    name: '7',
+    component: FimObrigado},
     {path: '/sobre',
     name: 'Sobre',
     component: SobreTrabalho}
