@@ -2,8 +2,14 @@
   <div>
     <JanelaQuestao titulo="Regeneração in vitro" orientacoes="Para a regeneração in vitro, prepare um meio de cultura com antibiótico (como higromicina ou kanamicina), que revelará as células transgênicas por causa do gene de seleção. E adicione auxina e citocinina, que são hormônios produzidos pelas plantas, para promover o crescimento e diferenciação das células transformadas.">
         <template #principal>
-          <span v-if="!antibiotico"> Imagem das folhas cortadas </span>
-          <span v-if="antibiotico"> Algumas folhas morrem </span>
+          <div class="imagens">
+            <Transition>
+              <img src="../assets/reg-1.png" v-if="!antibiotico" alt="Imagem das folhas cortadas"/>
+            </Transition>
+            <Transition>
+              <img src="../assets/reg-2.png" v-if="antibiotico" alt="Algumas folhas morrem"/>
+            </Transition>
+          </div>
           <span v-for="i in folhas">
             folha
           </span>
@@ -45,5 +51,26 @@ export default {
 .col {
   display: flex;
   flex-direction: column;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.imagens {
+  position: relative;
+  img {
+    max-width: 80vw;
+  }
+  img:not(:first-child) {
+    position: absolute;
+    top: 0
+  }
 }
 </style>
