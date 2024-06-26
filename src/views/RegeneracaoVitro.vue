@@ -31,15 +31,15 @@
           </div>
         </template>
         <template #ferramentas>
-          <div class="col">
-            <button @click="addAntibiotico">
-              antibiótico
+          <div class="flex justify-center mt-4">
+            <button class="p-2 mx-2 rounded bg-verde-escuro text-white" @click="addAntibiotico">
+              Antibiótico
             </button>
-            <button @click="maisFolhas">
-              citocinina
+            <button class="p-2 mx-2 rounded bg-verde-escuro text-white" @click="maisFolhas">
+              Citocinina
             </button>
-            <button @click="maisRaizes">
-              auxina
+            <button class="p-2 mx-2 rounded bg-verde-escuro text-white" @click="maisRaizes">
+              Auxina
             </button>
           </div>
           <p if="aviso">{{ aviso }}</p>
@@ -95,11 +95,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.col {
-  display: flex;
-  flex-direction: column;
-}
-
 .v-enter-active,
 .v-leave-active {
   transition: opacity 1s ease;
