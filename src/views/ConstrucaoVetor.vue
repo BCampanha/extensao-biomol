@@ -24,22 +24,18 @@
             </button>
           </div>
 
-          <div class="col-span-6">
-          <img src="../assets/vetor-vazio.png" alt="Vetor vazio" class="mx-auto">
-
-
-
+          <div class="col-span-6 flex justify-center">
+	  	<div class="bg-[url('/src/assets/vetor-vazio.png')] h-[60vh] w-[35vw] bg-cover bg-center border-2 rounded relative">
+			      <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
+			{{ bloco.nomebloco }}
+		    </div>
+		</div>
           </div>
         </div>
       </template>
 
       <template #ferramentas>
           <div>
-            <div class="flex">
-              <div :style="{backgroundColor: bloco.cor}" class="text-white p-2 mr-2 rounded" v-for="bloco in blocos" :key="bloco.nome">
-                {{ bloco.nomebloco }}
-              </div>
-            </div>
             <div v-if="erro">
               {{ erro }}
             </div>
@@ -71,6 +67,40 @@ export default {
       gabarito: [],
       blocos: [],
       opcoes: [],
+      positions: [
+	{
+	  'top': '30%',
+	  'left': '28%'
+	},
+	{
+	  'top': '19%',
+	  'left': '48%'
+	},
+	{
+	  'top': '30%',
+	  'left': '68%'
+	},
+	{
+	  'top': '50%',
+	  'left': '75%'
+	},
+	{
+	  'top': '70%',
+	  'left': '68%'
+	},
+	{
+	  'top': '79%',
+	  'left': '55%'
+	},
+	{
+	  'top': '75%',
+	  'left': '34%'
+	},
+	{
+	  'top': '58%',
+	  'left': '24%'
+	},
+      ],
       opcoesAgro: [
         {
           nome: "Origem de replicação Agrobacterium",
