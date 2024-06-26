@@ -4,47 +4,64 @@
       :titulo="`Construção do vetor de expressão gênica - ${selecaoVia.nome}`"
       :orientacoes="orientacoes"
       :exibirAjuda="true"
+      :exibirModal="exibirModal"
+      @toggle-modal="toggleModal"
     >
       <template #ajuda>
-        <p>Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
-        <ImagemRef :src="'vetor-biob.png'"  v-if="selecaoVia.id==='BIOB'"/>
-        <ImagemRef :src="'vetor-agro.png'"  v-if="selecaoVia.id==='AGRO'"/>
-        <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
+        <div id="modal-ajuda" class="fixed left-0 top-0 bg-black bg-opacity-50 h-screen w-screen z-10 flex justify-center items-center" @click="toggleModal">
+          <div class="absolute z-20 rounded shadow-md bg-creme border-2 border-verde-escuro w-[40rem] flex flex-col justify-center" @click.stop="">
+            <div class="flex justify-between p-2 items-center z-40 bg-verde-escuro">
+		          <p class="text-white font-bold">Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
+              <button @click.stop="toggleModal"><i class="fa-regular fa-circle-xmark text-lg text-red-500 hover:text-red-600 mr-1"></i></button>
+            </div>
+            <img src="../assets/vetor-biob.png" alt="Vetor para biobalística" class="rounded m-2 border" v-if="selecaoVia.id==='BIOB'"/>
+            <img src="../assets/vetor-agro.png" alt="Vetor para agrobactéria" class="rounded m-2 border" v-if="selecaoVia.id==='AGRO'"/>
+            <div class="p-2 text-lg text-escuro">
+              <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
+            </div>
+            </div>
+        </div>
       </template>
 
       <template #principal>
-
         <ImagemRef :src="'plasmideo.jpg'" :legenda="'Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'" :referencia="'Copyright: Adobe Stock'"/>
+        <p class="text-lg">Complete o vetor de transformação do plasmídeo Ti</p>
 
-        <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
 
-        <div class="blocos">
-          <div class="bloco-vetor" v-for="bloco in blocos" :key="bloco.nome">
-            {{ bloco.nomebloco }}
+        <div class="grid grid-cols-8">
+          <div class="flex flex-col items-center justify-center col-span-3 h-[60vh]">
+            <button
+              v-for="opcao in opcoes"
+              :key="opcao.nome" 
+              :style="{backgroundColor: opcao.cor}"
+              @click="selecionado(opcao)" class="p-2 rounded text-white text-xl my-4 w-96">
+              {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> <br> {{  opcao.descricao }}</em>
+            </button>
           </div>
-        </div>
 
-        <div v-for="erro in erros">
-          {{ erro }}
+          <div class="col-span-5 flex justify-center items-center">
+            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[60vh] w-[35vw] bg-cover bg-center border-2 rounded relative">
+              <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
+                {{ bloco.nomebloco }}
+              </div>
+            </div>
+          </div>
         </div>
       </template>
 
       <template #ferramentas>
-        <p>Complete o vetor de transformação do plasmídeo Ti</p>
-        <div class="elementos">
-          <button
-            v-for="opcao in opcoes"
-            :key="opcao.nome"
-            @click="selecionado(opcao)"
-          >
-            {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> - {{  opcao.descricao }}</em>
-          </button>
-        </div>
-        <div>
-          <button @click="undo()">Desfazer</button>
-          <button @click="reset()">Reset</button>
-          <button @click="foiConcluido()">Verificar</button>
-        </div>
+          <div class="grid grid-cols-8 mt-4">
+            <div class="col-span-3 flex justify-center items-start">
+              <button @click="reset()" class="p-2 text-red-500 mx-4"><i class="fa fa-refresh"></i> Reset</button>
+              <button @click="undo()" class="p-2 text-yellow-600 mx-4"><i class="fas fa-undo"></i> Desfazer</button>
+              <button @click="foiConcluido()" class="p-2 text-verde-principal mx-4"><i class="fa fa-check"></i> Verificar</button>
+            </div>
+            <div class="col-span-5">
+              <div v-for="erro in erros" class="flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 py-2  w-[35vw] m-auto" role="alert" :class="[this.erros[0]=='Certo!' ? ['bg-green-100', 'border-green-500', 'text-green-700']: '']">
+                {{ erro }}
+              </div>
+            </div>
+          </div>
       </template>
 
     </JanelaQuestao>
@@ -63,42 +80,83 @@ export default {
   },
   data() {
     return {
+      exibirModal: false,
       erros: [],
       gabarito: [],
       blocos: [],
       opcoes: [],
       orientacoes: '',
+      positions: [
+	{
+	  'top': '30%',
+	  'left': '28%'
+	},
+	{
+	  'top': '19%',
+	  'left': '48%'
+	},
+	{
+	  'top': '30%',
+	  'left': '68%'
+	},
+	{
+	  'top': '50%',
+	  'left': '75%'
+	},
+	{
+	  'top': '70%',
+	  'left': '68%'
+	},
+	{
+	  'top': '79%',
+	  'left': '55%'
+	},
+	{
+	  'top': '75%',
+	  'left': '34%'
+	},
+	{
+	  'top': '58%',
+	  'left': '24%'
+	},
+      ],
       opcoesAgro: [
         {
           nome: "Origem de replicação",
           nomebloco: "Ori Agro",
+          cor: "#6e2a6c",
           ordem: 1,
         },
         {
           nome: "Região de virulência",
           nomebloco: "VIR",
+          cor: "#3d3d3d",
           ordem: 2,
         },
         {
           nome: "Left Border",
           nomebloco: "LB",
+          cor:"#d6783e",
           ordem: 3,
         },
         {
           nome: "BTTX (gene de interesse)",
           descricao: "Gene que dá resistência à praga",
           nomebloco: "BTTX",
+          cor: "#da9fda",
           ordem: 4,
         },
         {
           nome: "Marcador de seleção",
           descricao: "Usado para diferenciar as plantas transformadas das plantas não transformadas",
           nomebloco: "SEL",
+          cor: "#1a235e",
           ordem: 5,
         },
         {
           nome: "Right Border",
           nomebloco: "RB",
+          cor: "#d6783e",
           ordem: 6,
         },
       ],
@@ -106,23 +164,27 @@ export default {
         {
           nome: "Origem de replicação",
           nomebloco: "Ori",
+          cor: "#3d3d3d",
           ordem: 1,
         },
         {
           nome: "BTTX (gene de interesse)",
           descricao: "Gene que dá resistência à praga",
           nomebloco: "BTTX",
+          cor: "#da9fda",
           ordem: 2,
         },
         {
           nome: "Marcador de seleção",
           descricao: "Usado para diferenciar as plantas transformadas das plantas não transformadas",
           nomebloco: "SEL",
+          cor: "#d6783e",
           ordem: 3,
         },
         {
           nome: "Região de virulência",
           nomebloco: "VIR",
+          cor: "#3d3d3d",
           ordem: 4,
         },
       ],
@@ -146,6 +208,9 @@ export default {
     }
   },
   methods: {
+    toggleModal(){
+      this.exibirModal = ! this.exibirModal;
+    },
     selecionado(opcao) {
       if (this.blocos.length < this.gabarito.length) {
         this.blocos.push(opcao);
@@ -156,9 +221,10 @@ export default {
     },
     undo() {
       this.blocos.pop();
+      this.erros = [];
     },
     reset() {
-      this.erros = '';
+      this.erros = [];
       this.blocos = [];
     },
     foiConcluido() {
@@ -179,21 +245,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.blocos {
-  display: flex;
-  .bloco-vetor {
-    max-width: fit-content;
-    border: 1px solid mediumorchid;
-    padding: 0.5rem;
-  }
+<style>
+@keyframes showModal {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
-.elementos {
-  display: flex;
-  flex-direction: column;
-  button {
-    margin-bottom: 1vh;
-    padding: 0.5rem;
-  }
+
+#modal-ajuda{
+  animation-name: showModal;
+  animation-duration: 0.2s;
 }
 </style>

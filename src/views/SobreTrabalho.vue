@@ -72,6 +72,14 @@ export default {
           year: 2003,
           url: "http://www.infoteca.cnptia.embrapa.br/infoteca/handle/doc/562707",
         },
+        {
+          author: "Belide, S., Vanhercke, T., Petrie, J.R. et al.",
+          title: "obust genetic transformation of sorghum (Sorghum bicolor L.) using differentiating embryogenic callus induced from immature embryos.",
+          publisher: "Plant Methods",
+          address: "",
+          year: 2017,
+          url: "https://doi.org/10.1186/s13007-017-0260-9"
+        }
       ],
       resumo:
         "Esse é um projeto de extensão que tem como objetivo divulgar os métodos mais comuns usados na transformação genética de plantas. Através dessa técnica, é possível obter plantas tolerantes a condições ambientais adversas, resistentes à pragas ou até mesmo mais produtivas e nutritivas, o que tem grande importância agronômica. Sabendo disso, esse simulador ilustra os passos necessários para a obtenção de plantas transgênicas que manifestam uma característica de interesse.",

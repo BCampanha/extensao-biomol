@@ -2,9 +2,12 @@
   <div class="tela">
     <strong class="text-escuro text-lg">{{ titulo }}</strong>
 
-    <div class="modal" v-if="exibirAjuda">
-      <button @click="exibirModal=!exibirModal">Ajuda</button>
-      <slot v-if="exibirModal" name="ajuda"><em>Este é um bloco modal de ajuda.</em></slot>
+	<slot v-if="exibirModal" name="ajuda">
+		<em>Este é um bloco modal de ajuda.</em>
+	</slot>
+
+    <div class="modal flex justify-end mr-2" v-if="exibirAjuda">
+      <button @click="toggleModal" class="text-blue-600"><i class="fa fa-question-circle"></i> Ajuda</button>
     </div>
 
     <div class="mt-3">
@@ -12,7 +15,7 @@
       <div @click="proximaParte">
         <p class="text-lg">
           {{ orientacoesTextoExibido }}
-          <small><em v-if="parte < partesMax"> Continue > </em></small>
+          <small><em v-if="parte < partesMax"> Continue> </em></small>
         </p>
       </div>
 
@@ -22,11 +25,10 @@
         >
       </div>
 
-      <div class="bloco ferramentas" v-if="exibirFerramentas">
+      <div v-if="exibirFerramentas">
         <slot name="ferramentas">
           <em>Este é um bloco de ferramentas/ações.</em>
         </slot>
-        <br>
         <br>
         <RouterLink :to="anterior" class="text-white bg-laranja p-2 rounded">Voltar</RouterLink>
         <RouterLink :to="proxima" class="text-white bg-laranja p-2 rounded ml-2">Próximo</RouterLink>
@@ -42,7 +44,6 @@ export default {
   data() {
       return {
         parte: 0,
-        exibirModal: false
       }
     },
   props: {
@@ -59,6 +60,10 @@ export default {
       default: true
     },
     exibirAjuda: {
+      type: Boolean,
+      default: false
+    },
+    exibirModal: {
       type: Boolean,
       default: false
     }
@@ -94,6 +99,9 @@ export default {
         if(this.parte < this.partesMax) {
           this.parte += 1
         }
+      },
+      toggleModal(){
+        this.$emit('toggle-modal');
       }
     }
 };

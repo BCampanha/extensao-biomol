@@ -16,7 +16,6 @@ import RegeneracaoVitro from "./views/RegeneracaoVitro.vue";
 import TriagemPlanta from "./views/TriagemPlanta.vue";
 import FimObrigado from "./views/FimObrigado.vue";
 import JanelaQuestao from "./components/JanelaQuestao.vue";
-import ImagemRef from "./components/ImagemRef.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -54,7 +53,6 @@ const router = createRouter({
 createApp(App)
 .component('RouterLink', RouterLink)
 .component('JanelaQuestao', JanelaQuestao)
-.component('ImagemRef', ImagemRef)
 .use(router)
 .mount("#app");
 
