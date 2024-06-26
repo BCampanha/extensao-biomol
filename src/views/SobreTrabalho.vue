@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center w-4/12 mx-auto">
+  <div class="flex flex-col justify-center mx-auto sobre">
     <h1 class="text-2xl font-extrabold mb-5 text-verde-escuro">Trabalho de Extensão</h1>
     <p>
       Projeto disponível no repositório
@@ -16,7 +16,7 @@
     <br>
     <br>
     <h4 class="mt-5 text-lg font-bold text-escuro">Referências</h4>
-    <p v-for="referencia in referencias" class="mb-4" :key="referencia.url">
+    <p v-for="referencia in referencias" class="mb-4 referencias" :key="referencia.url">
       {{ referencia.author }} ({{
         referencia.year
       }}). "{{ referencia.title }}". Em: <em>{{ referencia.publisher }}</em>. URL: <a href="referencia.url">{{ referencia.url }}</a>.
@@ -87,3 +87,23 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.sobre {
+  width: 30%;
+}
+
+@media screen and (max-width: 768px) {
+  .sobre {
+    width: 100%;
+  }
+}
+
+.resumo {
+  text-align: justify;
+}
+
+.referencias {
+  word-break: break-all;
+}
+</style>

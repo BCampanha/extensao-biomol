@@ -1,9 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes" :exibirAjuda="true">
-      <template #ajuda>
-        <img src="../assets/gene-gun-legenda.jpeg" alt="Manual sobre a máquina" v-if="biob"/>
-      </template>
+    <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes">
       <template #principal>
         <div v-if="biob" class="h-[52.7rem] relative">
           <Transition>
@@ -18,6 +15,7 @@
           <Transition>
             <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 w-[50rem]"/>
           </Transition>
+          <small><p>Biolistics TM PDS 2000</p></small>
         </div>
         </template>
         <template #ferramentas>
