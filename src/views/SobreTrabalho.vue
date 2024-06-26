@@ -74,7 +74,7 @@ export default {
         },
       ],
       resumo:
-        "Esse projeto de extensão visa estudar os passos que envolvem a transformação genética de plantas via Agrobacterium e Biobalística. Esses processos têm como aplicação determinar a localização de atuação de uma proteína, entender sua função específica, ou induzir um fenótipo desejado na planta.",
+        "Esse é um projeto de extensão que tem como objetivo divulgar os métodos mais comuns usados na transformação genética de plantas. Através dessa técnica, é possível obter plantas tolerantes a condições ambientais adversas, resistentes à pragas ou até mesmo mais produtivas e nutritivas, o que tem grande importância agronômica. Sabendo disso, esse simulador ilustra os passos necessários para a obtenção de plantas transgênicas que manifestam uma característica de interesse.",
     };
   },
 };

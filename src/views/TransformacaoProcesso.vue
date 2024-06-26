@@ -21,10 +21,12 @@
         </div>
         </template>
         <template #ferramentas>
-          <button @click="adicionaPetri()">Petri com folhas</button>
-          <button @click="adicionaDisco()">Disco com partículas</button>
-          <button @click="ligaMaquina()">Ligar</button>
-          <p v-if="erro">{{ erro }}</p>
+          <div v-if="biob" class="imagens">
+            <button @click="adicionaPetri()">Petri com folhas</button>
+            <button @click="adicionaDisco()">Disco com partículas</button>
+            <button @click="ligaMaquina()">Ligar</button>
+            <p v-if="erro">{{ erro }}</p>
+          </div>
         </template>
     </JanelaQuestao>
   </div>
@@ -77,12 +79,12 @@ export default {
     switch (this.selecaoVia.id) {
       case 'AGRO':
         this.agro = true;
-        this.orientacoes = "A bactéria fitopatogênica, Agrobacterium tumefaciens, é um eficiente vetor natural para engenharia genética de plantas, tanto de dicotiledôneas como de monocotiledôneas. Durante o seu processo de infecção, essa bactéria do solo transfere, às células vegetais, parte de seu genoma, o T-DNA. Para isso, prepare a Agrobacterium tumefaciens com o vetor contendo o gene de interesse e co-cultive com os explantes vegetais para transferir o DNA."
+        this.orientacoes = "Agora, co-cultive a agrobactéria com os explantes vegetais para transferir o DNA."
         break;
       case 'BIOB':
         this.biob = true;
         this.src = 'gene-gun-1.png'
-        this.orientacoes = "Esta máquina, conhecida como gene gun, utiliza micropartículas impulsionadas em alta velocidade para carrear DNA exógeno para dentro das células. As partículas revestidas com DNA do plasmídeo irão penetrar na parede e na membrana celular, permitindo que o DNA seja incorporado no genoma celular das folhas de feijão. Coloque as partículas revestidas na câmara e dispare a máquina."
+        this.orientacoes = "Esta máquina, conhecida como acelerador de partículas, utiliza micropartículas impulsionadas em alta velocidade para introduzir o DNA com o gene de interesse dentro das células. As partículas revestidas com DNA do plasmídeo irão penetrar na parede e na membrana celular, permitindo que o DNA seja incorporado no genoma celular das folhas de feijão. Coloque as partículas revestidas na câmara e dispare a máquina."
         break; 
       default:
         this.$router.push('/1')
