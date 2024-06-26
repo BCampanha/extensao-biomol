@@ -15,7 +15,7 @@
       <div @click="proximaParte">
         <p class="text-lg">
           {{ orientacoesTextoExibido }}
-          <em v-if="parte < partesMax"> Continue... </em>
+          <small><em v-if="parte < partesMax"> Continue> </em></small>
         </p>
       </div>
 
@@ -76,7 +76,7 @@ export default {
       return "/"
     },
     proxima() {
-      if (parseInt(this.$route.name) >= 1) {
+      if (parseInt(this.$route.name) >= 1  && parseInt(this.$route.name) < 7) {
         return `${parseInt(this.$route.name) + 1}`
       }
       return "/1"
@@ -106,3 +106,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+/* .modal {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  background-color: white;
+} */
+</style>

@@ -2,7 +2,7 @@
   <div>
     <JanelaQuestao
       :titulo="`Construção do vetor de expressão gênica - ${selecaoVia.nome}`"
-      orientacoes="Considerando o método de transformação escolhido, construa um vetor de expressão que esteja adequado ao método."
+      :orientacoes="orientacoes"
       :exibirAjuda="true"
       :exibirModal="exibirModal"
       @toggle-modal="toggleModal"
@@ -14,21 +14,23 @@
               <p class="text-escuro font-bold">Construção de Vetor para Biolística</p>
               <button @click.stop="toggleModal"><i class="fa-regular fa-circle-xmark text-lg text-gray-400 hover:text-red-500 mr-1"></i></button>
             </div>
-            <img src="../assets/vetor-biob.png" alt="Resposta de biob" v-if="selecaoVia.id==='BIOB'"/>
-            <img src="../assets/vetor-agro.png" alt="Resposta de agro" v-if="selecaoVia.id==='AGRO'"/>
+            <img src="../assets/vetor-biob.png" alt="Vetor para biobalística" v-if="selecaoVia.id==='BIOB'"/>
+            <img src="../assets/vetor-agro.png" alt="Vetor para agrobactéria" v-if="selecaoVia.id==='AGRO'"/>
+            <p>Esse é o plasmídeo que desejamos construir para o método de {{ selecaoVia.nome }}</p>
+            <p>Basta clicar nos botões em ordem, de cima para baixo!</p>
           </div>
         </div>
       </template>
 
       <template #principal>
+        <img src="../assets/plasmideo.jpg" class="mx-auto rounded-lg border-2 w-[50rem]" alt='Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'/>
         <p>Complete o vetor de transformação do plasmídeo Ti</p>
 
           <div class="grid grid-cols-8 mb-3">
             <div class="col-span-3"></div>
-            <div v-if="erro" class="col-span-5 flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2  w-[35vw] m-auto" role="alert">
+            <div v-for="erro in erros" class="col-span-5 flex justify-center text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2  w-[35vw] m-auto" role="alert">
               {{ erro }}
             </div>
-            <div v-else class="py-5"></div>
           </div>
         <div class="grid grid-cols-8">
           <div class="flex flex-col items-center justify-center col-span-3 py-5">
@@ -37,7 +39,7 @@
               :key="opcao.nome" 
               :style="{backgroundColor: opcao.cor}"
               @click="selecionado(opcao)" class="p-2 rounded mr-2 text-white text-xl my-4 w-96">
-              {{ opcao.nome }}
+              {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> - {{  opcao.descricao }}</em>
             </button>
           </div>
 
@@ -79,10 +81,11 @@ export default {
   data() {
     return {
       exibirModal: false,
-      erro: '',
+      erros: [],
       gabarito: [],
       blocos: [],
       opcoes: [],
+      orientacoes: '',
       positions: [
 	{
 	  'top': '30%',
@@ -119,14 +122,14 @@ export default {
       ],
       opcoesAgro: [
         {
-          nome: "Origem de replicação Agrobacterium",
+          nome: "Origem de replicação",
           nomebloco: "Ori Agro",
           cor: "#6e2a6c",
           ordem: 1,
         },
         {
-          nome: "Origem de replicação E. coli",
-          nomebloco: "Ori E. coli",
+          nome: "Região de virulência",
+          nomebloco: "VIR",
           cor: "#3d3d3d",
           ordem: 2,
         },
@@ -137,34 +140,24 @@ export default {
           ordem: 3,
         },
         {
-          nome: "Promotor de transcrição",
-          nomebloco: "P",
-          cor: "#9bd778",
+          nome: "BTTX (gene de interesse)",
+          descricao: "Gene que dá resistência à praga",
+          nomebloco: "BTTX",
+          cor: "#da9fda",
           ordem: 4,
         },
         {
-          nome: "Gene de interesse",
-          nomebloco: "Gene",
-          cor: "#da9fda",
-          ordem: 5,
-        },
-        {
-          nome: "Terminador de transcrição",
-          nomebloco: "T",
-          cor: "#75747f",
-          ordem: 6,
-        },
-        {
           nome: "Marcador de seleção",
+          descricao: "Usado para diferenciar as plantas transformadas das plantas não transformadas",
           nomebloco: "SEL",
           cor: "#1a235e",
-          ordem: 7,
+          ordem: 5,
         },
         {
           nome: "Right Border",
           nomebloco: "RB",
           cor: "#d6783e",
-          ordem: 8,
+          ordem: 6,
         },
       ],
       opcoesBiob: [
@@ -175,28 +168,24 @@ export default {
           ordem: 1,
         },
         {
-          nome: "Promotor de transcrição",
-          nomebloco: "P",
-          cor: "#693269",
+          nome: "BTTX (gene de interesse)",
+          descricao: "Gene que dá resistência à praga",
+          nomebloco: "BTTX",
+          cor: "#da9fda",
           ordem: 2,
         },
         {
-          nome: "Gene de interesse",
-          nomebloco: "Gene",
-          cor: "#da9fda",
+          nome: "Marcador de seleção",
+          descricao: "Usado para diferenciar as plantas transformadas das plantas não transformadas",
+          nomebloco: "SEL",
+          cor: "#d6783e",
           ordem: 3,
         },
         {
-          nome: "Terminador de transcrição",
-          nomebloco: "T",
-          cor: "#f0cf38",
+          nome: "Região de virulência",
+          nomebloco: "VIR",
+          cor: "#3d3d3d",
           ordem: 4,
-        },
-        {
-          nome: "Marcador de seleção",
-          nomebloco: "SEL",
-          cor: "#d6783e",
-          ordem: 5,
         },
       ],
     };
@@ -205,11 +194,13 @@ export default {
     switch (this.selecaoVia.id) {
       case 'BIOB':
         this.opcoes = this.opcoesBiob
-        this.gabarito = [1,2,3,4,5]
+        this.gabarito = [1,2,3,4]
+        this.orientacoes = 'O plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo.'
         break;
       case 'AGRO':
         this.opcoes = this.opcoesAgro
-        this.gabarito = [1,2,3,4,5,6,7,8]
+        this.gabarito = [1,2,3,4,5,6]
+        this.orientacoes = 'Agrobacterium tumefasciens é um patógeno de plantas causador da doença galha-da-coroa. Durante a infecção ela introduz uma parte de seu DNA dentro do núcleo da célula, o T-DNA, forçando a célula a produzir um ambiente adequado para a bactéria. Através de técnicas de engenharia genética, podemos desarmar esse T-DNA e manipulá-lo para utilizar no processo de transformação. Já o plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo. O plasmidio da Agrobacteria exige então o T-DNA, cercado por bordas (Left Border e Right Border) e genes contido na região de virulência que irão ativar a sua proliferação, entrada nas células e transferência do T-DNA.'
         break;
       default:
         this.$router.push('/1')
@@ -225,7 +216,7 @@ export default {
         this.blocos.push(opcao);
       }
       else {
-        this.erro = 'Número máximo de componentes alcançado!'
+        this.erros = ['Limite de elementos excedido.']
       }
     },
     undo() {
@@ -233,20 +224,23 @@ export default {
       this.erro = '';
     },
     reset() {
+      this.erros = '';
       this.blocos = [];
       this.erro = '';
     },
     foiConcluido() {
       const ordens = this.blocos.map(el => el.ordem);
-
+      let correto = true
+      this.erros = []
       for (let i = 1; i <= 8; i++) {
           if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
-              this.erro = "Erro na posição " + i
-              return
+              this.erros.push("Posicionamento incorreto na posição " + i)
+              correto = false
           }
       }
-
-      this.erro = "certo!"
+      if (correto) {
+        this.erros.push("Certo!")
+      }
     },
   },
 };

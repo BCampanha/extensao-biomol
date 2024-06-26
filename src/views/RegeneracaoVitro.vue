@@ -1,7 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Regeneração in vitro" orientacoes="Meio de Indução de brotos em um meio com antibiótico/herbicida
-        (higromicina ou kanamicina) Meio de enraizamento">
+    <JanelaQuestao titulo="Regeneração in vitro" orientacoes="Para a regeneração in vitro, prepare um meio de cultura com antibiótico (como higromicina ou kanamicina), que revelará as células transgênicas por causa do gene de seleção. E adicione auxina e citocinina, que são hormônios produzidos pelas plantas, para promover o crescimento e diferenciação das células transformadas.">
         <template #principal>
           <span v-if="!antibiotico"> Imagem das folhas cortadas </span>
           <span v-if="antibiotico"> Algumas folhas morrem </span>
@@ -31,7 +30,7 @@
 
 <script>
 export default {
-  name: "RegeneracaoPlanta",
+  name: "RegeneracaoVitro",
   data() {
     return {
       raizes: 0,

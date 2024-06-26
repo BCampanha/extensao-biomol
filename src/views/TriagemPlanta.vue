@@ -1,6 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao titulo="Triagem" orientacoes="Análise molecular: Testes de PCR">
+    <JanelaQuestao titulo="Triagem" orientacoes="Verifique a presença do gene nas células transformadas usando análise molecular, como o teste de PCR para amplificar e detectar o gene de interesse. Avalie a expressão gênica e confirme o sucesso da transformação.">
     </JanelaQuestao>
   </div>
 </template>
