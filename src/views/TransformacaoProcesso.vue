@@ -1,9 +1,6 @@
 <template>
   <div>
-    <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes" :exibirAjuda="true">
-      <template #ajuda>
-        <img src="../assets/gene-gun-legenda.jpeg" alt="Manual sobre a máquina" v-if="biob"/>
-      </template>
+    <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes">
       <template #principal>
         <div v-if="biob" class="imagens">
           <Transition>

@@ -24,7 +24,7 @@
       </template>
 
       <template #principal>
-        <ImagemRef :src="'plasmideo.jpg'" :legenda="'Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'" :referencia="'Copyright: Adobe Stock'"/>
+        <img src="../assets/plasmideo.jpg" class="mx-auto rounded-lg border-2 w-[35rem] mb-10 mt-5" alt='Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'/>
         <p class="text-lg">Complete o vetor de transformação do plasmídeo Ti</p>
 
 
