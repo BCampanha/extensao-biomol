@@ -8,7 +8,7 @@
       @toggle-modal="toggleModal"
     >
       <template #ajuda>
-        <div class="fixed left-0 top-0 bg-black bg-opacity-50 h-screen w-screen z-10 flex justify-center items-center" @click="toggleModal">
+        <div id="modal-ajuda" class="fixed left-0 top-0 bg-black bg-opacity-50 h-screen w-screen z-10 flex justify-center items-center" @click="toggleModal">
           <div class="absolute z-20 rounded shadow-md bg-gray-200 border-4 w-[35rem] flex flex-col justify-center" @click.stop="">
             <div class="flex justify-between m-2 items-center z-40">
               <p class="text-escuro font-bold">Construção de Vetor para Biolística</p>
@@ -252,3 +252,15 @@ export default {
   },
 };
 </script>
+
+<style>
+@keyframes showModal {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#modal-ajuda{
+  animation-name: showModal;
+  animation-duration: 0.2s;
+}
+</style>
