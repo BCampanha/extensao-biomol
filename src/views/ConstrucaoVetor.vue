@@ -13,7 +13,9 @@
       </template>
 
       <template #principal>
-        <ImagemRef :src="'../assets/plasmideo.jpg'" :legenda="'Adobe Stock'"/>
+
+        <ImagemRef :src="'plasmideo.jpg'" :legenda="'Esquema da estrutura de uma bactéria, com seu DNA cromossômico e DNA circular, chamado de plasmídeo'" :referencia="'Copyright: Adobe Stock'"/>
+
         <img src="../assets/vetor-vazio.png" alt="Vetor vazio"/>
 
         <div class="blocos">

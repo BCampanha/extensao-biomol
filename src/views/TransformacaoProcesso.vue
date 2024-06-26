@@ -18,6 +18,7 @@
           <Transition>
             <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la"/>
           </Transition>
+          <small><p>Biolistics TM PDS 2000</p></small>
         </div>
         </template>
         <template #ferramentas>

@@ -1,7 +1,7 @@
-<<template>
+<template>
   <div>
-    <img v-bind:src="`../assets/${src}`" class="mx-auto rounded-lg border-2 w-[50rem]" :alt="legenda"/>
-    <p>{{ referencia }}</p>
+    <img v-bind:src="`src/assets/${src}`" :alt="legenda" class="mx-auto rounded-lg border-2 w-[50rem]"/>
+    <small><p class="text-center">{{ referencia }}</p></small>
   </div>
 </template>
 
