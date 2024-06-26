@@ -2,25 +2,24 @@
   <div>
     <JanelaQuestao :titulo="`Transformação por ${selecaoVia.nome}`" :orientacoes="orientacoes">
       <template #principal>
-        <div v-if="biob" class="h-[85vw] md:h-[52.7rem] relative">
+        <div v-if="biob" class="h-[85vw] sm:h-[52vh] relative">
           <Transition>
-            <img src="../assets/gene-gun-0.png" v-show="imagemInicial" alt="Máquina com compartimento vazio" class="absolute left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-0.png" v-show="imagemInicial" alt="Máquina com compartimento vazio" class="absolute left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 sm:h-[50vh]"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado" alt="Máquina com placa de petri dos explantes" class="absolute left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-1.png" v-show="petriAdicionado" alt="Máquina com placa de petri dos explantes" class="absolute left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 sm:h-[50vh]"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado" alt="Máquina com placa de petri e disco de partículas" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-2.png" v-show="discoAdicionado" alt="Máquina com placa de petri e disco de partículas" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 sm:h-[50vh]"/>
           </Transition>
           <Transition>
-            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 w-[50rem]"/>
+            <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 sm:h-[50vh]"/>
           </Transition>
-          <small><p>Biolistics TM PDS 2000</p></small>
         </div>
         </template>
         <template #ferramentas>
             <div class="mt-4 flex flex-col items-center justify-center" v-if="biob">
-            <div class="flex md:flex-row flex-col">
+            <div class="flex sm:flex-row flex-col">
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaPetri()"><i class="fa-solid fa-microscope"></i> Petri com folhas</button>
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaDisco()"><i class="fa-solid fa-dna"></i> Disco com partículas</button>
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="ligaMaquina()"><i class="fa-solid fa-power-off"></i> Ligar</button>
