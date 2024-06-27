@@ -2,7 +2,7 @@
   <div>
     <JanelaQuestao titulo="Transformação Nuclear" orientacoes="A célula hospedeira integra o T-DNA ao seu genoma utilizando sua própria maquinaria.">
       <template #principal>
-        <img src=""
+        <span></span>
       </template>
       <template #ferramentas>
         <span></span>
