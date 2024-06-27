@@ -27,7 +27,7 @@
             <Transition>
               <img src="../assets/reg-8.png" v-if="raizesNum==8" class="raiz"/>
             </Transition>
-            <small><p>Belide, S., Vanhercke, T., Petrie, J.R. et al. Robust genetic transformation of sorghum (Sorghum bicolor L.) using differentiating embryogenic callus induced from immature embryos. Plant Methods 13, 109 (2017). https://doi.org/10.1186/s13007-017-0260-9</p></small>
+            <small><p class="w-[80vw] md:w-[50rem] text-wrap legenda">Belide, S., Vanhercke, T., Petrie, J.R. et al. Robust genetic transformation of sorghum (Sorghum bicolor L.) using differentiating embryogenic callus induced from immature embryos. Plant Methods 13, 109 (2017). https://doi.org/10.1186/s13007-017-0260-9</p></small>
           </div>
         </template>
         <template #ferramentas>
@@ -106,17 +106,20 @@ export default {
 }
 
 .imagens {
+  display: flex;
+  justify-content: center;
   position: relative;
   img {
     max-width: 80vw;
     height: 300px;
-  }
-  img:not(:first-child) {
     position: absolute;
     top: 0
   }
   .raiz {
     z-index: 5000
+  }
+  :last-child {
+    margin-top: 10rem;
   }
 }
 </style>
