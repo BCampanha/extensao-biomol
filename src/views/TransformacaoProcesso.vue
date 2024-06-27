@@ -16,9 +16,19 @@
             <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 sm:h-[50vh]"/>
           </Transition>
         </div>
+        <div v-if="agro">
+          <div v-if="!indutor">
+            <img class="md:h-[25vh] h-[10vh]" src="../assets/cocultivo-1.png"/>
+            <p>Tecido das plantas</p>
+          </div>
+          <div v-else>
+            <img class="md:h-[25vh] h-[10vh]" src="../assets/cocultivo-3.png"/>
+            <p>Infecção e co cultivo</p>
+          </div>
+        </div>
         </template>
         <template #ferramentas>
-            <div class="mt-4 flex flex-col items-center justify-center" v-if="biob">
+          <div class="mt-4 flex flex-col items-center justify-center" v-if="biob">
             <div class="flex sm:flex-row flex-col">
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaPetri()"><i class="fa-solid fa-microscope"></i> Placa de Petri com as folhas da planta</button>
               <button class="p-2 rounded bg-verde-escuro text-white mx-3 my-1" @click="adicionaDisco()"><i class="fa-solid fa-dna"></i> Disco com partículas</button>
@@ -27,6 +37,9 @@
             <div>
               <p class="text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2 mt-2" v-if="erro">{{ erro }}</p>
             </div>
+          </div>
+          <div v-if="agro">
+            <button @click="indutor=true">Acetoseringona - <em>o indutor da virulência</em></button>
           </div>
         </template>
     </JanelaQuestao>
@@ -46,7 +59,8 @@ export default {
       imagemInicial: true,
       petriAdicionado: false,
       discoAdicionado: false,
-      maquinaLigada: false
+      maquinaLigada: false,
+      indutor: false
     }
   },
   props: {
