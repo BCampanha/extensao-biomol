@@ -29,19 +29,19 @@
         <span class="text-lg">Complete o vetor de transformação do plasmídeo Ti</span>
 
 
-        <div class="grid grid-cols-8">
-          <div class="flex flex-col items-center justify-center col-span-4 md:col-span-3 h-[60vh]">
+        <div class="md:grid md:grid-cols-8 flex flex-col">
+          <div class="flex flex-col items-center justify-center col-span-4 my-3 md:col-span-3">
             <button
               v-for="opcao in opcoes"
               :key="opcao.nome" 
               :style="{backgroundColor: opcao.cor}"
-              @click="selecionado(opcao)" class="p-2 rounded text-white text-sm md:text-xl md:my-4 my-1 md:w-96">
+              @click="selecionado(opcao)" class="p-2 w-full rounded text-white text-sm lg:text-xl md:my-4 my-1 md:w-72 lg:w-96">
               {{ opcao.nome }} <em class="text-muted" v-if="opcao.descricao"> <br> {{  opcao.descricao }}</em>
             </button>
           </div>
 
           <div class="col-span-4 md:col-span-5 flex justify-center items-center">
-            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[20vh] w-[40vw] md:h-[60vh] md:w-[35vw] bg-cover bg-center border-2 rounded relative">
+            <div class="bg-[url('/src/assets/vetor-vazio.png')] h-[30vh] w-[80vw] md:h-[60vh] md:w-[35vw] bg-cover bg-center border-2 rounded relative">
               <div :style="{backgroundColor: bloco.cor, top: positions[index].top, left: positions[index].left}" class="-translate-x-1/2 -translate-y-1/2 text-white text-sm p-1 md:text-base md:p-2 rounded absolute" v-for="(bloco, index) in blocos" :key="bloco.nome">
                 {{ bloco.nomebloco }}
               </div>
