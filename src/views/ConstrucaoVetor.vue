@@ -182,12 +182,6 @@ export default {
           cor: "#d6783e",
           ordem: 3,
         },
-        {
-          nome: "Região de virulência",
-          nomebloco: "VIR",
-          cor: "#3d3d3d",
-          ordem: 4,
-        },
       ],
     };
   },
@@ -195,7 +189,7 @@ export default {
     switch (this.selecaoVia.id) {
       case 'BIOB':
         this.opcoes = this.opcoesBiob
-        this.gabarito = [1,2,3,4]
+        this.gabarito = [1,2,3]
         this.orientacoes = 'O plasmídeo é uma pequena molécula de DNA circular, separada do DNA cromossômico, encontrada em bactérias. Ele servirá como um veículo para carregar seu gene para as células-alvo.'
         break;
       case 'AGRO':
