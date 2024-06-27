@@ -225,14 +225,14 @@ export default {
     foiConcluido() {
       let correto = true
       this.erros = []
+      const ordens = this.blocos.map(el => el.ordem);
 
       if(this.selecaoVia.id == 'BIOB'){
-        if(this.blocos.length < 3){
+        if(this.blocos.length < 3 || !ordens.includes(1) || !ordens.includes(2) || !ordens.includes(3)){
             correto = false;
             this.erros.push("Não estão presentes todos os elementos necessários!");
         }
       }else{
-        const ordens = this.blocos.map(el => el.ordem);
         for (let i = 1; i <= 8; i++) {
             if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
                 this.erros.push("Posicionamento incorreto na " + i + "ª posição")
