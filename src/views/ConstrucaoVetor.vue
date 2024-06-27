@@ -223,15 +223,24 @@ export default {
       this.blocos = [];
     },
     foiConcluido() {
-      const ordens = this.blocos.map(el => el.ordem);
       let correto = true
       this.erros = []
-      for (let i = 1; i <= 8; i++) {
-          if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
-              this.erros.push("Posicionamento incorreto na " + i + "ª posição")
-              correto = false
-          }
+
+      if(this.selecaoVia.id == 'BIOB'){
+        if(this.blocos.length < 3){
+            correto = false;
+            this.erros.push("Não estão presentes todos os elementos necessários!");
+        }
+      }else{
+        const ordens = this.blocos.map(el => el.ordem);
+        for (let i = 1; i <= 8; i++) {
+            if (ordens.indexOf(i) !== this.gabarito.indexOf(i)) {
+                this.erros.push("Posicionamento incorreto na " + i + "ª posição")
+                correto = false
+            }
+        }
       }
+
       if (correto) {
         this.erros.push("Certo!")
       }
