@@ -17,14 +17,18 @@
           </Transition>
         </div>
         <div v-if="agro">
+          <img src="../assets/cocultivo-4.png" class="mx-auto rounded-lg border-2 mb-4"/>
           <div v-if="!indutor">
-            <img class="md:h-[25vh] h-[10vh]" src="../assets/cocultivo-1.png"/>
-            <p>Tecido das plantas</p>
+            <img class="md:w-auto w-[80vw]" src="../assets/cocultivo-1.png"/>
+            <p>B- Tecido das plantas</p>
           </div>
-          <div v-else>
-            <img class="md:h-[25vh] h-[10vh]" src="../assets/cocultivo-3.png"/>
-            <p>Infecção e co cultivo</p>
-          </div>
+          <Transition>
+            <div v-if="indutor">
+              <img class="md:w-auto w-[80vw]" src="../assets/cocultivo-3.png"/>
+              <p>C, D - Infecção e co cultivo</p>
+            </div>
+          </Transition>
+          <small><p>Xu, D., et. al Agrobacterium-Mediated Genetic Transformation doi:10.3791/61665 (2020).</p></small>
         </div>
         </template>
         <template #ferramentas>
@@ -39,7 +43,7 @@
             </div>
           </div>
           <div v-if="agro">
-            <button @click="indutor=true">Acetoseringona - <em>o indutor da virulência</em></button>
+            <button class="p-2 rounded bg-verde-escuro text-white my-1" @click="indutor=true">Acetoseringona - <em> indutor da virulência</em></button>
           </div>
         </template>
     </JanelaQuestao>
@@ -117,6 +121,6 @@ export default {
 
 .v-enter-from,
 .v-leave-to {
-  opacity: 0;
+  opacity: 0.8;
 }
 </style>

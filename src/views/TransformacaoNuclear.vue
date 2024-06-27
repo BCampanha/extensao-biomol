@@ -1,8 +1,11 @@
 <template>
   <div>
     <JanelaQuestao titulo="Transformação Nuclear" orientacoes="A célula hospedeira integra o T-DNA ao seu genoma utilizando sua própria maquinaria.">
+      <template #principal>
+        <img src=""
+      </template>
       <template #ferramentas>
-        <button @click="foiConcluido()">Ação</button>
+        <span></span>
       </template>
     </JanelaQuestao>
   </div>
