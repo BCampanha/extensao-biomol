@@ -42,7 +42,9 @@
               Auxina
             </button>
           </div>
-          <p if="aviso">{{ aviso }}</p>
+          <div class="flex justify-center">
+            <p class="text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2 mt-2 w-72" v-if="aviso">{{ aviso }}</p>
+          </div>
         </template>
     </JanelaQuestao>
   </div>
