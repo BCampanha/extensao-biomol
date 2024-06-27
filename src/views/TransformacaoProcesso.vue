@@ -16,20 +16,22 @@
             <img src="../assets/gene-gun-3.png" v-show="maquinaLigada" alt="O botão da máquina é alterado para ligá-la" class="absolute  left-1/2 -translate-x-1/2 top-0 rounded-lg border-2 sm:h-[50vh]"/>
           </Transition>
         </div>
-        <div v-if="agro">
+        <div class="flex justify-center" v-if="agro">
+          <div>
           <img src="../assets/cocultivo-4.png" class="mx-auto rounded-lg border-2 mb-4"/>
           <div v-if="!indutor">
-            <img class="md:w-auto w-[80vw]" src="../assets/cocultivo-1.png"/>
-            <p>B- Tecido das plantas</p>
+            <img class="md:w-auto w-[80vw] mx-auto" src="../assets/cocultivo-1.png"/>
+            <p class="mt-2">B- Tecido das plantas</p>
           </div>
           <Transition>
             <div v-if="indutor">
-              <img class="md:w-auto w-[80vw]" src="../assets/cocultivo-3.png"/>
-              <p>C, D - Infecção e co cultivo</p>
+              <img class="md:w-auto w-[80vw] mx-auto" src="../assets/cocultivo-3.png"/>
+              <p class="mt-2">C, D - Infecção e co cultivo</p>
             </div>
           </Transition>
           <small><p>Xu, D., et. al Agrobacterium-Mediated Genetic Transformation doi:10.3791/61665 (2020).</p></small>
         </div>
+      </div>
         </template>
         <template #ferramentas>
           <div class="mt-4 flex flex-col items-center justify-center" v-if="biob">
@@ -42,8 +44,8 @@
               <p class="text-orange-700 border-l-4 border-orange-500 bg-orange-100 p-2 mt-2" v-if="erro">{{ erro }}</p>
             </div>
           </div>
-          <div v-if="agro">
-            <button class="p-2 rounded bg-verde-escuro text-white my-1" @click="indutor=true">Acetoseringona - <em> indutor da virulência</em></button>
+          <div class="flex justify-center mt-4" v-if="agro">
+            <button class="p-2 rounded bg-verde-escuro text-white" @click="indutor=true">Acetoseringona - <em> indutor da virulência</em></button>
           </div>
         </template>
     </JanelaQuestao>
